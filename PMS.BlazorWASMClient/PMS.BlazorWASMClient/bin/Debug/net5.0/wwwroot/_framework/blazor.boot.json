@@ -1,6 +1,8 @@
 {
   "cacheBootResources": true,
-  "config": [ ],
+  "config": [
+    "appsettings.json"
+  ],
   "debugBuild": true,
   "entryAssembly": "PMS.BlazorWASMClient",
   "icuDataMode": 0,
@@ -195,11 +197,13 @@
       "mscorlib.dll": "sha256-CUpudhojlkcrp2dsiJFF\/H\/WNg+uAhzoGkSWfOta\/U0=",
       "netstandard.dll": "sha256-vJpyW6cE\/+ewo5rVB5JUu9x2f8aLnqoIazac8ef5FzQ=",
       "System.Private.CoreLib.dll": "sha256-CvQTDivHJZAtRXyCbDa5f5+okJt39WRFrZSmXTMSau0=",
-      "PMS.BlazorWASMClient.dll": "sha256-Ijv91MqLxa7Kp8lC0M8mLyHQpKM3xuTfGj6nlYmhp\/c="
+      "PMS.APIFramework.dll": "sha256-qHkOx+CZgVJyIe+CUbEyu3eTpxrUccaCeM7ikNESir0=",
+      "PMS.BlazorWASMClient.dll": "sha256-4FxqT07jmIbSDoU\/dJie2bTNB4vcDo0u88DAw+elkfI="
     },
     "lazyAssembly": null,
     "pdb": {
-      "PMS.BlazorWASMClient.pdb": "sha256-kkNY2UBMDHonqzeo+oOzIydhHJzYOAx6Kntlt5gPoCc="
+      "PMS.APIFramework.pdb": "sha256-PrMjAd5o0IJWthjCuXQa7MPBAnqI\/05jh7WoRRYhG0o=",
+      "PMS.BlazorWASMClient.pdb": "sha256-\/odf1RET2IZiK1fcfXia\/gMlReOpVqyidomCd3fwFbA="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-2OdnPsDgJyoSaSlvebGMRd2MxC+4UIqparqVrQZAFDE=",

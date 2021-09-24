@@ -1,7 +1,24 @@
 ﻿@page "/"
 
+@inject IApiTestService apiTestService;
+@inject IJSRuntime jsRuntime
+
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+@code{
+    protected override async Task OnInitializedAsync()
+    {
+        var response = await apiTestService.ApiTestInfo();
+
+        if (!string.IsNullOrWhiteSpace(response))
+        {
+            await jsRuntime.ShowToastr("success", $"API connection test successfull.API says: {response}");
+        }
+        else
+        {
+            await jsRuntime.ShowToastr("error", $"API connection test failed.");
+        }
+    }
+}

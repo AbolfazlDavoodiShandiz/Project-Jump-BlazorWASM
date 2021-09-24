@@ -82,6 +82,20 @@ using PMS.BlazorWASMClient.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
+using PMS.APIFramework.Services;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
+using PMS.BlazorWASMClient.Utility;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/")]
     public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -90,6 +104,28 @@ using PMS.BlazorWASMClient.Shared;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 10 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Index.razor"
+      
+    protected override async Task OnInitializedAsync()
+    {
+        var response = await apiTestService.ApiTestInfo();
+
+        if (!string.IsNullOrWhiteSpace(response))
+        {
+            await jsRuntime.ShowToastr("success", $"API connection test successfull.API says: {response}");
+        }
+        else
+        {
+            await jsRuntime.ShowToastr("error", $"API connection test failed.");
+        }
+    }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime jsRuntime { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IApiTestService apiTestService { get; set; }
     }
 }
 #pragma warning restore 1591

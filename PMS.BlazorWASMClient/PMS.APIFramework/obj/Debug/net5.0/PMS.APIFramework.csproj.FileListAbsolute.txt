@@ -1,0 +1,12 @@
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.APIFramework\bin\Debug\net5.0\PMS.APIFramework.deps.json
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.APIFramework\bin\Debug\net5.0\PMS.APIFramework.dll
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.APIFramework\bin\Debug\net5.0\ref\PMS.APIFramework.dll
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.APIFramework\bin\Debug\net5.0\PMS.APIFramework.pdb
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.APIFramework\obj\Debug\net5.0\PMS.APIFramework.csproj.AssemblyReference.cache
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.APIFramework\obj\Debug\net5.0\PMS.APIFramework.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.APIFramework\obj\Debug\net5.0\PMS.APIFramework.AssemblyInfoInputs.cache
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.APIFramework\obj\Debug\net5.0\PMS.APIFramework.AssemblyInfo.cs
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.APIFramework\obj\Debug\net5.0\PMS.APIFramework.csproj.CoreCompileInputs.cache
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.APIFramework\obj\Debug\net5.0\PMS.APIFramework.dll
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.APIFramework\obj\Debug\net5.0\ref\PMS.APIFramework.dll
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.APIFramework\obj\Debug\net5.0\PMS.APIFramework.pdb

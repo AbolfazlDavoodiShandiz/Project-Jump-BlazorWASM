@@ -17,6 +17,10 @@
     {
       "library": "toastr@2.1.4",
       "destination": "wwwroot\\lib\\toastr"
+    },
+    {
+      "library": "font-awesome@4.7.0",
+      "destination": "wwwroot\\lib\\font-awesome"
     }
   ]
 }

@@ -404,10 +404,7 @@ D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWAS
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\PMS.BlazorWASMClient.MvcApplicationPartsAssemblyInfo.cache
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\PMS.BlazorWASMClient.RazorComponent.input.cache
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\RazorDeclaration\App.razor.g.cs
-D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\RazorDeclaration\Pages\Counter.razor.g.cs
-D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\RazorDeclaration\Pages\FetchData.razor.g.cs
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\RazorDeclaration\Pages\Index.razor.g.cs
-D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\RazorDeclaration\Shared\SurveyPrompt.razor.g.cs
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\RazorDeclaration\_Imports.razor.g.cs
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\RazorDeclaration\Shared\MainLayout.razor.g.cs
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\RazorDeclaration\Shared\NavMenu.razor.g.cs
@@ -417,10 +414,7 @@ D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWAS
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\PMS.BlazorWASMClient.TagHelpers.output.cache
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\PMS.BlazorWASMClient.RazorCoreGenerate.cache
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\App.razor.g.cs
-D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\Pages\Counter.razor.g.cs
-D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\Pages\FetchData.razor.g.cs
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\Pages\Index.razor.g.cs
-D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\Shared\SurveyPrompt.razor.g.cs
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\_Imports.razor.g.cs
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\Shared\MainLayout.razor.g.cs
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\Shared\NavMenu.razor.g.cs
@@ -631,3 +625,9 @@ D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWAS
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\ref\PMS.BlazorWASMClient.dll
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\PMS.BlazorWASMClient.pdb
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\bin\Debug\net5.0\libman.json
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\RazorDeclaration\Pages\Accunt\Login.razor.g.cs
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\Pages\Accunt\Login.razor.g.cs
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\bin\Debug\net5.0\wwwroot\_framework\PMS.APIFramework.dll.gz
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\bin\Debug\net5.0\wwwroot\_framework\PMS.APIFramework.dll
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\bin\Debug\net5.0\wwwroot\_framework\PMS.APIFramework.pdb
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\build-gz\VKXUx+PL.gz

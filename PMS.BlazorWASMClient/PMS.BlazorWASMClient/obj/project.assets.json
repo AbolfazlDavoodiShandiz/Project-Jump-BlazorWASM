@@ -305,6 +305,16 @@
         "runtime": {
           "lib/net5.0/System.Net.Http.Json.dll": {}
         }
+      },
+      "PMS.APIFramework/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/PMS.APIFramework.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PMS.APIFramework.dll": {}
+        }
       }
     },
     "net5.0/browser-wasm": {
@@ -610,6 +620,16 @@
         },
         "runtime": {
           "lib/net5.0/System.Net.Http.Json.dll": {}
+        }
+      },
+      "PMS.APIFramework/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/PMS.APIFramework.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PMS.APIFramework.dll": {}
         }
       }
     }
@@ -1135,12 +1155,18 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "PMS.APIFramework/1.0.0": {
+      "type": "project",
+      "path": "../PMS.APIFramework/PMS.APIFramework.csproj",
+      "msbuildProject": "../PMS.APIFramework/PMS.APIFramework.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "Microsoft.AspNetCore.Components.WebAssembly >= 5.0.8",
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 5.0.8",
+      "PMS.APIFramework >= 1.0.0",
       "System.Net.Http.Json >= 5.0.0"
     ]
   },
@@ -1174,7 +1200,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Programming\\Projects\\GitHubRepositories\\Project-Jump-BlazorWASM\\PMS.BlazorWASMClient\\PMS.APIFramework\\PMS.APIFramework.csproj": {
+              "projectPath": "D:\\Programming\\Projects\\GitHubRepositories\\Project-Jump-BlazorWASM\\PMS.BlazorWASMClient\\PMS.APIFramework\\PMS.APIFramework.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
