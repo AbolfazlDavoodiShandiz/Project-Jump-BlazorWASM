@@ -2,6 +2,18 @@
   "version": 3,
   "targets": {
     "net5.0": {
+      "Blazored.LocalStorage/4.1.5": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Web": "5.0.5"
+        },
+        "compile": {
+          "lib/net5.0/Blazored.LocalStorage.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazored.LocalStorage.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Authorization/5.0.8": {
         "type": "package",
         "dependencies": {
@@ -288,6 +300,15 @@
           "lib/net5.0/Microsoft.JSInterop.WebAssembly.dll": {}
         }
       },
+      "Newtonsoft.Json/13.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
       "System.IO.Pipelines/5.0.1": {
         "type": "package",
         "compile": {
@@ -306,18 +327,34 @@
           "lib/net5.0/System.Net.Http.Json.dll": {}
         }
       },
-      "PMS.APIFramework/1.0.0": {
+      "PMS.BlazorWASMClient.Utility/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Blazored.LocalStorage": "4.1.5",
+          "Newtonsoft.Json": "13.0.1"
+        },
         "compile": {
-          "bin/placeholder/PMS.APIFramework.dll": {}
+          "bin/placeholder/PMS.BlazorWASMClient.Utility.dll": {}
         },
         "runtime": {
-          "bin/placeholder/PMS.APIFramework.dll": {}
+          "bin/placeholder/PMS.BlazorWASMClient.Utility.dll": {}
         }
       }
     },
     "net5.0/browser-wasm": {
+      "Blazored.LocalStorage/4.1.5": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Web": "5.0.5"
+        },
+        "compile": {
+          "lib/net5.0/Blazored.LocalStorage.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazored.LocalStorage.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Authorization/5.0.8": {
         "type": "package",
         "dependencies": {
@@ -604,6 +641,15 @@
           "lib/net5.0/Microsoft.JSInterop.WebAssembly.dll": {}
         }
       },
+      "Newtonsoft.Json/13.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
       "System.IO.Pipelines/5.0.1": {
         "type": "package",
         "compile": {
@@ -622,19 +668,37 @@
           "lib/net5.0/System.Net.Http.Json.dll": {}
         }
       },
-      "PMS.APIFramework/1.0.0": {
+      "PMS.BlazorWASMClient.Utility/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Blazored.LocalStorage": "4.1.5",
+          "Newtonsoft.Json": "13.0.1"
+        },
         "compile": {
-          "bin/placeholder/PMS.APIFramework.dll": {}
+          "bin/placeholder/PMS.BlazorWASMClient.Utility.dll": {}
         },
         "runtime": {
-          "bin/placeholder/PMS.APIFramework.dll": {}
+          "bin/placeholder/PMS.BlazorWASMClient.Utility.dll": {}
         }
       }
     }
   },
   "libraries": {
+    "Blazored.LocalStorage/4.1.5": {
+      "sha512": "i9v27ScPOsHv6skc+isE+DZ/mtR53w019Nq2/MnjvpiLV2otbnqqyxfiYnXAU0Ho6MBIvAS2gdf+odbAyDZPzw==",
+      "type": "package",
+      "path": "blazored.localstorage/4.1.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "blazored.localstorage.4.1.5.nupkg.sha512",
+        "blazored.localstorage.nuspec",
+        "icon.png",
+        "lib/net5.0/Blazored.LocalStorage.dll",
+        "lib/netstandard2.1/Blazored.LocalStorage.dll"
+      ]
+    },
     "Microsoft.AspNetCore.Authorization/5.0.8": {
       "sha512": "7PKGjQUmMhlGFTx+HZxR1WO3pBceOeMtCRdZ8ERHMulmX8UecHSPnoo28AYrt6aBrYy4fsNkYSjwZlUQxp6DAw==",
       "type": "package",
@@ -1108,6 +1172,33 @@
         "microsoft.jsinterop.webassembly.nuspec"
       ]
     },
+    "Newtonsoft.Json/13.0.1": {
+      "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
+      "type": "package",
+      "path": "newtonsoft.json/13.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "newtonsoft.json.13.0.1.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
     "System.IO.Pipelines/5.0.1": {
       "sha512": "qEePWsaq9LoEEIqhbGe6D5J8c9IqQOUuTzzV6wn1POlfdLkJliZY3OlB0j0f17uMWlqZYjH7txj+2YbyrIA8Yg==",
       "type": "package",
@@ -1156,17 +1247,18 @@
         "version.txt"
       ]
     },
-    "PMS.APIFramework/1.0.0": {
+    "PMS.BlazorWASMClient.Utility/1.0.0": {
       "type": "project",
-      "path": "../PMS.APIFramework/PMS.APIFramework.csproj",
-      "msbuildProject": "../PMS.APIFramework/PMS.APIFramework.csproj"
+      "path": "../PMS.APIFramework/PMS.BlazorWASMClient.Utility.csproj",
+      "msbuildProject": "../PMS.APIFramework/PMS.BlazorWASMClient.Utility.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "Blazored.LocalStorage >= 4.1.5",
       "Microsoft.AspNetCore.Components.WebAssembly >= 5.0.8",
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 5.0.8",
-      "PMS.APIFramework >= 1.0.0",
+      "PMS.BlazorWASMClient.Utility >= 1.0.0",
       "System.Net.Http.Json >= 5.0.0"
     ]
   },
@@ -1201,8 +1293,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\Programming\\Projects\\GitHubRepositories\\Project-Jump-BlazorWASM\\PMS.BlazorWASMClient\\PMS.APIFramework\\PMS.APIFramework.csproj": {
-              "projectPath": "D:\\Programming\\Projects\\GitHubRepositories\\Project-Jump-BlazorWASM\\PMS.BlazorWASMClient\\PMS.APIFramework\\PMS.APIFramework.csproj"
+            "D:\\Programming\\Projects\\GitHubRepositories\\Project-Jump-BlazorWASM\\PMS.BlazorWASMClient\\PMS.APIFramework\\PMS.BlazorWASMClient.Utility.csproj": {
+              "projectPath": "D:\\Programming\\Projects\\GitHubRepositories\\Project-Jump-BlazorWASM\\PMS.BlazorWASMClient\\PMS.APIFramework\\PMS.BlazorWASMClient.Utility.csproj"
             }
           }
         }
@@ -1217,6 +1309,10 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "Blazored.LocalStorage": {
+            "target": "Package",
+            "version": "[4.1.5, )"
+          },
           "Microsoft.AspNetCore.Components.WebAssembly": {
             "target": "Package",
             "version": "[5.0.8, )"

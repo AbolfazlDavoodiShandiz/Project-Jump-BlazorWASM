@@ -84,14 +84,21 @@ using PMS.BlazorWASMClient.Shared;
 #nullable disable
 #nullable restore
 #line 11 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
-using PMS.APIFramework.Services;
+using PMS.BlazorWASMClient.Utility.Services;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 12 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
-using PMS.BlazorWASMClient.Utility;
+using PMS.BlazorWASMClient.Utility.DTOs;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
+using PMS.BlazorWASMClient.Utility.Extensions;
 
 #line default
 #line hidden

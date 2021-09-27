@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PMS.BlazorWASMClient", "PMS.BlazorWASMClient\PMS.BlazorWASMClient.csproj", "{9D37409F-88CA-4139-9266-15814D0CDF91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMS.APIFramework", "PMS.APIFramework\PMS.APIFramework.csproj", "{8F70186A-8D99-41ED-9B84-ED167CBE8330}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PMS.BlazorWASMClient.Utility", "PMS.APIFramework\PMS.BlazorWASMClient.Utility.csproj", "{8F70186A-8D99-41ED-9B84-ED167CBE8330}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

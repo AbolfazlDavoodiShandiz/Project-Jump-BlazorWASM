@@ -84,7 +84,21 @@ using PMS.BlazorWASMClient.Shared;
 #nullable disable
 #nullable restore
 #line 11 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
-using PMS.APIFramework.Services;
+using PMS.BlazorWASMClient.Utility.Services;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
+using PMS.BlazorWASMClient.Utility.DTOs;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
+using PMS.BlazorWASMClient.Utility.Extensions;
 
 #line default
 #line hidden
@@ -98,16 +112,26 @@ using PMS.APIFramework.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 9 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Index.razor"
+#line 10 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Index.razor"
       
     protected override async Task OnInitializedAsync()
     {
-        await apiTestService.ApiTestInfo();
+        var response = await apiTestService.ApiTestInfo();
+
+        if (!string.IsNullOrWhiteSpace(response))
+        {
+            await jsRuntime.ShowToastr("info", $"API connection test successfull.API says: {response}");
+        }
+        else
+        {
+            await jsRuntime.ShowToastr("error", $"API connection test failed.");
+        }
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime jsRuntime { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IApiTestService apiTestService { get; set; }
     }
 }

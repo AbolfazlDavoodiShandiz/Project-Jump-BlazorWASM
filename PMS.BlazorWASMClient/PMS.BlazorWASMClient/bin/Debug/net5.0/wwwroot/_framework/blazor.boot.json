@@ -9,6 +9,7 @@
   "linkerEnabled": false,
   "resources": {
     "assembly": {
+      "Blazored.LocalStorage.dll": "sha256-ItMv+HytRb8SgPKYiz75PK0k+DFgN1E247PZT\/8lODs=",
       "Microsoft.AspNetCore.Authorization.dll": "sha256-WlH0wmI5\/sRPenM4xwpdAaf+z3p\/Hi8pXr+nNJbq6hk=",
       "Microsoft.AspNetCore.Components.dll": "sha256-hBswojmhv0\/UiVhajMSnBSR5rk3AGi1AJk8t810UxrM=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-Af2ENvvmCbPgN12Bwzq8vtlRtVT2Aove7PIZELJwT3w=",
@@ -31,6 +32,7 @@
       "Microsoft.Extensions.Primitives.dll": "sha256-f2PgoftqEkKRuuiAk6S1MHygOuqZBHzB0HOB3vR93TU=",
       "Microsoft.JSInterop.dll": "sha256-mRffHozNFUjXcRwKwhI6uwe6e9V5dMFtp46knThTofY=",
       "Microsoft.JSInterop.WebAssembly.dll": "sha256-CUVDXn7tZbnOjcP3RCv7qo06kRLU82YzLqw07Ijzexc=",
+      "Newtonsoft.Json.dll": "sha256-cs8pHUurDt0IqbB8YXPh560au3q3J\/1wRL9jBddRVmE=",
       "System.IO.Pipelines.dll": "sha256-3ET+mpR7F058YRj9YaLHOVXBqOW6iUxtIpeiKPYw4PA=",
       "Microsoft.CSharp.dll": "sha256-Kw+wGv3G\/DSJHX+IG2hjFGrfS5OtNlPeQoOk1VDaK9M=",
       "Microsoft.VisualBasic.Core.dll": "sha256-C9sQ2gUXqiEx3atRvdSQtbcRzLaIeVah5iyS6\/LMuLs=",
@@ -197,13 +199,13 @@
       "mscorlib.dll": "sha256-CUpudhojlkcrp2dsiJFF\/H\/WNg+uAhzoGkSWfOta\/U0=",
       "netstandard.dll": "sha256-vJpyW6cE\/+ewo5rVB5JUu9x2f8aLnqoIazac8ef5FzQ=",
       "System.Private.CoreLib.dll": "sha256-CvQTDivHJZAtRXyCbDa5f5+okJt39WRFrZSmXTMSau0=",
-      "PMS.APIFramework.dll": "sha256-qHkOx+CZgVJyIe+CUbEyu3eTpxrUccaCeM7ikNESir0=",
-      "PMS.BlazorWASMClient.dll": "sha256-4FxqT07jmIbSDoU\/dJie2bTNB4vcDo0u88DAw+elkfI="
+      "PMS.BlazorWASMClient.Utility.dll": "sha256-GJ5p7sA04NywS9hIGPw0xpfmI3x3i2ISUy+ImMiTdQk=",
+      "PMS.BlazorWASMClient.dll": "sha256-lYRBaSOR0P6MlVz0Pgz9Py2V\/HYyrYnaXs426o957YE="
     },
     "lazyAssembly": null,
     "pdb": {
-      "PMS.APIFramework.pdb": "sha256-PrMjAd5o0IJWthjCuXQa7MPBAnqI\/05jh7WoRRYhG0o=",
-      "PMS.BlazorWASMClient.pdb": "sha256-\/odf1RET2IZiK1fcfXia\/gMlReOpVqyidomCd3fwFbA="
+      "PMS.BlazorWASMClient.Utility.pdb": "sha256-sJKbY7Cm0GJII+FpJocDLJ+qBIgNPSHOGM4i3vymOOQ=",
+      "PMS.BlazorWASMClient.pdb": "sha256-rtLyMPpi24yI18wBsq4ew63\/LOQgEh8Gxixzp+PWfeM="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-2OdnPsDgJyoSaSlvebGMRd2MxC+4UIqparqVrQZAFDE=",

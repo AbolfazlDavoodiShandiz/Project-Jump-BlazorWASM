@@ -4,12 +4,12 @@
     "D:\\Programming\\Projects\\GitHubRepositories\\Project-Jump-BlazorWASM\\PMS.BlazorWASMClient\\PMS.BlazorWASMClient\\PMS.BlazorWASMClient.csproj": {}
   },
   "projects": {
-    "D:\\Programming\\Projects\\GitHubRepositories\\Project-Jump-BlazorWASM\\PMS.BlazorWASMClient\\PMS.APIFramework\\PMS.APIFramework.csproj": {
+    "D:\\Programming\\Projects\\GitHubRepositories\\Project-Jump-BlazorWASM\\PMS.BlazorWASMClient\\PMS.APIFramework\\PMS.BlazorWASMClient.Utility.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Programming\\Projects\\GitHubRepositories\\Project-Jump-BlazorWASM\\PMS.BlazorWASMClient\\PMS.APIFramework\\PMS.APIFramework.csproj",
-        "projectName": "PMS.APIFramework",
-        "projectPath": "D:\\Programming\\Projects\\GitHubRepositories\\Project-Jump-BlazorWASM\\PMS.BlazorWASMClient\\PMS.APIFramework\\PMS.APIFramework.csproj",
+        "projectUniqueName": "D:\\Programming\\Projects\\GitHubRepositories\\Project-Jump-BlazorWASM\\PMS.BlazorWASMClient\\PMS.APIFramework\\PMS.BlazorWASMClient.Utility.csproj",
+        "projectName": "PMS.BlazorWASMClient.Utility",
+        "projectPath": "D:\\Programming\\Projects\\GitHubRepositories\\Project-Jump-BlazorWASM\\PMS.BlazorWASMClient\\PMS.APIFramework\\PMS.BlazorWASMClient.Utility.csproj",
         "packagesPath": "C:\\Users\\Abolfazl\\.nuget\\packages\\",
         "outputPath": "D:\\Programming\\Projects\\GitHubRepositories\\Project-Jump-BlazorWASM\\PMS.BlazorWASMClient\\PMS.APIFramework\\obj\\",
         "projectStyle": "PackageReference",
@@ -42,6 +42,16 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Blazored.LocalStorage": {
+              "target": "Package",
+              "version": "[4.1.5, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -88,8 +98,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\Programming\\Projects\\GitHubRepositories\\Project-Jump-BlazorWASM\\PMS.BlazorWASMClient\\PMS.APIFramework\\PMS.APIFramework.csproj": {
-                "projectPath": "D:\\Programming\\Projects\\GitHubRepositories\\Project-Jump-BlazorWASM\\PMS.BlazorWASMClient\\PMS.APIFramework\\PMS.APIFramework.csproj"
+              "D:\\Programming\\Projects\\GitHubRepositories\\Project-Jump-BlazorWASM\\PMS.BlazorWASMClient\\PMS.APIFramework\\PMS.BlazorWASMClient.Utility.csproj": {
+                "projectPath": "D:\\Programming\\Projects\\GitHubRepositories\\Project-Jump-BlazorWASM\\PMS.BlazorWASMClient\\PMS.APIFramework\\PMS.BlazorWASMClient.Utility.csproj"
               }
             }
           }
@@ -104,6 +114,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Blazored.LocalStorage": {
+              "target": "Package",
+              "version": "[4.1.5, )"
+            },
             "Microsoft.AspNetCore.Components.WebAssembly": {
               "target": "Package",
               "version": "[5.0.8, )"

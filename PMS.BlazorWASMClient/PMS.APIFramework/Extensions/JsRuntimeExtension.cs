@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PMS.BlazorWASMClient.Utility
+namespace PMS.BlazorWASMClient.Utility.Extensions
 {
     public static class JsRuntimeExtension
     {

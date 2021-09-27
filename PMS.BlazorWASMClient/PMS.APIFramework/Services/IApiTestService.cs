@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PMS.APIFramework.Services
+namespace PMS.BlazorWASMClient.Utility.Services
 {
     public interface IApiTestService
     {

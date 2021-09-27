@@ -7,7 +7,7 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PMS.APIFramework.Services.Implementations
+namespace PMS.BlazorWASMClient.Utility.Services.Implementations
 {
     public class ApiTestService : IApiTestService
     {
