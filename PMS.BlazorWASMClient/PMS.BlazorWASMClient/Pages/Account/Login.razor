@@ -1,7 +1,8 @@
-﻿@page "/login"
+﻿@page "/account/login"
 
 @inject IAccountService accountService
 @inject IJSRuntime jsRuntime
+@inject NavigationManager navigationManager
 
 <div class="text-center">
     <div class="row">
@@ -38,6 +39,7 @@
         if (!string.IsNullOrWhiteSpace(response.Email))
         {
             await jsRuntime.ShowToastr("success", "You are signed in successfully.");
+            navigationManager.NavigateTo("dashboard");
         }
         else
         {

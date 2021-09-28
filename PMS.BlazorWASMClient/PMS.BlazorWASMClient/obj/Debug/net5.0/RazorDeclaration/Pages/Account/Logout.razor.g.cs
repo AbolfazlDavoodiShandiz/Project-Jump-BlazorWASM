@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace PMS.BlazorWASMClient.Pages.Accunt
+namespace PMS.BlazorWASMClient.Pages.Account
 {
     #line hidden
     using System;
@@ -63,48 +63,62 @@ using Microsoft.AspNetCore.Components.WebAssembly.Http;
 #nullable disable
 #nullable restore
 #line 8 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
-using Microsoft.JSInterop;
+using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 9 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
-using PMS.BlazorWASMClient;
+using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 10 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
-using PMS.BlazorWASMClient.Shared;
+using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 11 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
-using PMS.BlazorWASMClient.Utility.Services;
+using PMS.BlazorWASMClient;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 12 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
-using PMS.BlazorWASMClient.Utility.DTOs;
+using PMS.BlazorWASMClient.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 13 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
+using PMS.BlazorWASMClient.Utility.Services;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
+using PMS.BlazorWASMClient.Utility.DTOs;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 15 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
 using PMS.BlazorWASMClient.Utility.Extensions;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/login")]
-    public partial class Login : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/account/logout")]
+    public partial class Logout : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -112,33 +126,18 @@ using PMS.BlazorWASMClient.Utility.Extensions;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 31 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Accunt\Login.razor"
-       
-    LoginRequestDTO LoginRequestDTO = new LoginRequestDTO();
-
-    private async Task UserLogin()
+#line 6 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Account\Logout.razor"
+      
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        var response = await accountService.Login(LoginRequestDTO);
-
-        if (!string.IsNullOrWhiteSpace(response.Email))
-        {
-            await jsRuntime.ShowToastr("success", "You are signed in successfully.");
-        }
-        else
-        {
-            await jsRuntime.ShowToastr("error", "Sign in failed.");
-        }
-    }
-
-    private async Task InvalidSubmit()
-    {
-        await jsRuntime.ShowToastr("error", "Check your inputes.");
+        await accountService.Logout();
+        navigationManager.NavigateTo("/");
     }
 
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime jsRuntime { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager navigationManager { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IAccountService accountService { get; set; }
     }
 }

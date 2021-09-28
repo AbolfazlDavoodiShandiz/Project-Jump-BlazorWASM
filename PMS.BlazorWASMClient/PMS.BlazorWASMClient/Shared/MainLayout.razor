@@ -6,12 +6,30 @@
     </div>
 
     <div class="main">
-        <div class="top-row px-4">
-            <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
-        </div>
+        <AuthorizeView>
+            <Authorized>
+                <div class="top-row px-4">
+                    <span>Hello, @Username</span> &nbsp; &nbsp;<a href="/account/logout" class="btn btn-secondary">Log Out</a>
+                </div>
+            </Authorized>
+        </AuthorizeView>
+
 
         <div class="container-fluid content px-4">
             @Body
         </div>
     </div>
 </div>
+
+@code{
+    [CascadingParameter]
+    Task<AuthenticationState> AuthenticationState { get; set; }
+
+    public string Username { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        var authState = await AuthenticationState;
+        Username = authState.User.Identity.GetUsername();
+    }
+}

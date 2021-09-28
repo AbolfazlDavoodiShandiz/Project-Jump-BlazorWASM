@@ -10,5 +10,6 @@ namespace PMS.BlazorWASMClient.Utility.Services
     public interface IAccountService
     {
         Task<LoginResponseDTO> Login(LoginRequestDTO loginRequestDTO);
+        Task Logout();
     }
 }
