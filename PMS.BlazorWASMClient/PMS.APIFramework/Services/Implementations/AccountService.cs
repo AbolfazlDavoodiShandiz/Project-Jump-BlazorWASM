@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 using PMS.BlazorWASMClient.Utility.StateProvider;
 using System.Security.Claims;
 using PMS.BlazorWASMClient.Utility.Extensions;
+using System.Net.Http.Headers;
 
 namespace PMS.BlazorWASMClient.Utility.Services.Implementations
 {
@@ -20,30 +21,32 @@ namespace PMS.BlazorWASMClient.Utility.Services.Implementations
     {
         private readonly HttpClient _httpClient;
         private readonly ILocalStorageService _localStorageService;
-        private readonly AuthenticationStateProvider _authenticationStateProvider;
+        private readonly CustomAuthenticationStateProvider _authenticationStateProvider;
 
         public AccountService(HttpClient httpClient, ILocalStorageService localStorageService, AuthenticationStateProvider authenticationStateProvider)
         {
             _httpClient = httpClient;
             _localStorageService = localStorageService;
-            _authenticationStateProvider = authenticationStateProvider;
+            _authenticationStateProvider = (CustomAuthenticationStateProvider)authenticationStateProvider;
         }
 
         public async Task<LoginResponseDTO> Login(LoginRequestDTO loginRequestDTO)
         {
-            var responseContent = await _httpClient.CustomPost("api/account/userlogin", loginRequestDTO);
-            var apiResponseContent = JsonConvert.DeserializeObject<ApiResult<LoginResponseDTO>>(responseContent);
+            var responseContent = await _httpClient.CustomPost<LoginResponseDTO>(_authenticationStateProvider, "api/Account/UserLogin", loginRequestDTO);
 
             LoginResponseDTO loginResponseDTO = new LoginResponseDTO();
 
-            if (apiResponseContent.IsSuccess)
+            if (responseContent.IsSuccess)
             {
-                loginResponseDTO = apiResponseContent.Data;
+                loginResponseDTO = responseContent.Data;
                 await _localStorageService.SetItemAsync("user_account", loginResponseDTO);
                 await Task.Delay(100);
 
                 var claims = loginResponseDTO.UserClaims.Select(x => new Claim(x.Key, x.Value.ToString())).ToList();
-                ((CustomAuthenticationStateProvider)_authenticationStateProvider).NotifyUserLoggedIn(claims);
+
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", loginResponseDTO.Token);
+
+                _authenticationStateProvider.NotifyUserLoggedIn(claims);
             }
 
             return loginResponseDTO;
@@ -58,11 +61,11 @@ namespace PMS.BlazorWASMClient.Utility.Services.Implementations
             {
                 accountData = JsonConvert.DeserializeObject<LoginResponseDTO>(storageAccountData);
 
-                var responseContent = await _httpClient.CustomPost("api/account/userlogout", new UserEmailDTO { Email = accountData.Email });
-                var apiResponseContent = JsonConvert.DeserializeObject<ApiResult>(responseContent);
+                var responseContent = await _httpClient.CustomPost(_authenticationStateProvider, "api/Account/UserLogout", new UserEmailDTO { Email = accountData.Email });
 
-                if (apiResponseContent.IsSuccess)
+                if (responseContent.IsSuccess)
                 {
+                    _httpClient.DefaultRequestHeaders.Authorization = null;
                     await ((CustomAuthenticationStateProvider)_authenticationStateProvider).NotifyUserLoggedOut();
                 }
             }

@@ -1,0 +1,168 @@
+﻿@page "/projects"
+
+@inject IProjectService projectService
+@inject IJSRuntime jsRuntime
+
+@attribute [Authorize]
+
+<div class="row mb-2">
+    <h3>Projects created by @Username</h3>
+</div>
+<div class="row mb-2">
+    <div class="col-2">
+        <button class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; New Project</button>
+    </div>
+</div>
+<div class="row mb-2">
+    <div class="col-3">
+        <ListGroup Groups="ProjectTableGroups" SelectedItem="@CurrentProjectTableGroup" OnListItemClicked="OnProjectTableGroupChanged"></ListGroup>
+    </div>
+    <div class="col">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Created Date</th>
+                    <th>Deadline Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int index = 0; index < ProjectList.Count(); index++)
+                {
+                    <tr>
+                        <td>@(((CurrentPage-1)*PageSize)+index+1)</td>
+                        <td>@ProjectList[index].Title</td>
+                        <td class="text-wrap">@ProjectList[index].Description</td>
+                        <td>@ProjectList[index].CreatedDate</td>
+                        <td>@ProjectList[index].DeadlineDate</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <Pagination ItemCount="ItemCount" PageSize="PageSize" CurrentPage="CurrentPage" OnPageChanged="OnPageChanged"></Pagination>
+    </div>
+</div>
+
+
+@code{
+    [CascadingParameter]
+    Task<AuthenticationState> AuthenticationState { get; set; }
+
+    string Username { get; set; }
+    int CurrentPage { get; set; } = 1;
+    public int ItemCount { get; set; }
+    int PageSize
+    {
+        get
+        {
+            return 10;
+        }
+    }
+    string CurrentProjectTableGroup { get; set; } = ProjectAndTaskGroup.All.ToString();
+    List<ProjectDTO> PureProjectList = new List<ProjectDTO>();
+
+    Dictionary<string, string> ProjectTableGroups
+    {
+        get
+        {
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+
+            foreach (var item in Enum.GetValues(typeof(ProjectAndTaskGroup)))
+            {
+                var name = item.ToString();
+                var text = ((ProjectAndTaskGroup)(Enum.Parse(typeof(ProjectAndTaskGroup), name))).DisplayName();
+
+                dic.Add(name, text);
+            }
+
+            return dic;
+        }
+    }
+
+    List<ProjectDTO> ProjectList
+    {
+        get
+        {
+            List<ProjectDTO> list = FilteredTable();
+
+            return list;
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var g = ProjectTableGroups;
+        var authState = await AuthenticationState;
+        Username = authState.User.Identity.GetUsername();
+
+        await GetProjectList();
+    }
+
+    private async Task GetProjectList()
+    {
+
+        var list = await projectService.GetAll();
+
+        if (list is not null && list.Count() > 0)
+        {
+            PureProjectList = list.ToList();
+        }
+        else
+        {
+            await jsRuntime.ShowToastr("error", "An error occured while getting projects from server.");
+        }
+    }
+
+    private List<ProjectDTO> FilteredTable()
+    {
+        List<ProjectDTO> list = new List<ProjectDTO>();
+
+        list = PaginateTable(GroupedTable(PureProjectList));
+
+        return list;
+    }
+
+    private List<ProjectDTO> GroupedTable(List<ProjectDTO> pureList)
+    {
+        List<ProjectDTO> list = new List<ProjectDTO>();
+
+        switch (CurrentProjectTableGroup)
+        {
+            case nameof(ProjectAndTaskGroup.All):
+                list = pureList;
+                break;
+            case nameof(ProjectAndTaskGroup.InProgress):
+                list = pureList.Where(p => !p.Finished).ToList();
+                break;
+            case nameof(ProjectAndTaskGroup.Finished):
+                list = pureList.Where(p => p.Finished).ToList();
+                break;
+        }
+
+        ItemCount = list.Count;
+
+        return list;
+    }
+
+    private List<ProjectDTO> PaginateTable(List<ProjectDTO> pureList)
+    {
+        List<ProjectDTO> list = new List<ProjectDTO>();
+
+        list = pureList.Skip(PageSize * (CurrentPage - 1)).Take(PageSize).ToList();
+
+        return list;
+    }
+
+    private void OnProjectTableGroupChanged(string group)
+    {
+        CurrentProjectTableGroup = group;
+        CurrentPage = 1;
+    }
+
+    private void OnPageChanged(int page)
+    {
+        CurrentPage = page;
+    }
+}

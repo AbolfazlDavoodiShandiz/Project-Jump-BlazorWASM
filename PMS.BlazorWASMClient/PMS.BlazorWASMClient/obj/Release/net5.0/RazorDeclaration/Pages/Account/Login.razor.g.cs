@@ -126,7 +126,7 @@ using PMS.BlazorWASMClient.Utility.Extensions;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 32 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Account\Login.razor"
+#line 31 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Account\Login.razor"
        
     LoginRequestDTO LoginRequestDTO = new LoginRequestDTO();
 

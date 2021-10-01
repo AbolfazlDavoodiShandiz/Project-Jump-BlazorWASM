@@ -117,6 +117,13 @@ using PMS.BlazorWASMClient.Utility.Extensions;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 16 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
+using PMS.BlazorWASMClient.Utility.Enums;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/account/login")]
     public partial class Login : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -126,7 +133,7 @@ using PMS.BlazorWASMClient.Utility.Extensions;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 32 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Account\Login.razor"
+#line 31 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Account\Login.razor"
        
     LoginRequestDTO LoginRequestDTO = new LoginRequestDTO();
 

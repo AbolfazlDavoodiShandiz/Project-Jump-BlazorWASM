@@ -117,6 +117,13 @@ using PMS.BlazorWASMClient.Utility.Extensions;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 16 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
+using PMS.BlazorWASMClient.Utility.Enums;
+
+#line default
+#line hidden
+#nullable disable
     public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -125,7 +132,7 @@ using PMS.BlazorWASMClient.Utility.Extensions;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 39 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\NavMenu.razor"
+#line 54 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
 

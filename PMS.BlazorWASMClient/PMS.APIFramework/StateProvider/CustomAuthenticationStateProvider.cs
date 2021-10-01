@@ -5,6 +5,8 @@ using PMS.BlazorWASMClient.Utility.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,10 +16,12 @@ namespace PMS.BlazorWASMClient.Utility.StateProvider
     public class CustomAuthenticationStateProvider : AuthenticationStateProvider
     {
         private readonly ILocalStorageService _localStorageService;
+        private readonly HttpClient _httpClient;
 
-        public CustomAuthenticationStateProvider(ILocalStorageService localStorageService)
+        public CustomAuthenticationStateProvider(ILocalStorageService localStorageService, HttpClient httpClient)
         {
             _localStorageService = localStorageService;
+            _httpClient = httpClient;
         }
 
         public override async Task<AuthenticationState> GetAuthenticationStateAsync()
@@ -37,6 +41,8 @@ namespace PMS.BlazorWASMClient.Utility.StateProvider
                     var claimsIdentity = new ClaimsIdentity(userClaims, "JWT");
                     var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                     var authenticationState = new AuthenticationState(claimsPrincipal);
+
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", accountData.Token);
 
                     return authenticationState;
                 }
@@ -59,6 +65,8 @@ namespace PMS.BlazorWASMClient.Utility.StateProvider
         public async Task NotifyUserLoggedOut()
         {
             await _localStorageService.RemoveItemAsync("user_account");
+            _httpClient.DefaultRequestHeaders.Authorization = null;
+
             var task = Task.FromResult(new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity())));
 
             base.NotifyAuthenticationStateChanged(task);

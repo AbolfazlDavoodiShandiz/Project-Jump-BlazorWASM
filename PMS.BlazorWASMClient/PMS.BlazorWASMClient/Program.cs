@@ -33,6 +33,7 @@ namespace PMS.BlazorWASMClient
             builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
             builder.Services.AddScoped<IApiTestService, ApiTestService>();
             builder.Services.AddScoped<IAccountService, AccountService>();
+            builder.Services.AddScoped<IProjectService, ProjectService>();
 
             await builder.Build().RunAsync();
         }

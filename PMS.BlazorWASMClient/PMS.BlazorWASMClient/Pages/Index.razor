@@ -1,27 +1,25 @@
 ﻿@page "/"
 
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="text-center mt-3">
-            <img src="images/Business-Process.png" />
-        </div>
+<div class="row justify-content-center">
+    <div class="text-center mt-3">
+        <img src="images/Business-Process.png" />
     </div>
-    <div class="row justify-content-center">
-        <div class="col-9">
-            <div class="text-center pt-5">
-                <h2>Hello, This is where you can manage your projects, teams and business process</h2>
-            </div>
-        </div>
-    </div>
-    <AuthorizeView>
-        <NotAuthorized>
-            <div class="row justify-content-center">
-                <div class="col-9 text-center">
-                    <a class="btn btn-primary btn-sm" href="/account/login">Login to manage your projects</a>
-                    <a class="btn btn-secondary btn-sm" href="/account/register">Register to start first experience</a>
-                </div>
-            </div>
-        </NotAuthorized>
-    </AuthorizeView>
 </div>
+<div class="row justify-content-center">
+    <div class="col-9">
+        <div class="text-center pt-5">
+            <h2>Hello, This is where you can manage your projects, teams and business process</h2>
+        </div>
+    </div>
+</div>
+<AuthorizeView>
+    <NotAuthorized>
+        <div class="row justify-content-center">
+            <div class="col-9 text-center">
+                <a class="btn btn-primary btn-sm" href="/account/login">Login to manage your projects</a>
+                <a class="btn btn-secondary btn-sm" href="/account/register">Register to start first experience</a>
+            </div>
+        </div>
+    </NotAuthorized>
+</AuthorizeView>
+

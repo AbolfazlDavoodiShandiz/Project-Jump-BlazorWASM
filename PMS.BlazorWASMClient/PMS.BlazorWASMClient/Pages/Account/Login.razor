@@ -4,9 +4,9 @@
 @inject IJSRuntime jsRuntime
 @inject NavigationManager navigationManager
 
-<div class="text-center">
-    <div class="row">
-        <div class="col-3">
+<div class="row justify-content-center">
+    <div class="col-3">
+        <div class="text-center">
             <EditForm Model="LoginRequestDTO" OnValidSubmit="UserLogin" OnInvalidSubmit="InvalidSubmit">
                 <DataAnnotationsValidator></DataAnnotationsValidator>
                 <i class="fa fa-sign-in fa-4x" aria-hidden="true"></i>
@@ -23,7 +23,6 @@
                     <ValidationMessage For="(()=>LoginRequestDTO.Password)"></ValidationMessage>
                 </div>
                 <button class="w-100 btn btn-lg btn-primary mb-2" type="submit">Sign in</button>
-                <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
             </EditForm>
         </div>
     </div>

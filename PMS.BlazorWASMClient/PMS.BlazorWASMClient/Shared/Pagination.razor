@@ -1,0 +1,56 @@
+﻿
+@if (ItemCount > 0)
+{
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            @*<li class="page-item"><a class="page-link" href="#">Previous</a></li>*@
+            @for (int page = 1; page <= Pages; page++)
+            {
+                var pageParameter = page;
+
+                if (page == CurrentPage)
+                {
+                    <li class="page-item active"><button @onclick="()=>PageChanged(pageParameter)" class="page-link">@(page)</button></li>
+                }
+                else
+                {
+                    <li class="page-item"><button @onclick="()=>PageChanged(pageParameter)" class="page-link">@(page)</button></li>
+                }
+            }
+            @*<li class="page-item"><a class="page-link" href="#">Next</a></li>*@
+        </ul>
+    </nav>
+}
+
+@code
+{
+    [Parameter]
+    public int ItemCount { get; set; }
+
+    [Parameter]
+    public int PageSize { get; set; }
+
+    [Parameter]
+    public int CurrentPage { get; set; }
+
+    [Parameter]
+    public EventCallback<int> OnPageChanged { get; set; }
+
+    private int Pages
+    {
+        get
+        {
+            if (PageSize == 0)
+            {
+                return 1;
+            }
+
+            return (ItemCount % PageSize == 0) ? (ItemCount / PageSize) : (ItemCount / PageSize) + 1;
+        }
+    }
+
+    private void PageChanged(int currentPage)
+    {
+        OnPageChanged.InvokeAsync(currentPage);
+    }
+}

@@ -125,7 +125,7 @@ using PMS.BlazorWASMClient.Utility.Extensions;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 34 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\NavMenu.razor"
+#line 54 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
 

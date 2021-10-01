@@ -1,8 +1,13 @@
 {
   "ExpandedNodes": [
     "",
-    "\\PMS.BlazorWASMClient"
+    "\\PMS.BlazorWASMClient",
+    "\\PMS.BlazorWASMClient\\PMS.APIFramework",
+    "\\PMS.BlazorWASMClient\\PMS.APIFramework\\Extensions",
+    "\\PMS.BlazorWASMClient\\PMS.APIFramework\\StateProvider",
+    "\\PMS.BlazorWASMClient\\PMS.BlazorWASMClient",
+    "\\PMS.BlazorWASMClient\\PMS.BlazorWASMClient\\Shared"
   ],
-  "SelectedNode": "\\PMS.BlazorWASMClient\\PMS.BlazorWASMClient.sln",
+  "SelectedNode": "\\PMS.BlazorWASMClient\\PMS.BlazorWASMClient\\Shared\\ListGroup.razor",
   "PreviewInSolutionExplorer": false
 }

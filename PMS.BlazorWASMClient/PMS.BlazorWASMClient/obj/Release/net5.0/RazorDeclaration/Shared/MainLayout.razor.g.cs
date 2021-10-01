@@ -124,6 +124,23 @@ using PMS.BlazorWASMClient.Utility.Extensions;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 24 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\MainLayout.razor"
+      
+    [CascadingParameter]
+    Task<AuthenticationState> AuthenticationState { get; set; }
+
+    public string Username { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        var authState = await AuthenticationState;
+        Username = authState.User.Identity.GetUsername();
+    }
+
+#line default
+#line hidden
+#nullable disable
     }
 }
 #pragma warning restore 1591

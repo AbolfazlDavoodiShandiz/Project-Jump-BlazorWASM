@@ -117,6 +117,14 @@ using PMS.BlazorWASMClient.Utility.Extensions;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Dashboard\Dashboard.razor"
+           [Authorize]
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/dashboard")]
     public partial class Dashboard : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998

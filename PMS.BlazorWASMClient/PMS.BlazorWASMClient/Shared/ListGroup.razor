@@ -1,0 +1,37 @@
+﻿
+@if (Groups is not null && Groups.Count > 0)
+{
+    <div class="list-group">
+        @foreach (var item in Groups)
+        {
+            var name = item.Key;
+            var text = item.Value;
+
+            if (name==SelectedItem)
+            {
+                <button type="button" @onclick="() => ListItemSelected(name)" class="list-group-item active">@(text)</button>
+            }
+            else
+            {
+                <button type="button" @onclick="() => ListItemSelected(name)" class="list-group-item">@(text)</button>
+            }
+        }
+    </div>
+}
+
+@code{
+
+    [Parameter]
+    public Dictionary<string, string> Groups { get; set; }
+
+    [Parameter]
+    public string SelectedItem { get; set; }
+
+    [Parameter]
+    public EventCallback<string> OnListItemClicked { get; set; }
+
+    private void ListItemSelected(string itemName)
+    {
+        OnListItemClicked.InvokeAsync(itemName);
+    }
+}

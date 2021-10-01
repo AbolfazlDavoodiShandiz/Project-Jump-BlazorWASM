@@ -646,3 +646,15 @@ D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWAS
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\Pages\Account\Login.razor.g.cs
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\RazorDeclaration\Pages\Account\Logout.razor.g.cs
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\Pages\Account\Logout.razor.g.cs
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\RazorDeclaration\Shared\NotFoundPage.razor.g.cs
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\Shared\NotFoundPage.razor.g.cs
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\RazorDeclaration\Pages\Project\Projects.razor.g.cs
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\Pages\Project\Projects.razor.g.cs
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\RazorDeclaration\Pages\Task\Tasks.razor.g.cs
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\RazorDeclaration\Pages\Team\Teams.razor.g.cs
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\Pages\Task\Tasks.razor.g.cs
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\Pages\Team\Teams.razor.g.cs
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\RazorDeclaration\Shared\Pagination.razor.g.cs
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\Shared\Pagination.razor.g.cs
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\RazorDeclaration\Shared\ListGroup.razor.g.cs
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\Shared\ListGroup.razor.g.cs
