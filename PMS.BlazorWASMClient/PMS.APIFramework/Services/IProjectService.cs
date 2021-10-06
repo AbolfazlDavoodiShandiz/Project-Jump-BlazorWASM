@@ -1,4 +1,5 @@
-﻿using PMS.BlazorWASMClient.Utility.DTOs;
+﻿using PMS.APIFramework.ApiResponseContent;
+using PMS.BlazorWASMClient.Utility.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace PMS.BlazorWASMClient.Utility.Services
 {
     public interface IProjectService
     {
-        Task<IEnumerable<ProjectDTO>> GetAll();
+        Task<ApiResult<IEnumerable<ProjectDTO>>> GetAll();
+        Task<ApiResult> CreateProject(ProjectRegisterDTO projectRegisterDTO);
     }
 }

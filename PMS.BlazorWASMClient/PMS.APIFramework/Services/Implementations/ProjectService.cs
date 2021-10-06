@@ -24,18 +24,18 @@ namespace PMS.BlazorWASMClient.Utility.Services.Implementations
             _authenticationStateProvider = (CustomAuthenticationStateProvider)authenticationStateProvider;
         }
 
-        public async Task<IEnumerable<ProjectDTO>> GetAll()
+        public async Task<ApiResult> CreateProject(ProjectRegisterDTO projectRegisterDTO)
+        {
+            var response = await _httpClient.CustomPost<ApiResult>(_authenticationStateProvider, "api/Project/CreateProject", projectRegisterDTO);
+
+            return response;
+        }
+
+        public async Task<ApiResult<IEnumerable<ProjectDTO>>> GetAll()
         {
             var response = await _httpClient.CustomGet<IEnumerable<ProjectDTO>>(_authenticationStateProvider, "api/Project/UserCreatedProjectList");
 
-            if (response.IsSuccess)
-            {
-                return response.Data;
-            }
-            else
-            {
-                return null;
-            }
+            return response;
         }
     }
 }

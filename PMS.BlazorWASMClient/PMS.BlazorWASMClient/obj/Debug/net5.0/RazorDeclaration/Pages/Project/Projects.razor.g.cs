@@ -140,10 +140,12 @@ using PMS.BlazorWASMClient.Utility.Enums;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 49 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
+#line 117 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
       
     [CascadingParameter]
     Task<AuthenticationState> AuthenticationState { get; set; }
+
+    private ConfirmAlert confirmAlert1;
 
     string Username { get; set; }
     int CurrentPage { get; set; } = 1;
@@ -157,6 +159,8 @@ using PMS.BlazorWASMClient.Utility.Enums;
     }
     string CurrentProjectTableGroup { get; set; } = ProjectAndTaskGroup.All.ToString();
     List<ProjectDTO> PureProjectList = new List<ProjectDTO>();
+    private bool ShowModal = false;
+    private string ProjectName = string.Empty;
 
     Dictionary<string, string> ProjectTableGroups
     {
@@ -185,6 +189,7 @@ using PMS.BlazorWASMClient.Utility.Enums;
             return list;
         }
     }
+    ProjectRegisterDTO NewProject = new ProjectRegisterDTO();
 
     protected override async Task OnInitializedAsync()
     {
@@ -200,9 +205,9 @@ using PMS.BlazorWASMClient.Utility.Enums;
 
         var list = await projectService.GetAll();
 
-        if (list is not null && list.Count() > 0)
+        if (list is not null && list.Data.Count() > 0)
         {
-            PureProjectList = list.ToList();
+            PureProjectList = list.Data.ToList();
         }
         else
         {
@@ -260,6 +265,45 @@ using PMS.BlazorWASMClient.Utility.Enums;
     {
         CurrentPage = page;
     }
+
+    private void ShowNewProjectModal(bool show)
+    {
+        ShowModal = show;
+    }
+
+    private async Task CreateNewProject()
+    {
+
+        var result = await projectService.CreateProject(NewProject);
+
+        string messageType = result.IsSuccess ? "success" : "error";
+
+        await jsRuntime.ShowToastr(messageType, result.Message);
+
+        if (result.IsSuccess)
+        {
+            ShowModal = false;
+
+            NewProject.Title = string.Empty;
+            NewProject.Description = string.Empty;
+            NewProject.DeadlineDate = DateTime.Now;
+
+            await GetProjectList();
+        }
+    }
+
+    private void ShowDeleteModal(string projectname)
+    {
+        ProjectName = projectname;
+        confirmAlert1.Show();
+    }
+
+    private async Task DeleteProject()
+    {
+
+    }
+
+    private void ShowUpdateModal() { }
 
 #line default
 #line hidden

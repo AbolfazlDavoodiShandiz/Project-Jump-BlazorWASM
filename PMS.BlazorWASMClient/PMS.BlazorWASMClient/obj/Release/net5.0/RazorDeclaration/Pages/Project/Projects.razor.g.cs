@@ -118,6 +118,13 @@ using PMS.BlazorWASMClient.Utility.Extensions;
 #line hidden
 #nullable disable
 #nullable restore
+#line 16 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
+using PMS.BlazorWASMClient.Utility.Enums;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 6 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
            [Authorize]
 
@@ -133,22 +140,59 @@ using PMS.BlazorWASMClient.Utility.Extensions;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 53 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
+#line 108 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
       
     [CascadingParameter]
     Task<AuthenticationState> AuthenticationState { get; set; }
 
-    string Username { get; set; }
-    string AllActivated { get; set; } = string.Empty;
-    string InProgressActivated { get; set; } = string.Empty;
-    string FinishedActivated { get; set; } = string.Empty;
-    int CurrentPage { get; set; } = 1;
+    private ConfirmAlert ConfirmAlert1;
 
+    string Username { get; set; }
+    int CurrentPage { get; set; } = 1;
+    public int ItemCount { get; set; }
+    int PageSize
+    {
+        get
+        {
+            return 10;
+        }
+    }
+    string CurrentProjectTableGroup { get; set; } = ProjectAndTaskGroup.All.ToString();
     List<ProjectDTO> PureProjectList = new List<ProjectDTO>();
-    List<ProjectDTO> ProjectList = new List<ProjectDTO>();
+    private bool ShowModal = false;
+
+    Dictionary<string, string> ProjectTableGroups
+    {
+        get
+        {
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+
+            foreach (var item in Enum.GetValues(typeof(ProjectAndTaskGroup)))
+            {
+                var name = item.ToString();
+                var text = ((ProjectAndTaskGroup)(Enum.Parse(typeof(ProjectAndTaskGroup), name))).DisplayName();
+
+                dic.Add(name, text);
+            }
+
+            return dic;
+        }
+    }
+
+    List<ProjectDTO> ProjectList
+    {
+        get
+        {
+            List<ProjectDTO> list = FilteredTable();
+
+            return list;
+        }
+    }
+    ProjectRegisterDTO NewProject = new ProjectRegisterDTO();
 
     protected override async Task OnInitializedAsync()
     {
+        var g = ProjectTableGroups;
         var authState = await AuthenticationState;
         Username = authState.User.Identity.GetUsername();
 
@@ -160,11 +204,9 @@ using PMS.BlazorWASMClient.Utility.Extensions;
 
         var list = await projectService.GetAll();
 
-        if (list is not null && list.Count() > 0)
+        if (list is not null && list.Data.Count() > 0)
         {
-            AllActivated = "active";
-            ProjectList = list.ToList();
-            PureProjectList = list.ToList();
+            PureProjectList = list.Data.ToList();
         }
         else
         {
@@ -172,41 +214,89 @@ using PMS.BlazorWASMClient.Utility.Extensions;
         }
     }
 
-    private void FilterTable()
+    private List<ProjectDTO> FilteredTable()
     {
+        List<ProjectDTO> list = new List<ProjectDTO>();
 
+        list = PaginateTable(GroupedTable(PureProjectList));
+
+        return list;
     }
 
-    private void OnListGroupChanged(bool inProgress = true, bool finished = true)
+    private List<ProjectDTO> GroupedTable(List<ProjectDTO> pureList)
     {
-        AllActivated = string.Empty;
-        InProgressActivated = string.Empty;
-        FinishedActivated = string.Empty;
+        List<ProjectDTO> list = new List<ProjectDTO>();
+
+        switch (CurrentProjectTableGroup)
+        {
+            case nameof(ProjectAndTaskGroup.All):
+                list = pureList;
+                break;
+            case nameof(ProjectAndTaskGroup.InProgress):
+                list = pureList.Where(p => !p.Finished).ToList();
+                break;
+            case nameof(ProjectAndTaskGroup.Finished):
+                list = pureList.Where(p => p.Finished).ToList();
+                break;
+        }
+
+        ItemCount = list.Count;
+
+        return list;
+    }
+
+    private List<ProjectDTO> PaginateTable(List<ProjectDTO> pureList)
+    {
+        List<ProjectDTO> list = new List<ProjectDTO>();
+
+        list = pureList.Skip(PageSize * (CurrentPage - 1)).Take(PageSize).ToList();
+
+        return list;
+    }
+
+    private void OnProjectTableGroupChanged(string group)
+    {
+        CurrentProjectTableGroup = group;
         CurrentPage = 1;
-
-        ProjectList = PureProjectList;
-
-        if (inProgress && !finished)
-        {
-            InProgressActivated = "active";
-            ProjectList = ProjectList.Where(x => !x.Finished).ToList();
-        }
-        else if (!inProgress && finished)
-        {
-            FinishedActivated = "active";
-            ProjectList = ProjectList.Where(x => x.Finished).ToList();
-        }
-        else
-        {
-            AllActivated = "active";
-            ProjectList = PureProjectList;
-        }
     }
 
     private void OnPageChanged(int page)
     {
         CurrentPage = page;
     }
+
+    private void ShowNewProjectModal(bool show)
+    {
+        ShowModal = show;
+    }
+
+    private async Task CreateNewProject()
+    {
+
+        var result = await projectService.CreateProject(NewProject);
+
+        string messageType = result.IsSuccess ? "success" : "error";
+
+        await jsRuntime.ShowToastr(messageType, result.Message);
+
+        if (result.IsSuccess)
+        {
+            ShowModal = false;
+
+            NewProject.Title = string.Empty;
+            NewProject.Description = string.Empty;
+            NewProject.DeadlineDate = DateTime.Now;
+
+            await GetProjectList();
+        }
+    }
+
+    private void OnProjectDelete()
+    {
+        ConfirmAlert1.Show();
+    }
+
+    private void OnProjectUpdate() { }
 
 #line default
 #line hidden

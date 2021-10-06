@@ -117,6 +117,13 @@ using PMS.BlazorWASMClient.Utility.Extensions;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 16 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
+using PMS.BlazorWASMClient.Utility.Enums;
+
+#line default
+#line hidden
+#nullable disable
     public partial class ListGroup : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -124,6 +131,27 @@ using PMS.BlazorWASMClient.Utility.Extensions;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 22 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\ListGroup.razor"
+      
+
+    [Parameter]
+    public Dictionary<string, string> Groups { get; set; }
+
+    [Parameter]
+    public string SelectedItem { get; set; }
+
+    [Parameter]
+    public EventCallback<string> OnListItemClicked { get; set; }
+
+    private void ListItemSelected(string itemName)
+    {
+        OnListItemClicked.InvokeAsync(itemName);
+    }
+
+#line default
+#line hidden
+#nullable disable
     }
 }
 #pragma warning restore 1591

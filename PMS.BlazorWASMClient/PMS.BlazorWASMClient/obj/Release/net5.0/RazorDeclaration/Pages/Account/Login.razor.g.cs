@@ -117,6 +117,13 @@ using PMS.BlazorWASMClient.Utility.Extensions;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 16 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
+using PMS.BlazorWASMClient.Utility.Enums;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/account/login")]
     public partial class Login : Microsoft.AspNetCore.Components.ComponentBase
     {
