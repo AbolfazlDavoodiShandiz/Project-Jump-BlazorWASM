@@ -31,9 +31,23 @@ namespace PMS.BlazorWASMClient.Utility.Services.Implementations
             return response;
         }
 
+        public async Task<ApiResult> DeleteProject(int id)
+        {
+            var response = await _httpClient.CustomPost<ApiResult>(_authenticationStateProvider, "api/Project/DeleteProject", new IdDTO { Id = id });
+
+            return response;
+        }
+
         public async Task<ApiResult<IEnumerable<ProjectDTO>>> GetAll()
         {
             var response = await _httpClient.CustomGet<IEnumerable<ProjectDTO>>(_authenticationStateProvider, "api/Project/UserCreatedProjectList");
+
+            return response;
+        }
+
+        public async Task<ApiResult> UpdateProject(ProjectUpdateDTO projectUpdateDTO)
+        {
+            var response = await _httpClient.CustomPost<ApiResult>(_authenticationStateProvider, "api/Project/EditProject", projectUpdateDTO);
 
             return response;
         }

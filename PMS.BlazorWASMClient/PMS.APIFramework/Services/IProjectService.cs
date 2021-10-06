@@ -12,5 +12,7 @@ namespace PMS.BlazorWASMClient.Utility.Services
     {
         Task<ApiResult<IEnumerable<ProjectDTO>>> GetAll();
         Task<ApiResult> CreateProject(ProjectRegisterDTO projectRegisterDTO);
+        Task<ApiResult> UpdateProject(ProjectUpdateDTO projectUpdateDTO);
+        Task<ApiResult> DeleteProject(int id);
     }
 }

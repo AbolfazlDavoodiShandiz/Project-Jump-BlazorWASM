@@ -159,6 +159,14 @@ using PMS.BlazorWASMClient.Utility.Enums;
         }
     }
 
+    public int LastPageNumber
+    {
+        get
+        {
+            return Pages;
+        }
+    }
+
     private void PageChanged(int currentPage)
     {
         OnPageChanged.InvokeAsync(currentPage);

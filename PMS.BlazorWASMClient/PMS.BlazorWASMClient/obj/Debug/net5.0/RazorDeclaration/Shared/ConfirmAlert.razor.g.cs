@@ -156,9 +156,9 @@ using PMS.BlazorWASMClient.Utility.Enums;
         StateHasChanged();
     }
 
-    private void YesClicked()
+    private async Task YesClicked()
     {
-
+        await OnConfirm.InvokeAsync();
     }
 
     private void NoClicked()
