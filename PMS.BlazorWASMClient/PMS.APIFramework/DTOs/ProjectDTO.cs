@@ -15,7 +15,5 @@ namespace PMS.BlazorWASMClient.Utility.DTOs
         public DateTime DeadlineDate { get; set; }
         public int UserId { get; set; }
         public bool Finished { get; set; }
-
-        public IEnumerable<ProjectTaskDTO> Tasks { get; set; }
     }
 }

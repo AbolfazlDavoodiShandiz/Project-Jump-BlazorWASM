@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace PMS.BlazorWASMClient.Shared
+namespace PMS.BlazorWASMClient.Pages.Task
 {
     #line hidden
     using System;
@@ -124,57 +124,13 @@ using PMS.BlazorWASMClient.Utility.Enums;
 #line default
 #line hidden
 #nullable disable
-    public partial class Pagination : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class UserAssignedTasks : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 26 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\Pagination.razor"
- 
-    [Parameter]
-    public int ItemCount { get; set; }
-
-    [Parameter]
-    public int PageSize { get; set; }
-
-    [Parameter]
-    public int CurrentPage { get; set; }
-
-    [Parameter]
-    public EventCallback<int> OnPageChanged { get; set; }
-
-    private int Pages
-    {
-        get
-        {
-            if (PageSize == 0)
-            {
-                return 1;
-            }
-
-            return (ItemCount % PageSize == 0) ? (ItemCount / PageSize) : (ItemCount / PageSize) + 1;
-        }
-    }
-
-    public int LastPageNumber
-    {
-        get
-        {
-            return Pages;
-        }
-    }
-
-    private void PageChanged(int currentPage)
-    {
-        OnPageChanged.InvokeAsync(currentPage);
-    }
-
-#line default
-#line hidden
-#nullable disable
     }
 }
 #pragma warning restore 1591

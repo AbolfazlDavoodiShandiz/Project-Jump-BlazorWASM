@@ -197,9 +197,12 @@ using PMS.BlazorWASMClient.Utility.Enums;
     {
         var g = ProjectTableGroups;
         var authState = await AuthenticationState;
-        Username = authState.User.Identity.GetUsername();
+        if (authState.User.Identity.IsAuthenticated)
+        {
+            Username = authState.User.Identity.GetUsername();
 
-        await GetProjectList();
+            await GetProjectList();
+        }
     }
 
     private async Task GetProjectList()

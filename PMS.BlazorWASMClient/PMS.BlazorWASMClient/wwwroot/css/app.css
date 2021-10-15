@@ -46,3 +46,7 @@ a, .btn-link {
         right: 0.75rem;
         top: 0.5rem;
     }
+
+.card-bg {
+    background-color: #f7f7f7;
+}

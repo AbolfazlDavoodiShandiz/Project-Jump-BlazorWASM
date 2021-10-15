@@ -140,12 +140,13 @@ using PMS.BlazorWASMClient.Utility.Enums;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 108 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
+#line 117 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
       
     [CascadingParameter]
     Task<AuthenticationState> AuthenticationState { get; set; }
 
-    private ConfirmAlert ConfirmAlert1;
+    private ConfirmAlert ConfirmAlert;
+    private Pagination Pagination;
 
     string Username { get; set; }
     int CurrentPage { get; set; } = 1;
@@ -160,6 +161,8 @@ using PMS.BlazorWASMClient.Utility.Enums;
     string CurrentProjectTableGroup { get; set; } = ProjectAndTaskGroup.All.ToString();
     List<ProjectDTO> PureProjectList = new List<ProjectDTO>();
     private bool ShowModal = false;
+    private bool IsCreateProjectMode = true;
+    private ProjectDTO SelectedProject;
 
     Dictionary<string, string> ProjectTableGroups
     {
@@ -265,15 +268,85 @@ using PMS.BlazorWASMClient.Utility.Enums;
         CurrentPage = page;
     }
 
-    private void ShowNewProjectModal(bool show)
+    private void ShowNewProjectModal(bool show, ProjectDTO project = null)
     {
+        if (project is not null)
+        {
+            NewProject.Title = project.Title;
+            NewProject.Description = project.Description;
+            NewProject.DeadlineDate = project.DeadlineDate;
+            SelectedProject = project;
+            IsCreateProjectMode = false;
+        }
+
         ShowModal = show;
     }
 
     private async Task CreateNewProject()
     {
+        if (IsCreateProjectMode)
+        {
+            var result = await projectService.CreateProject(NewProject);
 
-        var result = await projectService.CreateProject(NewProject);
+            string messageType = result.IsSuccess ? "success" : "error";
+
+            await jsRuntime.ShowToastr(messageType, result.Message);
+
+            if (result.IsSuccess)
+            {
+                ShowModal = false;
+
+                NewProject.Title = string.Empty;
+                NewProject.Description = string.Empty;
+                NewProject.DeadlineDate = DateTime.Now;
+
+                await GetProjectList();
+
+                CurrentPage = Pagination.LastPageNumber;
+            }
+        }
+        else
+        {
+            var updatedProject = new ProjectUpdateDTO
+            {
+                ProjectId = SelectedProject.Id,
+                Description = NewProject.Description,
+                DeadlineDate = NewProject.DeadlineDate
+
+            };
+
+            var result = await projectService.UpdateProject(updatedProject);
+
+            string messageType = result.IsSuccess ? "success" : "error";
+
+            await jsRuntime.ShowToastr(messageType, result.Message);
+
+            if (result.IsSuccess)
+            {
+                ShowModal = false;
+
+                NewProject.Title = string.Empty;
+                NewProject.Description = string.Empty;
+                NewProject.DeadlineDate = DateTime.Now;
+
+                var updatedItem = ProjectList.Where(p => p.Id == updatedProject.ProjectId).Single();
+                updatedItem.Description = updatedProject.Description;
+                updatedItem.DeadlineDate = updatedProject.DeadlineDate.Value;
+            }
+        }
+    }
+
+    private void ShowDeleteModal(ProjectDTO project)
+    {
+        SelectedProject = project;
+        ConfirmAlert.Show();
+    }
+
+    private async Task DeleteProject()
+    {
+        var result = await projectService.DeleteProject(SelectedProject.Id);
+
+        ConfirmAlert.Hide();
 
         string messageType = result.IsSuccess ? "success" : "error";
 
@@ -281,22 +354,9 @@ using PMS.BlazorWASMClient.Utility.Enums;
 
         if (result.IsSuccess)
         {
-            ShowModal = false;
-
-            NewProject.Title = string.Empty;
-            NewProject.Description = string.Empty;
-            NewProject.DeadlineDate = DateTime.Now;
-
             await GetProjectList();
         }
     }
-
-    private void OnProjectDelete()
-    {
-        ConfirmAlert1.Show();
-    }
-
-    private void OnProjectUpdate() { }
 
 #line default
 #line hidden

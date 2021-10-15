@@ -3,3 +3,31 @@
 @attribute [Authorize]
 
 <h1>Tasks</h1>
+
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button class="nav-link active" id="nav-my-tasks" data-bs-toggle="tab" data-bs-target="#tab-my-tasks" type="button" role="tab"
+                aria-controls="tab-my-taskse" aria-selected="true">
+            Tasks Assigned to me
+        </button>
+        <button class="nav-link" id="nav-my-created-tasks" data-bs-toggle="tab" data-bs-target="#tab-my-created-tasks" type="button" role="tab"
+                aria-controls="nav-home" aria-selected="true">
+            Tasks I Created
+        </button>
+        <button class="nav-link" id="nav-my-assigned-tasks" data-bs-toggle="tab" data-bs-target="#tab-my-assigned-tasks" type="button" role="tab"
+                aria-controls="nav-profile" aria-selected="false">
+            Tasks I Assigned
+        </button>
+    </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="tab-my-tasks" role="tabpanel" aria-labelledby="tab-my-tasks">
+        <UserAssignedTasks></UserAssignedTasks>
+    </div>
+    <div class="tab-pane fade" id="tab-my-created-tasks" role="tabpanel" aria-labelledby="tab-my-created-tasks">
+        <UserCreatedTasks></UserCreatedTasks>
+    </div>
+    <div class="tab-pane fade" id="tab-my-assigned-tasks" role="tabpanel" aria-labelledby="tab-my-assigned-tasks">
+        <UserCreatedTasks></UserCreatedTasks>
+    </div>
+</div>

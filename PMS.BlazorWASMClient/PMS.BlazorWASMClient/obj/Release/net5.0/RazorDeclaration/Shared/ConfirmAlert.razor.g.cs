@@ -136,17 +136,34 @@ using PMS.BlazorWASMClient.Utility.Enums;
       
     bool ShowConfirmModal;
 
-    public void Show() => ShowConfirmModal = true;
-    public void Hide() => ShowConfirmModal = false;
+    [Parameter]
+    public string Title { get; set; }
 
-    private void YesClicked()
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public EventCallback OnConfirm { get; set; }
+
+    public void Show()
     {
+        ShowConfirmModal = true;
+        StateHasChanged();
+    }
+    public void Hide()
+    {
+        ShowConfirmModal = false;
+        StateHasChanged();
+    }
 
+    private async Task YesClicked()
+    {
+        await OnConfirm.InvokeAsync();
     }
 
     private void NoClicked()
     {
-
+        Hide();
     }
 
 #line default

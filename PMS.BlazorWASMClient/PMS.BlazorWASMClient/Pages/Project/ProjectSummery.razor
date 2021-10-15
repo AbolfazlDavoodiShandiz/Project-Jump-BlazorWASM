@@ -1,0 +1,282 @@
+﻿@page "/projects/{ProjectName}"
+
+@inject IProjectService projectService
+
+@attribute [Authorize]
+
+<div class="row mb-2">
+    <h3>@ProjectName Summary</h3>
+</div>
+<div class="row mb-2">
+    <div class="col-3">
+        <div class="card card-bg">
+            <h5 class="card-header bg-light border-0">Project Statistics</h5>
+            <div class="card-body">
+                <div class="row border-bottom mb-3 pb-3">
+                    <div class="col-10">
+                        <strong class="text-info">Total Tasks:</strong>
+                    </div>
+                    <div class="col-2">
+                        <strong class="text-info">@TotalCount</strong>
+                    </div>
+                </div>
+                <div class="row border-bottom mb-3 pb-3">
+                    <div class="col-10">
+                        <strong class="text-success">Completed Tasks:</strong>
+                    </div>
+                    <div class="col-2">
+                        <strong class="text-success">@CompleteCount</strong>
+                    </div>
+                </div>
+                <div class="row border-bottom mb-3 pb-3">
+                    <div class="col-10">
+                        <strong class="text-warning">Remained Tasks:</strong>
+                    </div>
+                    <div class="col-2">
+                        <strong class="text-warning">@RemainedCount</strong>
+                    </div>
+                </div>
+                <div class="row border-bottom mb-3 pb-3">
+                    <div class="col-8">
+                        <strong>Deadline Date:</strong>
+                    </div>
+                    <div class="col-4">
+                        <strong>@DeadlineDate.ToShortDateString()</strong>
+                    </div>
+                </div>
+                <div class="row mb-3 pb-3">
+                    <div class="col text-center">
+                        @if (DaysToDeadline > 0)
+                        {
+                            <strong>@DaysToDeadline Day(s) to deadline.</strong>
+                        }
+                        else if (DaysToDeadline == 0)
+                        {
+                            <strong class="text-warning">today is project deadline data.</strong>
+                        }
+                        else if (DaysToDeadline < 0)
+                        {
+                            <strong class="text-danger">Project deadline was @Math.Abs(DaysToDeadline) day(s) ago.</strong>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card card-bg mt-3 overflow-scroll" style="max-height:360px;">
+            <div class="card-header bg-light border-0"><h5>Project Members</h5><button class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>&nbsp; Add Member</button></div>
+            <div class="card-body">
+                @for (int index = 0; index < MemberList.Count(); index++)
+                {
+                    int itemIndex = index;
+                    string backgroundClass = string.Empty;
+
+                    @if (itemIndex % 2 == 0)
+                    {
+                        backgroundClass = "bg-secondary";
+                    }
+
+                    <div class="row mb-2">
+                        <div class="card @(backgroundClass)">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-2"><button class="btn btn-sm btn-danger"><i class="fa fa-window-close" aria-hidden="true"></i></button></div>
+                                    <div class="col-10">
+                                        <strong>@MemberList[itemIndex].Username</strong>
+                                        <span>@MemberList[itemIndex].Email</span>
+                                        <span>@MemberList[itemIndex].Mobile</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card card-bg">
+            <div class="card-header bg-light border-0 pb-3">
+                <h5>Project Tasks</h5> <button class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>&nbsp; Add Task</button>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Status</th>
+                            <th>Title</th>
+                            <th>Created Date</th>
+                            <th>Deadline Date</th>
+                            <th>Complete Date</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int index = 0; index < TaskList.Count(); index++)
+                        {
+                            int itemIndex = index;
+                            string statusText = string.Empty;
+                            string statusClass = string.Empty;
+                            bool isDone = TaskList[itemIndex].Done;
+
+                            @if (isDone)
+                            {
+                                statusText = "Finished";
+                                statusClass = "badge bg-success";
+
+                                if (TaskList[itemIndex].CompleteDate.HasValue && TaskList[itemIndex].CompleteDate.Value.Date >= TaskList[itemIndex].DeadlineDate.Date)
+                                {
+                                    statusText = "Finished After Deadline";
+                                    statusClass = "badge bg-danger";
+                                }
+                            }
+                            else
+                            {
+                                statusText = "In Progress";
+                                statusClass = "badge bg-warning text-dark";
+
+                                if (DateTime.Now.Date >= TaskList[itemIndex].DeadlineDate.Date)
+                                {
+                                    statusText = "Deadline Reached";
+                                    statusClass = "badge bg-danger";
+                                }
+                            }
+
+                            <tr>
+                                <td>@(((CurrentPage - 1) * PageSize) + itemIndex + 1)</td>
+                                <td><span class="@(statusClass)">@statusText</span></td>
+                                <td><a style="text-decoration:none;" href="#"> @TaskList[itemIndex].Title</a></td>
+                                <td data-toggle="tooltip" data-placement="top" title="@(TaskList[itemIndex].CreatedDate)">@TaskList[itemIndex].CreatedDate.ToShortDateString()</td>
+                                <td>@TaskList[itemIndex].DeadlineDate.ToShortDateString()</td>
+                                <td data-toggle="tooltip" data-placement="top" title="@(TaskList[itemIndex].CompleteDate)">@TaskList[itemIndex].CompleteDate?.ToShortDateString()</td>
+                                <td>
+                                    <button class="btn btn-sm btn-secondary">Assigned Users</button>
+                                    <button class="btn btn-sm btn-success" disabled="@(isDone)">Done</button>
+                                    <button class="btn btn-sm btn-warning">Update</button>
+                                    <button class="btn btn-sm btn-danger">Delete</button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <Pagination @ref="Pagination" ItemCount="ItemCount" PageSize="PageSize" CurrentPage="CurrentPage" OnPageChanged="OnPageChanged"></Pagination>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string ProjectName { get; set; }
+
+    Pagination Pagination;
+    public int ItemCount { get; set; }
+    public int PageSize
+    {
+        get
+        {
+            return 10;
+        }
+    }
+    public int CurrentPage { get; set; }
+
+    List<ProjectTaskDTO> PureTaskList = new List<ProjectTaskDTO>();
+    List<ProjectTaskDTO> TaskList
+    {
+        get
+        {
+            return FilteredTable();
+        }
+    }
+    List<ProjectMemberDTO> MemberList = new List<ProjectMemberDTO>();
+
+    public int TotalCount
+    {
+        get
+        {
+            return PureTaskList.Count;
+        }
+    }
+
+    public int CompleteCount
+    {
+        get
+        {
+            return PureTaskList.Where(t => t.Done).Count();
+        }
+    }
+
+    public int RemainedCount
+    {
+        get
+        {
+            return TotalCount - CompleteCount;
+        }
+    }
+
+    public DateTime DeadlineDate { get; set; }
+
+    public int DaysToDeadline
+    {
+        get
+        {
+            return (int)(DeadlineDate - DateTime.Now).TotalDays;
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var result = await projectService.GetProjectSummary(ProjectName);
+
+        if (result.IsSuccess)
+        {
+            DeadlineDate = result.Data.ProjectDeadlineDate;
+
+            if (result.Data.ProjectTasks is not null && result.Data.ProjectTasks.Count() > 0)
+            {
+                PureTaskList = result.Data.ProjectTasks.ToList();
+                ItemCount = PureTaskList.Count;
+                CurrentPage = 1;
+            }
+
+            if (result.Data.ProjectMembers is not null && result.Data.ProjectMembers.Count() > 0)
+            {
+                MemberList = result.Data.ProjectMembers.ToList();
+            }
+        }
+    }
+
+    private List<ProjectTaskDTO> FilteredTable()
+    {
+        List<ProjectTaskDTO> list = new List<ProjectTaskDTO>();
+
+        list = PaginateTable(GroupedTable(PureTaskList));
+
+        return list;
+    }
+
+    private List<ProjectTaskDTO> GroupedTable(List<ProjectTaskDTO> pureList)
+    {
+        List<ProjectTaskDTO> list = new List<ProjectTaskDTO>();
+
+        list = pureList;
+
+        ItemCount = list.Count;
+
+        return list;
+    }
+
+    private List<ProjectTaskDTO> PaginateTable(List<ProjectTaskDTO> pureList)
+    {
+        List<ProjectTaskDTO> list = new List<ProjectTaskDTO>();
+
+        list = pureList.Skip(PageSize * (CurrentPage - 1)).Take(PageSize).ToList();
+
+        return list;
+    }
+
+    private void OnPageChanged(int page)
+    {
+        CurrentPage = page;
+    }
+}

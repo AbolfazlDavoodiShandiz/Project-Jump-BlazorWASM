@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace PMS.BlazorWASMClient.Shared
+namespace PMS.BlazorWASMClient.Pages.Project
 {
     #line hidden
     using System;
@@ -124,7 +124,15 @@ using PMS.BlazorWASMClient.Utility.Enums;
 #line default
 #line hidden
 #nullable disable
-    public partial class Pagination : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 5 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
+           [Authorize]
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/projects/{ProjectName}")]
+    public partial class ProjectSummery : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -132,49 +140,126 @@ using PMS.BlazorWASMClient.Utility.Enums;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 26 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\Pagination.razor"
- 
+#line 168 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
+       
     [Parameter]
+    public string ProjectName { get; set; }
+
+    Pagination Pagination;
     public int ItemCount { get; set; }
-
-    [Parameter]
-    public int PageSize { get; set; }
-
-    [Parameter]
+    public int PageSize
+    {
+        get
+        {
+            return 10;
+        }
+    }
     public int CurrentPage { get; set; }
 
-    [Parameter]
-    public EventCallback<int> OnPageChanged { get; set; }
-
-    private int Pages
+    List<ProjectTaskDTO> PureTaskList = new List<ProjectTaskDTO>();
+    List<ProjectTaskDTO> TaskList
     {
         get
         {
-            if (PageSize == 0)
+            return FilteredTable();
+        }
+    }
+    List<ProjectMemberDTO> MemberList = new List<ProjectMemberDTO>();
+
+    public int TotalCount
+    {
+        get
+        {
+            return PureTaskList.Count;
+        }
+    }
+
+    public int CompleteCount
+    {
+        get
+        {
+            return PureTaskList.Where(t => t.Done).Count();
+        }
+    }
+
+    public int RemainedCount
+    {
+        get
+        {
+            return TotalCount - CompleteCount;
+        }
+    }
+
+    public DateTime DeadlineDate { get; set; }
+
+    public int DaysToDeadline
+    {
+        get
+        {
+            return (int)(DeadlineDate - DateTime.Now).TotalDays;
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var result = await projectService.GetProjectSummary(ProjectName);
+
+        if (result.IsSuccess)
+        {
+            DeadlineDate = result.Data.ProjectDeadlineDate;
+
+            if (result.Data.ProjectTasks is not null && result.Data.ProjectTasks.Count() > 0)
             {
-                return 1;
+                PureTaskList = result.Data.ProjectTasks.ToList();
+                ItemCount = PureTaskList.Count;
+                CurrentPage = 1;
             }
 
-            return (ItemCount % PageSize == 0) ? (ItemCount / PageSize) : (ItemCount / PageSize) + 1;
+            if (result.Data.ProjectMembers is not null && result.Data.ProjectMembers.Count() > 0)
+            {
+                MemberList = result.Data.ProjectMembers.ToList();
+            }
         }
     }
 
-    public int LastPageNumber
+    private List<ProjectTaskDTO> FilteredTable()
     {
-        get
-        {
-            return Pages;
-        }
+        List<ProjectTaskDTO> list = new List<ProjectTaskDTO>();
+
+        list = PaginateTable(GroupedTable(PureTaskList));
+
+        return list;
     }
 
-    private void PageChanged(int currentPage)
+    private List<ProjectTaskDTO> GroupedTable(List<ProjectTaskDTO> pureList)
     {
-        OnPageChanged.InvokeAsync(currentPage);
+        List<ProjectTaskDTO> list = new List<ProjectTaskDTO>();
+
+        list = pureList;
+
+        ItemCount = list.Count;
+
+        return list;
+    }
+
+    private List<ProjectTaskDTO> PaginateTable(List<ProjectTaskDTO> pureList)
+    {
+        List<ProjectTaskDTO> list = new List<ProjectTaskDTO>();
+
+        list = pureList.Skip(PageSize * (CurrentPage - 1)).Take(PageSize).ToList();
+
+        return list;
+    }
+
+    private void OnPageChanged(int page)
+    {
+        CurrentPage = page;
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IProjectService projectService { get; set; }
     }
 }
 #pragma warning restore 1591
