@@ -33,31 +33,45 @@ namespace PMS.BlazorWASMClient.Utility.Extensions
         public static async Task<ApiResult<TData>> CustomPost<TData>(this HttpClient httpClient, CustomAuthenticationStateProvider customAuthenticationStateProvider,
             string apiAdress, object data)
         {
-            var response = await httpClient.PostAsJsonAsync(apiAdress, data);
-            var responseContent = await response.Content.ReadAsStringAsync();
-            var apiResponseContent = JsonConvert.DeserializeObject<ApiResult<TData>>(responseContent);
-
-            if (apiResponseContent.HttpStatusCode == HttpStatusCode.Unauthorized)
+            try
             {
-                await customAuthenticationStateProvider.NotifyUserLoggedOut();
-            }
+                var response = await httpClient.PostAsJsonAsync(apiAdress, data);
+                var responseContent = await response.Content.ReadAsStringAsync();
+                var apiResponseContent = JsonConvert.DeserializeObject<ApiResult<TData>>(responseContent);
 
-            return apiResponseContent;
+                if (apiResponseContent.HttpStatusCode == HttpStatusCode.Unauthorized)
+                {
+                    await customAuthenticationStateProvider.NotifyUserLoggedOut();
+                }
+
+                return apiResponseContent;
+            }
+            catch (Exception ex)
+            {
+                return new ApiResult<TData>() { IsSuccess = false, Message = "Something is wrong while conneting to server." };
+            }
         }
 
         public static async Task<ApiResult<TData>> CustomGet<TData>(this HttpClient httpClient, CustomAuthenticationStateProvider customAuthenticationStateProvider,
             string apiAddress, string requestParameter = null)
         {
-            string path = string.IsNullOrWhiteSpace(requestParameter) ? apiAddress : $"{apiAddress}/{requestParameter}";
-
-            var apiResponseContent = await httpClient.GetFromJsonAsync<ApiResult<TData>>(path);
-
-            if (apiResponseContent.HttpStatusCode == HttpStatusCode.Unauthorized)
+            try
             {
-                await customAuthenticationStateProvider.NotifyUserLoggedOut();
-            }
+                string path = string.IsNullOrWhiteSpace(requestParameter) ? apiAddress : $"{apiAddress}/{requestParameter}";
 
-            return apiResponseContent;
+                var apiResponseContent = await httpClient.GetFromJsonAsync<ApiResult<TData>>(path);
+
+                if (apiResponseContent.HttpStatusCode == HttpStatusCode.Unauthorized)
+                {
+                    await customAuthenticationStateProvider.NotifyUserLoggedOut();
+                }
+
+                return apiResponseContent;
+            }
+            catch (Exception ex)
+            {
+                return new ApiResult<TData>() { IsSuccess = false, Message = "Something is wrong while conneting to server." };
+            }
         }
     }
 }
