@@ -358,6 +358,7 @@ using PMS.BlazorWASMClient.Utility.Enums;
         if (result.IsSuccess)
         {
             await GetProjectList();
+            SelectedProject = null;
         }
     }
 

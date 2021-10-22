@@ -34,6 +34,7 @@ namespace PMS.BlazorWASMClient
             builder.Services.AddScoped<IApiTestService, ApiTestService>();
             builder.Services.AddScoped<IAccountService, AccountService>();
             builder.Services.AddScoped<IProjectService, ProjectService>();
+            builder.Services.AddScoped<IProjectTaskService, ProjectTaskService>();
 
             await builder.Build().RunAsync();
         }

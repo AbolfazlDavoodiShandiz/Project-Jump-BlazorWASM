@@ -125,7 +125,7 @@ using PMS.BlazorWASMClient.Utility.Enums;
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
+#line 7 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
            [Authorize]
 
 #line default
@@ -140,11 +140,12 @@ using PMS.BlazorWASMClient.Utility.Enums;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 168 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
+#line 214 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
        
     [Parameter]
     public string ProjectName { get; set; }
 
+    private ConfirmAlert ConfirmAlert;
     Pagination Pagination;
     public int ItemCount { get; set; }
     public int PageSize
@@ -164,7 +165,13 @@ using PMS.BlazorWASMClient.Utility.Enums;
             return FilteredTable();
         }
     }
+    int ProjectId { get; set; }
     List<ProjectMemberDTO> MemberList = new List<ProjectMemberDTO>();
+
+    bool ShowNewProjectTaskModal = false;
+    bool IsCreateProjectTaskMode = true;
+    ProjectTaskRegisterDTO NewProjectTask = new ProjectTaskRegisterDTO();
+    ProjectTaskDTO SelectedProjectTask = new ProjectTaskDTO();
 
     public int TotalCount
     {
@@ -211,6 +218,7 @@ using PMS.BlazorWASMClient.Utility.Enums;
             if (result.Data.ProjectTasks is not null && result.Data.ProjectTasks.Count() > 0)
             {
                 PureTaskList = result.Data.ProjectTasks.ToList();
+                ProjectId = result.Data.ProjectId;
                 ItemCount = PureTaskList.Count;
                 CurrentPage = 1;
             }
@@ -219,6 +227,17 @@ using PMS.BlazorWASMClient.Utility.Enums;
             {
                 MemberList = result.Data.ProjectMembers.ToList();
             }
+        }
+    }
+
+    private async Task GetTasks()
+    {
+        var tasks = await projectService.GetProjectTasks(ProjectName);
+
+        if (tasks.IsSuccess)
+        {
+            PureTaskList = tasks.Data.ToList();
+            CurrentPage = Pagination.LastPageNumber;
         }
     }
 
@@ -256,9 +275,122 @@ using PMS.BlazorWASMClient.Utility.Enums;
         CurrentPage = page;
     }
 
+    private async Task CreateNewProjectTask()
+    {
+        NewProjectTask.ProjectId = ProjectId;
+        string messageType = string.Empty;
+
+        if (IsCreateProjectTaskMode)
+        {
+            var result = await projectTaskService.CreateProjectTask(NewProjectTask);
+
+            messageType = result.IsSuccess ? "success" : "error";
+
+            await jsRuntime.ShowToastr(messageType, result.Message);
+
+            if (result.IsSuccess)
+            {
+                ClearForm();
+                await GetTasks();
+            }
+        }
+        else
+        {
+            var updatedTask = new ProjectTaskUpdateDTO()
+            {
+                TaskId = SelectedProjectTask.Id,
+                Description = NewProjectTask.Description,
+                DeadlineDate = NewProjectTask.DeadlineDate
+            };
+
+            var result = await projectTaskService.UpdateProjectTask(updatedTask);
+
+            messageType = result.IsSuccess ? "success" : "error";
+
+            await jsRuntime.ShowToastr(messageType, result.Message);
+
+            if (result.IsSuccess)
+            {
+                var updatedItem = PureTaskList.Where(t => t.Id == SelectedProjectTask.Id).Single();
+
+                updatedItem.Description = NewProjectTask.Description;
+                updatedItem.DeadlineDate = NewProjectTask.DeadlineDate;
+
+                ClearForm();
+            }
+        }
+    }
+
+    private void ClearForm()
+    {
+        NewProjectTask.Title = string.Empty;
+        NewProjectTask.Description = string.Empty;
+        NewProjectTask.DeadlineDate = DateTime.Now;
+        SelectedProjectTask = null;
+        ShowNewTaskModal(false);
+    }
+
+    private void ShowNewTaskModal(bool show, ProjectTaskDTO task = null)
+    {
+        if (task is not null)
+        {
+            NewProjectTask.Title = task.Title;
+            NewProjectTask.Description = task.Description;
+            NewProjectTask.DeadlineDate = task.DeadlineDate;
+            SelectedProjectTask = task;
+            IsCreateProjectTaskMode = false;
+        }
+
+        ShowNewProjectTaskModal = show;
+    }
+
+    private void ShowDeleteModal(ProjectTaskDTO task)
+    {
+        SelectedProjectTask = task;
+        ConfirmAlert.Show();
+    }
+
+    private async Task DeleteTask()
+    {
+        var result = await projectTaskService.DeleteProjectTask(SelectedProjectTask.Id);
+
+        ConfirmAlert.Hide();
+
+        string messageType = result.IsSuccess ? "success" : "error";
+
+        await jsRuntime.ShowToastr(messageType, result.Message);
+
+        if (result.IsSuccess)
+        {
+            PureTaskList.Remove(PureTaskList.Where(t => t.Id == SelectedProjectTask.Id).Single());
+            SelectedProjectTask = null;
+        }
+    }
+
+    private async Task MarkAsDone(ProjectTaskDTO projectTaskDTO)
+    {
+        var result = await projectTaskService.MarkAsDone(projectTaskDTO.Id);
+
+        string messageType = result.IsSuccess ? "success" : "error";
+
+        await jsRuntime.ShowToastr(messageType, result.Message);
+
+        if (result.IsSuccess)
+        {
+            var item = PureTaskList.Where(t => t.Id == projectTaskDTO.Id).Single();
+
+            item.Done = true;
+            item.CompleteDate = DateTime.Now;
+
+            SelectedProjectTask = null;
+        }
+    }
+
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime jsRuntime { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IProjectTaskService projectTaskService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IProjectService projectService { get; set; }
     }
 }

@@ -1,6 +1,8 @@
 ﻿@page "/projects/{ProjectName}"
 
 @inject IProjectService projectService
+@inject IProjectTaskService projectTaskService
+@inject IJSRuntime jsRuntime
 
 @attribute [Authorize]
 
@@ -96,7 +98,7 @@
     <div class="col">
         <div class="card card-bg">
             <div class="card-header bg-light border-0 pb-3">
-                <h5>Project Tasks</h5> <button class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>&nbsp; Add Task</button>
+                <h5>Project Tasks</h5> <button class="btn btn-sm btn-primary" @onclick="()=>ShowNewTaskModal(true)"><i class="fa fa-plus"></i>&nbsp; Add Task</button>
             </div>
             <div class="card-body">
                 <table class="table">
@@ -151,9 +153,9 @@
                                 <td data-toggle="tooltip" data-placement="top" title="@(TaskList[itemIndex].CompleteDate)">@TaskList[itemIndex].CompleteDate?.ToShortDateString()</td>
                                 <td>
                                     <button class="btn btn-sm btn-secondary">Assigned Users</button>
-                                    <button class="btn btn-sm btn-success" disabled="@(isDone)">Done</button>
-                                    <button class="btn btn-sm btn-warning">Update</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
+                                    <button class="btn btn-sm btn-success" disabled="@(isDone)" @onclick="()=>MarkAsDone(TaskList[itemIndex])">Done</button>
+                                    <button class="btn btn-sm btn-warning" disabled="@(isDone)" @onclick="()=>ShowNewTaskModal(true,TaskList[itemIndex])">Update</button>
+                                    <button class="btn btn-sm btn-danger" disabled="@(isDone)" @onclick="()=>ShowDeleteModal(TaskList[itemIndex])">Delete</button>
                                 </td>
                             </tr>
                         }
@@ -165,10 +167,55 @@
     </div>
 </div>
 
+@if (ShowNewProjectTaskModal)
+{
+    <!-- Modal -->
+    <div class="modal fade show" id="create-task-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="create-task-modal-label"
+         aria-modal="true" role="dialog" style="display:block;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <EditForm Model="NewProjectTask" OnValidSubmit="CreateNewProjectTask">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="create-task-modal-header-label">@(IsCreateProjectTaskMode?"New Task":"Update Task")</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @onclick="()=>ShowNewTaskModal(false)"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="title">Title</label>
+                        <InputText id="title" @bind-Value="NewProjectTask.Title" class="form-control" disabled="@(!IsCreateProjectTaskMode)" />
+                        <div class="mt-3">
+                            <label for="description">Description</label>
+                            <InputTextArea id="description" @bind-Value="NewProjectTask.Description" class="form-control" />
+                        </div>
+                        <div class="mt-3">
+                            <label for="deadlineDate">Deadline Date</label>
+                            <InputDate id="deadlineDate" @bind-Value="NewProjectTask.DeadlineDate" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @onclick="()=>ShowNewTaskModal(false)">Close</button>
+                        <button type="submit" class="btn btn-primary">Done</button>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+}
+
+<ConfirmAlert @ref="ConfirmAlert" Title="Detele Task" OnConfirm="DeleteTask">
+    <div>
+        <p>Are you sure you want to delete this task?</p>
+        Task Title: <strong>@SelectedProjectTask.Title</strong>
+        <div>
+            <p class="text-danger">Delete a task will remove all stuff related to task including files and all task histories.</p>
+        </div>
+    </div>
+</ConfirmAlert>
+
 @code {
     [Parameter]
     public string ProjectName { get; set; }
 
+    private ConfirmAlert ConfirmAlert;
     Pagination Pagination;
     public int ItemCount { get; set; }
     public int PageSize
@@ -188,7 +235,13 @@
             return FilteredTable();
         }
     }
+    int ProjectId { get; set; }
     List<ProjectMemberDTO> MemberList = new List<ProjectMemberDTO>();
+
+    bool ShowNewProjectTaskModal = false;
+    bool IsCreateProjectTaskMode = true;
+    ProjectTaskRegisterDTO NewProjectTask = new ProjectTaskRegisterDTO();
+    ProjectTaskDTO SelectedProjectTask = new ProjectTaskDTO();
 
     public int TotalCount
     {
@@ -235,6 +288,7 @@
             if (result.Data.ProjectTasks is not null && result.Data.ProjectTasks.Count() > 0)
             {
                 PureTaskList = result.Data.ProjectTasks.ToList();
+                ProjectId = result.Data.ProjectId;
                 ItemCount = PureTaskList.Count;
                 CurrentPage = 1;
             }
@@ -243,6 +297,17 @@
             {
                 MemberList = result.Data.ProjectMembers.ToList();
             }
+        }
+    }
+
+    private async Task GetTasks()
+    {
+        var tasks = await projectService.GetProjectTasks(ProjectName);
+
+        if (tasks.IsSuccess)
+        {
+            PureTaskList = tasks.Data.ToList();
+            CurrentPage = Pagination.LastPageNumber;
         }
     }
 
@@ -278,5 +343,116 @@
     private void OnPageChanged(int page)
     {
         CurrentPage = page;
+    }
+
+    private async Task CreateNewProjectTask()
+    {
+        NewProjectTask.ProjectId = ProjectId;
+        string messageType = string.Empty;
+
+        if (IsCreateProjectTaskMode)
+        {
+            var result = await projectTaskService.CreateProjectTask(NewProjectTask);
+
+            messageType = result.IsSuccess ? "success" : "error";
+
+            await jsRuntime.ShowToastr(messageType, result.Message);
+
+            if (result.IsSuccess)
+            {
+                ClearForm();
+                await GetTasks();
+            }
+        }
+        else
+        {
+            var updatedTask = new ProjectTaskUpdateDTO()
+            {
+                TaskId = SelectedProjectTask.Id,
+                Description = NewProjectTask.Description,
+                DeadlineDate = NewProjectTask.DeadlineDate
+            };
+
+            var result = await projectTaskService.UpdateProjectTask(updatedTask);
+
+            messageType = result.IsSuccess ? "success" : "error";
+
+            await jsRuntime.ShowToastr(messageType, result.Message);
+
+            if (result.IsSuccess)
+            {
+                var updatedItem = PureTaskList.Where(t => t.Id == SelectedProjectTask.Id).Single();
+
+                updatedItem.Description = NewProjectTask.Description;
+                updatedItem.DeadlineDate = NewProjectTask.DeadlineDate;
+
+                ClearForm();
+            }
+        }
+    }
+
+    private void ClearForm()
+    {
+        NewProjectTask.Title = string.Empty;
+        NewProjectTask.Description = string.Empty;
+        NewProjectTask.DeadlineDate = DateTime.Now;
+        SelectedProjectTask = null;
+        ShowNewTaskModal(false);
+    }
+
+    private void ShowNewTaskModal(bool show, ProjectTaskDTO task = null)
+    {
+        if (task is not null)
+        {
+            NewProjectTask.Title = task.Title;
+            NewProjectTask.Description = task.Description;
+            NewProjectTask.DeadlineDate = task.DeadlineDate;
+            SelectedProjectTask = task;
+            IsCreateProjectTaskMode = false;
+        }
+
+        ShowNewProjectTaskModal = show;
+    }
+
+    private void ShowDeleteModal(ProjectTaskDTO task)
+    {
+        SelectedProjectTask = task;
+        ConfirmAlert.Show();
+    }
+
+    private async Task DeleteTask()
+    {
+        var result = await projectTaskService.DeleteProjectTask(SelectedProjectTask.Id);
+
+        ConfirmAlert.Hide();
+
+        string messageType = result.IsSuccess ? "success" : "error";
+
+        await jsRuntime.ShowToastr(messageType, result.Message);
+
+        if (result.IsSuccess)
+        {
+            PureTaskList.Remove(PureTaskList.Where(t => t.Id == SelectedProjectTask.Id).Single());
+            SelectedProjectTask = null;
+        }
+    }
+
+    private async Task MarkAsDone(ProjectTaskDTO projectTaskDTO)
+    {
+        var result = await projectTaskService.MarkAsDone(projectTaskDTO.Id);
+
+        string messageType = result.IsSuccess ? "success" : "error";
+
+        await jsRuntime.ShowToastr(messageType, result.Message);
+
+        if (result.IsSuccess)
+        {
+            var item = PureTaskList.Where(t => t.Id == projectTaskDTO.Id).Single();
+
+            item.Done = true;
+            item.CompleteDate = DateTime.Now;
+
+            SelectedProjectTask = null;
+        }
     }
 }

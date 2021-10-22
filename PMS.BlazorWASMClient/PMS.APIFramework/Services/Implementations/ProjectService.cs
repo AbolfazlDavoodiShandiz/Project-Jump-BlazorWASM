@@ -52,6 +52,13 @@ namespace PMS.BlazorWASMClient.Utility.Services.Implementations
             return response;
         }
 
+        public async Task<ApiResult<IEnumerable<ProjectTaskDTO>>> GetProjectTasks(string projectTitle)
+        {
+            var response = await _httpClient.CustomGet<IEnumerable<ProjectTaskDTO>>(_authenticationStateProvider, $"api/project/GetProjectTasks/{projectTitle}");
+
+            return response;
+        }
+
         public async Task<ApiResult> UpdateProject(ProjectUpdateDTO projectUpdateDTO)
         {
             var response = await _httpClient.CustomPost<ApiResult>(_authenticationStateProvider, "api/Project/EditProject", projectUpdateDTO);
