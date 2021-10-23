@@ -70,5 +70,12 @@ namespace PMS.BlazorWASMClient.Utility.Services.Implementations
                 }
             }
         }
+
+        public async Task<ApiResult<IEnumerable<UserSearchResponseDTO>>> SearchUser(string searchText)
+        {
+            var response = await _httpClient.CustomGet<IEnumerable<UserSearchResponseDTO>>(_authenticationStateProvider, $"api/Account/SearchUserByEmail/{searchText}");
+
+            return response;
+        }
     }
 }

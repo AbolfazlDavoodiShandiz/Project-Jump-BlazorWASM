@@ -1,4 +1,5 @@
-﻿using PMS.BlazorWASMClient.Utility.DTOs;
+﻿using PMS.APIFramework.ApiResponseContent;
+using PMS.BlazorWASMClient.Utility.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,6 @@ namespace PMS.BlazorWASMClient.Utility.Services
     {
         Task<LoginResponseDTO> Login(LoginRequestDTO loginRequestDTO);
         Task Logout();
+        Task<ApiResult<IEnumerable<UserSearchResponseDTO>>> SearchUser(string searchText);
     }
 }

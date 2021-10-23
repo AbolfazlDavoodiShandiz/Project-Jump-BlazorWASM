@@ -3,6 +3,7 @@
 @inject IProjectService projectService
 @inject IProjectTaskService projectTaskService
 @inject IJSRuntime jsRuntime
+@inject IAccountService accountService
 
 @attribute [Authorize]
 
@@ -65,7 +66,7 @@
             </div>
         </div>
         <div class="card card-bg mt-3 overflow-scroll" style="max-height:360px;">
-            <div class="card-header bg-light border-0"><h5>Project Members</h5><button class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>&nbsp; Add Member</button></div>
+            <div class="card-header bg-light border-0"><h5>Project Members</h5><button class="btn btn-sm btn-primary" @onclick="()=>ShowProjectMemberModal(true)"><i class="fa fa-plus"></i>&nbsp; Add Member</button></div>
             <div class="card-body">
                 @for (int index = 0; index < MemberList.Count(); index++)
                 {
@@ -81,7 +82,7 @@
                         <div class="card @(backgroundClass)">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-2"><button class="btn btn-sm btn-danger"><i class="fa fa-window-close" aria-hidden="true"></i></button></div>
+                                    <div class="col-2"><button class="btn btn-sm btn-danger" @onclick="()=>DeleteMember(MemberList[itemIndex].Email)"><i class="fa fa-window-close" aria-hidden="true"></i></button></div>
                                     <div class="col-10">
                                         <strong>@MemberList[itemIndex].Username</strong>
                                         <span>@MemberList[itemIndex].Email</span>
@@ -211,6 +212,59 @@
     </div>
 </ConfirmAlert>
 
+@if (ShowAddProjectMemberModal)
+{
+    <!-- Modal -->
+    <div class="modal fade show" id="add-member-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="add-member-modal-label"
+         aria-modal="true" role="dialog" style="display:block;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <EditForm Model="SelectedUser" OnValidSubmit="SaveProjectMemberList">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="create-task-modal-header-label">Add Project Member(s)</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @onclick="()=>ShowProjectMemberModal(false)"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label>Search user by email</label>
+                        <div class="mt-2">
+                            <BlazoredTypeahead SearchMethod="SerarchInUsers" @bind-Value="SelectedUser" Debounce="500">
+                                <SelectedTemplate Context="SearchResponse">
+                                    @SearchResponse.UserEmail
+                                </SelectedTemplate>
+                                <ResultTemplate Context="SearchResponse">
+                                    @SearchResponse.UserEmail
+                                </ResultTemplate>
+                                <NotFoundTemplate Context="SearchResponse">
+                                    Sorry, there weren't any search results.
+                                </NotFoundTemplate>
+                            </BlazoredTypeahead>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col">
+                                <button type="button" class="btn btn-primary btn-sm" @onclick="AddToMemberList">Add To List</button>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col">
+                                @foreach (var item in RegisterProjectMemberList)
+                                {
+                                    <div class="row mt-2">
+                                        <span><strong>@item.UserEmail </strong>&nbsp;<i style="cursor:pointer;" class="text-danger fa fa-window-close" @onclick="()=>DeleteFromMemberList(item.UserEmail)"></i></span>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @onclick="()=>ShowProjectMemberModal(false)">Close</button>
+                        <button type="submit" class="btn btn-primary">Done</button>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+}
+
 @code {
     [Parameter]
     public string ProjectName { get; set; }
@@ -236,7 +290,11 @@
         }
     }
     int ProjectId { get; set; }
+
+    bool ShowAddProjectMemberModal = false;
     List<ProjectMemberDTO> MemberList = new List<ProjectMemberDTO>();
+    UserSearchResponseDTO SelectedUser = new UserSearchResponseDTO();
+    List<ProjectMemberRegisterDTO> RegisterProjectMemberList = new List<ProjectMemberRegisterDTO>();
 
     bool ShowNewProjectTaskModal = false;
     bool IsCreateProjectTaskMode = true;
@@ -308,6 +366,16 @@
         {
             PureTaskList = tasks.Data.ToList();
             CurrentPage = Pagination.LastPageNumber;
+        }
+    }
+
+    private async Task GetMembers()
+    {
+        var members = await projectService.GetProjectMembers(ProjectName);
+
+        if (members.IsSuccess)
+        {
+            MemberList = members.Data.ToList();
         }
     }
 
@@ -454,5 +522,64 @@
 
             SelectedProjectTask = null;
         }
+    }
+
+    private async Task<IEnumerable<UserSearchResponseDTO>> SerarchInUsers(string searchText)
+    {
+        var response = await accountService.SearchUser(searchText);
+
+        return response.Data;
+    }
+
+    private void ShowProjectMemberModal(bool show)
+    {
+        ShowAddProjectMemberModal = show;
+    }
+
+    private void AddToMemberList()
+    {
+        if (!RegisterProjectMemberList.Any(e => e.UserEmail == SelectedUser.UserEmail))
+        {
+            RegisterProjectMemberList.Add(new ProjectMemberRegisterDTO
+            {
+                ProjectId = this.ProjectId,
+                UserEmail = SelectedUser.UserEmail,
+                UserName = SelectedUser.UserName,
+                UserId = SelectedUser.UserId
+            });
+        }
+    }
+
+    private void DeleteFromMemberList(string email)
+    {
+        RegisterProjectMemberList.Remove(RegisterProjectMemberList.Single(m => m.UserEmail == email));
+    }
+
+    private async Task SaveProjectMemberList()
+    {
+        var response = await projectService.AddProjectMember(RegisterProjectMemberList);
+
+        string messageType = response.IsSuccess ? "success" : "error";
+
+        await jsRuntime.ShowToastr(messageType, response.Message);
+
+        ShowProjectMemberModal(false);
+        RegisterProjectMemberList.Clear();
+        await GetMembers();
+    }
+
+    private async Task DeleteMember(string email)
+    {
+        var deleteMemberDTO = new ProjectMemberDeleteDTO()
+        {
+            ProjectName = this.ProjectName,
+            UserEmail = email
+        };
+
+        var response = await projectService.DeleteProjectMember(deleteMemberDTO);
+
+        string messageType = response.IsSuccess ? "success" : "error";
+
+        await jsRuntime.ShowToastr(messageType, response.Message);
     }
 }

@@ -665,3 +665,6 @@ D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWAS
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\Pages\Task\UserCreatedTasks.razor.g.cs
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\RazorDeclaration\Pages\Project\ProjectSummery.razor.g.cs
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\Pages\Project\ProjectSummery.razor.g.cs
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\bin\Debug\net5.0\wwwroot\_framework\Blazored.Typeahead.dll.gz
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\bin\Debug\net5.0\wwwroot\_framework\Blazored.Typeahead.dll
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\build-gz\mZ+QRlRG.gz

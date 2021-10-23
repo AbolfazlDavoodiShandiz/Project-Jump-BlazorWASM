@@ -121,6 +121,13 @@ using PMS.BlazorWASMClient.Utility.Enums;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 17 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
+using Blazored.Typeahead;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/account/logout")]
     public partial class Logout : Microsoft.AspNetCore.Components.ComponentBase
     {

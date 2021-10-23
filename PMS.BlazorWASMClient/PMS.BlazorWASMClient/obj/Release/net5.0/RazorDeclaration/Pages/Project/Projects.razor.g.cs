@@ -125,6 +125,13 @@ using PMS.BlazorWASMClient.Utility.Enums;
 #line hidden
 #nullable disable
 #nullable restore
+#line 17 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
+using Blazored.Typeahead;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 6 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
            [Authorize]
 
@@ -197,9 +204,12 @@ using PMS.BlazorWASMClient.Utility.Enums;
     {
         var g = ProjectTableGroups;
         var authState = await AuthenticationState;
-        Username = authState.User.Identity.GetUsername();
+        if (authState.User.Identity.IsAuthenticated)
+        {
+            Username = authState.User.Identity.GetUsername();
 
-        await GetProjectList();
+            await GetProjectList();
+        }
     }
 
     private async Task GetProjectList()
@@ -355,6 +365,7 @@ using PMS.BlazorWASMClient.Utility.Enums;
         if (result.IsSuccess)
         {
             await GetProjectList();
+            SelectedProject = null;
         }
     }
 

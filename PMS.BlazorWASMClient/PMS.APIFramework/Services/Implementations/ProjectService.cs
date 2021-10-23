@@ -24,6 +24,13 @@ namespace PMS.BlazorWASMClient.Utility.Services.Implementations
             _authenticationStateProvider = (CustomAuthenticationStateProvider)authenticationStateProvider;
         }
 
+        public async Task<ApiResult> AddProjectMember(List<ProjectMemberRegisterDTO> projectMemberRegisterDTOs)
+        {
+            var response = await _httpClient.CustomPost<ApiResult>(_authenticationStateProvider, "api/Project/AddProjectMember", projectMemberRegisterDTOs);
+
+            return response;
+        }
+
         public async Task<ApiResult> CreateProject(ProjectRegisterDTO projectRegisterDTO)
         {
             var response = await _httpClient.CustomPost<ApiResult>(_authenticationStateProvider, "api/Project/CreateProject", projectRegisterDTO);
@@ -38,9 +45,23 @@ namespace PMS.BlazorWASMClient.Utility.Services.Implementations
             return response;
         }
 
+        public async Task<ApiResult> DeleteProjectMember(ProjectMemberDeleteDTO projectMemberDeleteDTO)
+        {
+            var response = await _httpClient.CustomPost<ApiResult>(_authenticationStateProvider, "api/Project/DeleteProjectMember", projectMemberDeleteDTO);
+
+            return response;
+        }
+
         public async Task<ApiResult<IEnumerable<ProjectDTO>>> GetAll()
         {
             var response = await _httpClient.CustomGet<IEnumerable<ProjectDTO>>(_authenticationStateProvider, "api/Project/UserCreatedProjectList");
+
+            return response;
+        }
+
+        public async Task<ApiResult<IEnumerable<ProjectMemberDTO>>> GetProjectMembers(string projectTitle)
+        {
+            var response = await _httpClient.CustomGet<IEnumerable<ProjectMemberDTO>>(_authenticationStateProvider, $"api/project/GetProjectMembers/{projectTitle}");
 
             return response;
         }

@@ -125,7 +125,14 @@ using PMS.BlazorWASMClient.Utility.Enums;
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
+#line 17 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
+using Blazored.Typeahead;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 8 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
            [Authorize]
 
 #line default
@@ -140,7 +147,7 @@ using PMS.BlazorWASMClient.Utility.Enums;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 214 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
+#line 268 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
        
     [Parameter]
     public string ProjectName { get; set; }
@@ -166,7 +173,11 @@ using PMS.BlazorWASMClient.Utility.Enums;
         }
     }
     int ProjectId { get; set; }
+
+    bool ShowAddProjectMemberModal = false;
     List<ProjectMemberDTO> MemberList = new List<ProjectMemberDTO>();
+    UserSearchResponseDTO SelectedUser = new UserSearchResponseDTO();
+    List<ProjectMemberRegisterDTO> RegisterProjectMemberList = new List<ProjectMemberRegisterDTO>();
 
     bool ShowNewProjectTaskModal = false;
     bool IsCreateProjectTaskMode = true;
@@ -238,6 +249,16 @@ using PMS.BlazorWASMClient.Utility.Enums;
         {
             PureTaskList = tasks.Data.ToList();
             CurrentPage = Pagination.LastPageNumber;
+        }
+    }
+
+    private async Task GetMembers()
+    {
+        var members = await projectService.GetProjectMembers(ProjectName);
+
+        if (members.IsSuccess)
+        {
+            MemberList = members.Data.ToList();
         }
     }
 
@@ -386,9 +407,69 @@ using PMS.BlazorWASMClient.Utility.Enums;
         }
     }
 
+    private async Task<IEnumerable<UserSearchResponseDTO>> SerarchInUsers(string searchText)
+    {
+        var response = await accountService.SearchUser(searchText);
+
+        return response.Data;
+    }
+
+    private void ShowProjectMemberModal(bool show)
+    {
+        ShowAddProjectMemberModal = show;
+    }
+
+    private void AddToMemberList()
+    {
+        if (!RegisterProjectMemberList.Any(e => e.UserEmail == SelectedUser.UserEmail))
+        {
+            RegisterProjectMemberList.Add(new ProjectMemberRegisterDTO
+            {
+                ProjectId = this.ProjectId,
+                UserEmail = SelectedUser.UserEmail,
+                UserName = SelectedUser.UserName,
+                UserId = SelectedUser.UserId
+            });
+        }
+    }
+
+    private void DeleteFromMemberList(string email)
+    {
+        RegisterProjectMemberList.Remove(RegisterProjectMemberList.Single(m => m.UserEmail == email));
+    }
+
+    private async Task SaveProjectMemberList()
+    {
+        var response = await projectService.AddProjectMember(RegisterProjectMemberList);
+
+        string messageType = response.IsSuccess ? "success" : "error";
+
+        await jsRuntime.ShowToastr(messageType, response.Message);
+
+        ShowProjectMemberModal(false);
+        RegisterProjectMemberList.Clear();
+        await GetMembers();
+    }
+
+    private async Task DeleteMember(string email)
+    {
+        var deleteMemberDTO = new ProjectMemberDeleteDTO()
+        {
+            ProjectName = this.ProjectName,
+            UserEmail = email
+        };
+
+        var response = await projectService.DeleteProjectMember(deleteMemberDTO);
+
+        string messageType = response.IsSuccess ? "success" : "error";
+
+        await jsRuntime.ShowToastr(messageType, response.Message);
+    }
+
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IAccountService accountService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime jsRuntime { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IProjectTaskService projectTaskService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IProjectService projectService { get; set; }

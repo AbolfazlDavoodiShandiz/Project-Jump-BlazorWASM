@@ -125,6 +125,13 @@ using PMS.BlazorWASMClient.Utility.Enums;
 #line hidden
 #nullable disable
 #nullable restore
+#line 17 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
+using Blazored.Typeahead;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 3 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Team\Teams.razor"
            [Authorize]
 
