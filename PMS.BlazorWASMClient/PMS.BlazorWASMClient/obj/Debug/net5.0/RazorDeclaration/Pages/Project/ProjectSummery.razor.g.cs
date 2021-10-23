@@ -464,6 +464,8 @@ using Blazored.Typeahead;
         string messageType = response.IsSuccess ? "success" : "error";
 
         await jsRuntime.ShowToastr(messageType, response.Message);
+
+        await GetMembers();
     }
 
 #line default
