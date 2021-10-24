@@ -1,0 +1,62 @@
+﻿@page "/account/register"
+
+@inject IAccountService accountService
+@inject IJSRuntime jsRuntime
+@inject NavigationManager navigationManager
+
+<div class="row justify-content-center">
+    <div class="col-3">
+        <div class="text-center">
+            <EditForm Model="UserRegistrationDTO" OnValidSubmit="UserRegister" OnInvalidSubmit="InvalidSubmit">
+                <DataAnnotationsValidator></DataAnnotationsValidator>
+                <i class="fa fa-user-plus fa-4x" aria-hidden="true"></i>
+                <h1 class="h3 mb-3 fw-normal">Register New User</h1>
+
+                <div class="form-floating mb-2">
+                    <InputText @bind-Value="UserRegistrationDTO.Email" type="email" class="form-control" id="floatingEmail" />
+                    <label for="floatingEmail">Email</label>
+                    <ValidationMessage For="(()=>UserRegistrationDTO.Email)"></ValidationMessage>
+                </div>
+                <div class="form-floating mb-2">
+                    <InputText @bind-Value="UserRegistrationDTO.Username" type="text" class="form-control" id="floatingUsername" />
+                    <label for="floatingUsername">Username</label>
+                    <ValidationMessage For="(()=>UserRegistrationDTO.Username)"></ValidationMessage>
+                </div>
+                <div class="form-floating mb-2">
+                    <InputText @bind-Value="UserRegistrationDTO.Mobile" type="text" class="form-control" id="floatingMobile" />
+                    <label for="floatingMobile">Mobile</label>
+                    <ValidationMessage For="(()=>UserRegistrationDTO.Mobile)"></ValidationMessage>
+                </div>
+                <div class="form-floating mb-2">
+                    <InputText @bind-Value="UserRegistrationDTO.Password" type="password" class="form-control" id="floatingPassword" />
+                    <label for="floatingPassword">Password</label>
+                    <ValidationMessage For="(()=>UserRegistrationDTO.Password)"></ValidationMessage>
+                </div>
+                <div class="form-floating mb-2">
+                    <InputText @bind-Value="UserRegistrationDTO.PasswordConfirm" type="password" class="form-control" id="floatingConfirmPassword" />
+                    <label for="floatingConfirmPassword">Password Confirm</label>
+                    <ValidationMessage For="(()=>UserRegistrationDTO.PasswordConfirm)"></ValidationMessage>
+                </div>
+                <button class="w-100 btn btn-lg btn-primary mb-2" type="submit">Register</button>
+            </EditForm>
+        </div>
+    </div>
+</div>
+
+@code {
+    UserRegistrationDTO UserRegistrationDTO = new UserRegistrationDTO();
+
+    private async Task UserRegister()
+    {
+        var response = await accountService.Register(UserRegistrationDTO);
+
+        string messageType = response.IsSuccess ? "success" : "error";
+
+        await jsRuntime.ShowToastr(messageType, response.Message);
+    }
+
+    private async Task InvalidSubmit()
+    {
+        await jsRuntime.ShowToastr("error", "Check your inputes.");
+    }
+}

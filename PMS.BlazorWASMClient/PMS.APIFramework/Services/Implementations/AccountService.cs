@@ -71,6 +71,24 @@ namespace PMS.BlazorWASMClient.Utility.Services.Implementations
             }
         }
 
+        public async Task<ApiResult> Register(UserRegistrationDTO userRegistrationDTO)
+        {
+            var responseContent = await _httpClient.CustomPost<ApiResult>(_authenticationStateProvider, "api/Account/UserRegister", userRegistrationDTO);
+
+            if (responseContent.IsSuccess)
+            {
+                var loginRequest = new LoginRequestDTO()
+                {
+                    Email = userRegistrationDTO.Email,
+                    Password = userRegistrationDTO.Password
+                };
+
+                await Login(loginRequest);
+            }
+
+            return responseContent;
+        }
+
         public async Task<ApiResult<IEnumerable<UserSearchResponseDTO>>> SearchUser(string searchText)
         {
             var response = await _httpClient.CustomGet<IEnumerable<UserSearchResponseDTO>>(_authenticationStateProvider, $"api/Account/SearchUserByEmail/{searchText}");

@@ -10,6 +10,7 @@ namespace PMS.BlazorWASMClient.Utility.Services
 {
     public interface IAccountService
     {
+        Task<ApiResult> Register(UserRegistrationDTO userRegistrationDTO);
         Task<LoginResponseDTO> Login(LoginRequestDTO loginRequestDTO);
         Task Logout();
         Task<ApiResult<IEnumerable<UserSearchResponseDTO>>> SearchUser(string searchText);

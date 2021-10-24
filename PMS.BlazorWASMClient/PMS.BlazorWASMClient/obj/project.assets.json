@@ -1364,8 +1364,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Abolfazl\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\adavo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -1373,14 +1372,11 @@
       "projectUniqueName": "D:\\Programming\\Projects\\GitHubRepositories\\Project-Jump-BlazorWASM\\PMS.BlazorWASMClient\\PMS.BlazorWASMClient\\PMS.BlazorWASMClient.csproj",
       "projectName": "PMS.BlazorWASMClient",
       "projectPath": "D:\\Programming\\Projects\\GitHubRepositories\\Project-Jump-BlazorWASM\\PMS.BlazorWASMClient\\PMS.BlazorWASMClient\\PMS.BlazorWASMClient.csproj",
-      "packagesPath": "C:\\Users\\Abolfazl\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\adavo\\.nuget\\packages\\",
       "outputPath": "D:\\Programming\\Projects\\GitHubRepositories\\Project-Jump-BlazorWASM\\PMS.BlazorWASMClient\\PMS.BlazorWASMClient\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Abolfazl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\adavo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1445,7 +1441,7 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.NETCore.App.Runtime.browser-wasm",
-            "version": "[5.0.10, 5.0.10]"
+            "version": "[5.0.7, 5.0.7]"
           }
         ],
         "frameworkReferences": {
@@ -1453,7 +1449,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.6.21355.2\\RuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {
