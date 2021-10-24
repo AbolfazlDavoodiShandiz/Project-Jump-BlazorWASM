@@ -131,6 +131,7 @@ using Blazored.Typeahead;
 #line default
 #line hidden
 #nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/account/register")]
     public partial class Register : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -138,6 +139,31 @@ using Blazored.Typeahead;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 46 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Account\Register.razor"
+       
+    UserRegistrationDTO UserRegistrationDTO = new UserRegistrationDTO();
+
+    private async Task UserRegister()
+    {
+        var response = await accountService.Register(UserRegistrationDTO);
+
+        string messageType = response.IsSuccess ? "success" : "error";
+
+        await jsRuntime.ShowToastr(messageType, response.Message);
+    }
+
+    private async Task InvalidSubmit()
+    {
+        await jsRuntime.ShowToastr("error", "Check your inputes.");
+    }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager navigationManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime jsRuntime { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IAccountService accountService { get; set; }
     }
 }
 #pragma warning restore 1591

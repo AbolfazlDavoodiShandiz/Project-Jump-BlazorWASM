@@ -12,6 +12,7 @@ namespace PMS.APIFramework.ApiResponseContent
         public bool IsSuccess { get; set; }
         public ApiResponseStatus ApiResponseStatus { get; set; }
         public HttpStatusCode HttpStatusCode { get; set; }
+        public int HttpStatusCodeNumber { get; set; }
         public string ApiResponseStatusName { get; set; }
         public string Message { get; set; }
     }

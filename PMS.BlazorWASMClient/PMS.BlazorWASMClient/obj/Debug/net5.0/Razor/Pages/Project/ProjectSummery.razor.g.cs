@@ -715,7 +715,7 @@ using Blazored.Typeahead;
             __builder.CloseElement();
             __builder.AddMarkupContent(170, "\r\n                ");
             __builder.OpenComponent<PMS.BlazorWASMClient.Shared.Pagination>(171);
-            __builder.AddAttribute(172, "ItemCount", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+            __builder.AddAttribute(172, "ItemCount", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 165 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
                                                          ItemCount
@@ -724,7 +724,7 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(173, "PageSize", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+            __builder.AddAttribute(173, "PageSize", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 165 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
                                                                               PageSize
@@ -733,7 +733,7 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(174, "CurrentPage", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+            __builder.AddAttribute(174, "CurrentPage", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 165 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
                                                                                                      CurrentPage
@@ -742,7 +742,7 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(175, "OnPageChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.Int32>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.Int32>(this, 
+            __builder.AddAttribute(175, "OnPageChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.Int32>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.Int32>(this, 
 #nullable restore
 #line 165 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
                                                                                                                                  OnPageChanged
@@ -789,7 +789,7 @@ using Blazored.Typeahead;
             __builder.OpenElement(189, "div");
             __builder.AddAttribute(190, "class", "modal-content");
             __builder.OpenComponent<Microsoft.AspNetCore.Components.Forms.EditForm>(191);
-            __builder.AddAttribute(192, "Model", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Object>(
+            __builder.AddAttribute(192, "Model", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Object>(
 #nullable restore
 #line 178 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
                                  NewProjectTask
@@ -798,7 +798,7 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(193, "OnValidSubmit", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Forms.EditContext>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
+            __builder.AddAttribute(193, "OnValidSubmit", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Forms.EditContext>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
 #nullable restore
 #line 178 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
                                                                 CreateNewProjectTask
@@ -856,7 +856,7 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
                 );
-                __builder2.AddAttribute(216, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddAttribute(216, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 185 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
                                                            NewProjectTask.Title
@@ -865,8 +865,8 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(217, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => NewProjectTask.Title = __value, NewProjectTask.Title))));
-                __builder2.AddAttribute(218, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => NewProjectTask.Title));
+                __builder2.AddAttribute(217, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => NewProjectTask.Title = __value, NewProjectTask.Title))));
+                __builder2.AddAttribute(218, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => NewProjectTask.Title));
                 __builder2.CloseComponent();
                 __builder2.AddMarkupContent(219, "\r\n                        ");
                 __builder2.OpenElement(220, "div");
@@ -875,7 +875,7 @@ using Blazored.Typeahead;
                 __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputTextArea>(223);
                 __builder2.AddAttribute(224, "id", "description");
                 __builder2.AddAttribute(225, "class", "form-control");
-                __builder2.AddAttribute(226, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddAttribute(226, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 188 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
                                                                          NewProjectTask.Description
@@ -884,8 +884,8 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(227, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => NewProjectTask.Description = __value, NewProjectTask.Description))));
-                __builder2.AddAttribute(228, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => NewProjectTask.Description));
+                __builder2.AddAttribute(227, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => NewProjectTask.Description = __value, NewProjectTask.Description))));
+                __builder2.AddAttribute(228, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => NewProjectTask.Description));
                 __builder2.CloseComponent();
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(229, "\r\n                        ");
@@ -900,7 +900,7 @@ using Blazored.Typeahead;
 #line default
 #line hidden
 #nullable disable
-                , 237, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => NewProjectTask.DeadlineDate = __value, NewProjectTask.DeadlineDate)), 238, () => NewProjectTask.DeadlineDate);
+                , 237, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => NewProjectTask.DeadlineDate = __value, NewProjectTask.DeadlineDate)), 238, () => NewProjectTask.DeadlineDate);
                 __builder2.CloseElement();
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(239, "\r\n                    ");
@@ -939,7 +939,7 @@ using Blazored.Typeahead;
 #nullable disable
             __builder.OpenComponent<PMS.BlazorWASMClient.Shared.ConfirmAlert>(250);
             __builder.AddAttribute(251, "Title", "Detele Task");
-            __builder.AddAttribute(252, "OnConfirm", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, 
+            __builder.AddAttribute(252, "OnConfirm", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, 
 #nullable restore
 #line 205 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
                                                                  DeleteTask
@@ -1001,7 +1001,7 @@ using Blazored.Typeahead;
             __builder.OpenElement(273, "div");
             __builder.AddAttribute(274, "class", "modal-content");
             __builder.OpenComponent<Microsoft.AspNetCore.Components.Forms.EditForm>(275);
-            __builder.AddAttribute(276, "Model", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Object>(
+            __builder.AddAttribute(276, "Model", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Object>(
 #nullable restore
 #line 222 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
                                  SelectedUser
@@ -1010,7 +1010,7 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(277, "OnValidSubmit", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Forms.EditContext>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
+            __builder.AddAttribute(277, "OnValidSubmit", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Forms.EditContext>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
 #nullable restore
 #line 222 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
                                                               SaveProjectMemberList
@@ -1069,7 +1069,7 @@ using Blazored.Typeahead;
 #line default
 #line hidden
 #nullable disable
-                , 298, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => SelectedUser = __value, SelectedUser)), 299, () => SelectedUser, 300, (SearchResponse) => (__builder3) => {
+                , 298, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => SelectedUser = __value, SelectedUser)), 299, () => SelectedUser, 300, (SearchResponse) => (__builder3) => {
                     __builder3.AddContent(301, 
 #nullable restore
 #line 232 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"

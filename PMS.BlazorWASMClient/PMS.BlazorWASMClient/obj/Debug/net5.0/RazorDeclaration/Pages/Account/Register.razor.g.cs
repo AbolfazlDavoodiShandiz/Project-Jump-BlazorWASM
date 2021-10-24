@@ -151,6 +151,11 @@ using Blazored.Typeahead;
         string messageType = response.IsSuccess ? "success" : "error";
 
         await jsRuntime.ShowToastr(messageType, response.Message);
+
+        if (response.IsSuccess)
+        {
+            navigationManager.NavigateTo("/dashboard");
+        }
     }
 
     private async Task InvalidSubmit()
