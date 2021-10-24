@@ -153,7 +153,7 @@
                                 <td>@TaskList[itemIndex].DeadlineDate.ToShortDateString()</td>
                                 <td data-toggle="tooltip" data-placement="top" title="@(TaskList[itemIndex].CompleteDate)">@TaskList[itemIndex].CompleteDate?.ToShortDateString()</td>
                                 <td>
-                                    <button class="btn btn-sm btn-secondary">Assigned Users</button>
+                                    <button class="btn btn-sm btn-secondary" @onclick="()=>ShowAssignedUsersModal(true)">Assigned Users</button>
                                     <button class="btn btn-sm btn-success" disabled="@(isDone)" @onclick="()=>MarkAsDone(TaskList[itemIndex])">Done</button>
                                     <button class="btn btn-sm btn-warning" disabled="@(isDone)" @onclick="()=>ShowNewTaskModal(true,TaskList[itemIndex])">Update</button>
                                     <button class="btn btn-sm btn-danger" disabled="@(isDone)" @onclick="()=>ShowDeleteModal(TaskList[itemIndex])">Delete</button>
@@ -168,7 +168,7 @@
     </div>
 </div>
 
-@if (ShowNewProjectTaskModal)
+@if (NewProjectTaskModalVisible)
 {
     <!-- Modal -->
     <div class="modal fade show" id="create-task-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="create-task-modal-label"
@@ -212,7 +212,7 @@
     </div>
 </ConfirmAlert>
 
-@if (ShowAddProjectMemberModal)
+@if (AddProjectMemberModalVisible)
 {
     <!-- Modal -->
     <div class="modal fade show" id="add-member-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="add-member-modal-label"
@@ -265,6 +265,56 @@
     </div>
 }
 
+@if (AssignedUsersModalVisible)
+{
+    <!-- Modal -->
+    <div class="modal fade show" id="add-member-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="add-member-modal-label"
+         aria-modal="true" role="dialog" style="display:block;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="create-task-modal-header-label">Assign Task To User</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @onclick="()=>ShowAssignedUsersModal(false)"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mt-2">
+                        <div class="col">
+                            @for (int index = 0; index < MemberList.Count; index++)
+                            {
+                                int itemIndex = index;
+                                string email = MemberList[itemIndex].Email;
+                                string username = MemberList[itemIndex].Username;
+                                int userId = MemberList[itemIndex].UserId;
+
+                                <div class="form-check mt-1">
+                                    <input class="form-check-input" type="checkbox" value="" id="chk@(userId.ToString())" @onchange="(eventArgs)=>AssignTaskCheckboxChanged(email,userId,eventArgs.Value)"/>
+                                    <label class="form-check-label" for="chk@(username)">
+                                        <strong>@username</strong>&nbsp;(@email)
+                                    </label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            @foreach (var item in RegisterProjectMemberList)
+                            {
+                                <div class="row mt-2">
+                                    <span><strong>@item.UserEmail </strong>&nbsp;<i style="cursor:pointer;" class="text-danger fa fa-window-close" @onclick="()=>DeleteFromMemberList(item.UserEmail)"></i></span>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @onclick="()=>ShowAssignedUsersModal(false)">Close</button>
+                    <button type="submit" class="btn btn-primary">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
 @code {
     [Parameter]
     public string ProjectName { get; set; }
@@ -291,15 +341,18 @@
     }
     int ProjectId { get; set; }
 
-    bool ShowAddProjectMemberModal = false;
+    bool AddProjectMemberModalVisible = false;
     List<ProjectMemberDTO> MemberList = new List<ProjectMemberDTO>();
     UserSearchResponseDTO SelectedUser = new UserSearchResponseDTO();
     List<ProjectMemberRegisterDTO> RegisterProjectMemberList = new List<ProjectMemberRegisterDTO>();
 
-    bool ShowNewProjectTaskModal = false;
+    bool NewProjectTaskModalVisible = false;
     bool IsCreateProjectTaskMode = true;
     ProjectTaskRegisterDTO NewProjectTask = new ProjectTaskRegisterDTO();
     ProjectTaskDTO SelectedProjectTask = new ProjectTaskDTO();
+
+    bool AssignedUsersModalVisible = false;
+
 
     public int TotalCount
     {
@@ -479,7 +532,7 @@
             IsCreateProjectTaskMode = false;
         }
 
-        ShowNewProjectTaskModal = show;
+        NewProjectTaskModalVisible = show;
     }
 
     private void ShowDeleteModal(ProjectTaskDTO task)
@@ -533,7 +586,7 @@
 
     private void ShowProjectMemberModal(bool show)
     {
-        ShowAddProjectMemberModal = show;
+        AddProjectMemberModalVisible = show;
     }
 
     private void AddToMemberList()
@@ -583,5 +636,20 @@
         await jsRuntime.ShowToastr(messageType, response.Message);
 
         await GetMembers();
+    }
+
+    private void ShowAssignedUsersModal(bool show)
+    {
+        AssignedUsersModalVisible = show;
+    }
+
+    private async Task AssignTaskCheckboxChanged(string email, int userId, object value)
+    {
+        var isChecked = (bool)value;
+
+        if (isChecked)
+        {
+            await jsRuntime.ShowToastr("info", $"{email} checked.");
+        }
     }
 }

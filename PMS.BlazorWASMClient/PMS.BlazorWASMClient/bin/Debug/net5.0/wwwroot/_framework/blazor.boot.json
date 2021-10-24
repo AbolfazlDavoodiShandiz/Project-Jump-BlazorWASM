@@ -202,12 +202,12 @@
       "netstandard.dll": "sha256-5TcSqPhm3fAT6s3NH7+BMGakcfGgZGd3\/\/cVwVs2VPI=",
       "System.Private.CoreLib.dll": "sha256-VJv3DLM\/G0m\/RnTeWL9X8mkbxlsn8nNRhm0BHYEY+uo=",
       "PMS.BlazorWASMClient.Utility.dll": "sha256-sK\/D6PkDBihPkuKHfJELMA0n7jdcR9MPoQ\/yxOlaoLI=",
-      "PMS.BlazorWASMClient.dll": "sha256-fjPg99Mp9toRR4z32LI2qTfg34S5bnG4CXAMJSMnwcI="
+      "PMS.BlazorWASMClient.dll": "sha256-oYLqmrO1eVAy7v7HbKIK6dfFtmPVxP4aJydecSxsF\/4="
     },
     "lazyAssembly": null,
     "pdb": {
       "PMS.BlazorWASMClient.Utility.pdb": "sha256-+fePTARx7MJT+PaM+ScfGNL7ZqoEp37yAsd67d0NW8U=",
-      "PMS.BlazorWASMClient.pdb": "sha256-qg6HEarJQOlqGeqJPK0eZkOI4s6WJi\/+mHO6gMgnTf0="
+      "PMS.BlazorWASMClient.pdb": "sha256-eGZPEUFLI\/P+L78AxNZ6gaSDn83J1PlVAgqZJxrsYD4="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-PvlHrby1PYtdX46ITs6pB8iDNqXNcewh8Eoa\/Gm2+GM=",

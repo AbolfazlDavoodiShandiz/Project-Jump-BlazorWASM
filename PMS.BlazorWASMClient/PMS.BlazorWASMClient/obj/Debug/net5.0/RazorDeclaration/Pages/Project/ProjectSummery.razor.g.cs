@@ -147,7 +147,7 @@ using Blazored.Typeahead;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 268 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
+#line 318 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
        
     [Parameter]
     public string ProjectName { get; set; }
@@ -174,15 +174,18 @@ using Blazored.Typeahead;
     }
     int ProjectId { get; set; }
 
-    bool ShowAddProjectMemberModal = false;
+    bool AddProjectMemberModalVisible = false;
     List<ProjectMemberDTO> MemberList = new List<ProjectMemberDTO>();
     UserSearchResponseDTO SelectedUser = new UserSearchResponseDTO();
     List<ProjectMemberRegisterDTO> RegisterProjectMemberList = new List<ProjectMemberRegisterDTO>();
 
-    bool ShowNewProjectTaskModal = false;
+    bool NewProjectTaskModalVisible = false;
     bool IsCreateProjectTaskMode = true;
     ProjectTaskRegisterDTO NewProjectTask = new ProjectTaskRegisterDTO();
     ProjectTaskDTO SelectedProjectTask = new ProjectTaskDTO();
+
+    bool AssignedUsersModalVisible = false;
+
 
     public int TotalCount
     {
@@ -362,7 +365,7 @@ using Blazored.Typeahead;
             IsCreateProjectTaskMode = false;
         }
 
-        ShowNewProjectTaskModal = show;
+        NewProjectTaskModalVisible = show;
     }
 
     private void ShowDeleteModal(ProjectTaskDTO task)
@@ -416,7 +419,7 @@ using Blazored.Typeahead;
 
     private void ShowProjectMemberModal(bool show)
     {
-        ShowAddProjectMemberModal = show;
+        AddProjectMemberModalVisible = show;
     }
 
     private void AddToMemberList()
@@ -466,6 +469,21 @@ using Blazored.Typeahead;
         await jsRuntime.ShowToastr(messageType, response.Message);
 
         await GetMembers();
+    }
+
+    private void ShowAssignedUsersModal(bool show)
+    {
+        AssignedUsersModalVisible = show;
+    }
+
+    private async Task AssignTaskCheckboxChanged(string email, int userId, object value)
+    {
+        var isChecked = (bool)value;
+
+        if (isChecked)
+        {
+            await jsRuntime.ShowToastr("info", $"{email} checked.");
+        }
     }
 
 #line default
