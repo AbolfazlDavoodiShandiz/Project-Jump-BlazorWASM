@@ -17,5 +17,7 @@ namespace PMS.BlazorWASMClient.Utility.DTOs
         public int OwnerId { get; set; }
         public int ProjectId { get; set; }
         public bool Done { get; set; }
+
+        public List<UserTaskDTO> UserTasks { get; set; }
     }
 }

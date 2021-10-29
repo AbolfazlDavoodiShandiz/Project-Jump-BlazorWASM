@@ -14,5 +14,7 @@ namespace PMS.BlazorWASMClient.Utility.Services
         Task<ApiResult> UpdateProjectTask(ProjectTaskUpdateDTO projectTaskUpdateDTO);
         Task<ApiResult> DeleteProjectTask(int id);
         Task<ApiResult> MarkAsDone(int id);
+        Task<ApiResult> AssignTask(int taskId, int userId);
+        Task<ApiResult> UnassignTask(int taskId, int userId);
     }
 }

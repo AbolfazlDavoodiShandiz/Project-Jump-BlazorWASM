@@ -202,7 +202,6 @@ using Blazored.Typeahead;
 
     protected override async Task OnInitializedAsync()
     {
-        var g = ProjectTableGroups;
         var authState = await AuthenticationState;
         if (authState.User.Identity.IsAuthenticated)
         {

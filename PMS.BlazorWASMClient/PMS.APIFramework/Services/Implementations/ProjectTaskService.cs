@@ -23,6 +23,19 @@ namespace PMS.BlazorWASMClient.Utility.Services.Implementations
             _customAuthenticationStateProvider = (CustomAuthenticationStateProvider)authenticationStateProvider;
         }
 
+        public async Task<ApiResult> AssignTask(int taskId, int userId)
+        {
+            var assignDTO = new ProjectTaskAssignToMemberDTO()
+            {
+                TaskId = taskId,
+                UserId = userId
+            };
+
+            var response = await _httpClient.CustomPost(_customAuthenticationStateProvider, "api/projecttask/AssignTaskToProjectMember", assignDTO);
+
+            return response;
+        }
+
         public async Task<ApiResult> CreateProjectTask(ProjectTaskRegisterDTO projectTaskRegisterDTO)
         {
             var response = await _httpClient.CustomPost(_customAuthenticationStateProvider, "api/projecttask/CreateProjectTask", projectTaskRegisterDTO);
@@ -50,6 +63,19 @@ namespace PMS.BlazorWASMClient.Utility.Services.Implementations
             };
 
             var response = await _httpClient.CustomPost(_customAuthenticationStateProvider, "api/projecttask/MarkTaskAsDone", idDTO);
+
+            return response;
+        }
+
+        public async Task<ApiResult> UnassignTask(int taskId, int userId)
+        {
+            var assignDTO = new ProjectTaskAssignToMemberDTO()
+            {
+                TaskId = taskId,
+                UserId = userId
+            };
+
+            var response = await _httpClient.CustomPost(_customAuthenticationStateProvider, "api/projecttask/UnassignTask", assignDTO);
 
             return response;
         }
