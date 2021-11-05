@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "1I3bVlljbSd/GrUDz39bzo/pcSLGnQJP1rBVZgzpZffbKNhkrba7KS25Zvi131zHbHa8yFbIJ3qtCD8/VMWSdQ==",
+  "dgSpecHash": "v0RpbmqEbXf6PIx+BsVi0nnACOuop8AdVT9LnC0Embh9TOJJWQHkA5TwG0fUo/XCAOm/Hi8mt8X013IaY/iczA==",
   "success": true,
   "projectFilePath": "D:\\Programming\\Projects\\GitHubRepositories\\Project-Jump-BlazorWASM\\PMS.BlazorWASMClient\\PMS.BlazorWASMClient\\PMS.BlazorWASMClient.csproj",
   "expectedPackageFiles": [
@@ -34,7 +34,7 @@
     "C:\\Users\\Abolfazl\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\Abolfazl\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512",
     "C:\\Users\\Abolfazl\\.nuget\\packages\\system.net.http.json\\5.0.0\\system.net.http.json.5.0.0.nupkg.sha512",
-    "C:\\Users\\Abolfazl\\.nuget\\packages\\microsoft.netcore.app.runtime.browser-wasm\\5.0.10\\microsoft.netcore.app.runtime.browser-wasm.5.0.10.nupkg.sha512"
+    "C:\\Users\\Abolfazl\\.nuget\\packages\\microsoft.netcore.app.runtime.browser-wasm\\5.0.11\\microsoft.netcore.app.runtime.browser-wasm.5.0.11.nupkg.sha512"
   ],
   "logs": []
 }

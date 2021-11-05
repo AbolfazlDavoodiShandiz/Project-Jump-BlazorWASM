@@ -16,5 +16,7 @@ namespace PMS.BlazorWASMClient.Utility.Services
         Task<ApiResult> MarkAsDone(int id);
         Task<ApiResult> AssignTask(int taskId, int userId);
         Task<ApiResult> UnassignTask(int taskId, int userId);
+        Task<ApiResult<IEnumerable<ProjectTaskDTO>>> GetUserTasks();
+        Task<ApiResult<IEnumerable<string>>> GetTaskAssignedUsers(int taskId);
     }
 }

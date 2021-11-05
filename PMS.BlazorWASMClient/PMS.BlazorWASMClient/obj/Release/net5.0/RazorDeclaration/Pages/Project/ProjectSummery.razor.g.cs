@@ -147,8 +147,13 @@ using Blazored.Typeahead;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 268 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
+#line 322 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
        
+    [CascadingParameter]
+    Task<AuthenticationState> AuthenticationState { get; set; }
+
+    public int CurrentUserId { get; set; }
+
     [Parameter]
     public string ProjectName { get; set; }
 
@@ -174,15 +179,19 @@ using Blazored.Typeahead;
     }
     int ProjectId { get; set; }
 
-    bool ShowAddProjectMemberModal = false;
+    bool AddProjectMemberModalVisible = false;
     List<ProjectMemberDTO> MemberList = new List<ProjectMemberDTO>();
     UserSearchResponseDTO SelectedUser = new UserSearchResponseDTO();
     List<ProjectMemberRegisterDTO> RegisterProjectMemberList = new List<ProjectMemberRegisterDTO>();
 
-    bool ShowNewProjectTaskModal = false;
+    bool NewProjectTaskModalVisible = false;
     bool IsCreateProjectTaskMode = true;
     ProjectTaskRegisterDTO NewProjectTask = new ProjectTaskRegisterDTO();
     ProjectTaskDTO SelectedProjectTask = new ProjectTaskDTO();
+
+    bool AssignedUsersModalVisible = false;
+    int SelectedTaskId { get; set; }
+    List<ProjectTaskAssignToMemberDTO> taskAssignedMembers = new List<ProjectTaskAssignToMemberDTO>();
 
     public int TotalCount
     {
@@ -220,6 +229,12 @@ using Blazored.Typeahead;
 
     protected override async Task OnInitializedAsync()
     {
+        var authState = await AuthenticationState;
+        if (authState.User.Identity.IsAuthenticated)
+        {
+            CurrentUserId = authState.User.Identity.GetUserId();
+        }
+
         var result = await projectService.GetProjectSummary(ProjectName);
 
         if (result.IsSuccess)
@@ -362,7 +377,7 @@ using Blazored.Typeahead;
             IsCreateProjectTaskMode = false;
         }
 
-        ShowNewProjectTaskModal = show;
+        NewProjectTaskModalVisible = show;
     }
 
     private void ShowDeleteModal(ProjectTaskDTO task)
@@ -416,7 +431,7 @@ using Blazored.Typeahead;
 
     private void ShowProjectMemberModal(bool show)
     {
-        ShowAddProjectMemberModal = show;
+        AddProjectMemberModalVisible = show;
     }
 
     private void AddToMemberList()
@@ -466,6 +481,128 @@ using Blazored.Typeahead;
         await jsRuntime.ShowToastr(messageType, response.Message);
 
         await GetMembers();
+    }
+
+    private void ShowAssignedUsersModal(bool show, int? taskId = null)
+    {
+        if (show)
+        {
+            if (taskId is not null)
+            {
+                SelectedTaskId = taskId.Value;
+                taskAssignedMembers.Clear();
+                var selectedTask = PureTaskList.Where(t => t.Id == taskId.Value).Single();
+
+                foreach (var userTask in selectedTask.UserTasks)
+                {
+                    var assined = new ProjectTaskAssignToMemberDTO()
+                    {
+                        TaskId = userTask.TaskId,
+                        UserId = userTask.UserId
+                    };
+
+                    taskAssignedMembers.Add(assined);
+                }
+            }
+            else
+            {
+                SelectedTaskId = 0;
+            }
+        }
+        else
+        {
+            SelectedTaskId = 0;
+            taskAssignedMembers.Clear();
+        }
+
+        AssignedUsersModalVisible = show;
+    }
+
+    private void AssignTaskCheckboxChanged(string email, int userId, object value)
+    {
+        var isChecked = (bool)value;
+
+        if (isChecked)
+        {
+            var exist = taskAssignedMembers.Any(t => t.TaskId == SelectedTaskId && t.UserId == userId);
+
+            if (!exist)
+            {
+                var assign = new ProjectTaskAssignToMemberDTO()
+                {
+                    TaskId = SelectedTaskId,
+                    UserId = userId,
+                    IsNew = true,
+                    Email = email
+                };
+
+                taskAssignedMembers.Add(assign);
+            }
+        }
+        else
+        {
+            var deleteAssign = taskAssignedMembers.Where(t => t.TaskId == SelectedTaskId && t.UserId == userId).Single();
+
+            if (deleteAssign.IsNew)
+            {
+                taskAssignedMembers.Remove(deleteAssign);
+            }
+            else
+            {
+                deleteAssign.IsNew = false;
+                deleteAssign.IsDeleted = true;
+                deleteAssign.Email = email;
+            }
+        }
+    }
+
+    private async Task SaveAssignedTasks()
+    {
+        foreach (var item in taskAssignedMembers)
+        {
+            if (item.IsNew)
+            {
+                var userTaskDTO = new UserTaskDTO
+                {
+                    RegisterUserId = CurrentUserId,
+                    TaskId = item.TaskId,
+                    UserId = item.UserId
+                };
+
+                var response = await projectTaskService.AssignTask(item.TaskId, item.UserId);
+
+                if (response.IsSuccess)
+                {
+                    await jsRuntime.ShowToastr("success", $"Task assigned to {item.Email} successfully.");
+
+                    var task = PureTaskList.Where(t => t.Id == item.TaskId).Single();
+                    task.UserTasks.Add(userTaskDTO);
+                }
+                else
+                {
+                    await jsRuntime.ShowToastr("error", $"Assign task to {item.Email} failed.");
+                }
+            }
+
+            if (item.IsDeleted)
+            {
+                var response = await projectTaskService.UnassignTask(item.TaskId, item.UserId);
+
+                if (response.IsSuccess)
+                {
+                    await jsRuntime.ShowToastr("success", $"Task unassigned successfully.");
+
+                    var task = PureTaskList.Where(t => t.Id == item.TaskId).Single();
+                    task.UserTasks.Remove(task.UserTasks.Where(ut => ut.TaskId == item.TaskId && ut.UserId == item.UserId).Single());
+                }
+                else
+                {
+                    await jsRuntime.ShowToastr("error", $"Unassign task from {item.Email} failed.");
+                }
+            }
+        }
+
+        ShowAssignedUsersModal(false);
     }
 
 #line default

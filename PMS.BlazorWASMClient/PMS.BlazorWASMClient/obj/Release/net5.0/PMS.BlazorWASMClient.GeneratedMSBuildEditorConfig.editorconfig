@@ -7,4 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = PMS.BlazorWASMClient
-build_property.ProjectDir = d:\programming\projects\githubrepositories\project-jump-blazorwasm\pms.blazorwasmclient\PMS.BlazorWASMClient\
+build_property.ProjectDir = D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\

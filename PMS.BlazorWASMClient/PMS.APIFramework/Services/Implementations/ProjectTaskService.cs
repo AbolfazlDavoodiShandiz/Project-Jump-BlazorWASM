@@ -55,6 +55,20 @@ namespace PMS.BlazorWASMClient.Utility.Services.Implementations
             return response;
         }
 
+        public async Task<ApiResult<IEnumerable<string>>> GetTaskAssignedUsers(int taskId)
+        {
+            var response = await _httpClient.CustomGet<IEnumerable<string>>(_customAuthenticationStateProvider, $"api/projecttask/GetTaskAssignedUsers/{taskId}");
+
+            return response;
+        }
+
+        public async Task<ApiResult<IEnumerable<ProjectTaskDTO>>> GetUserTasks()
+        {
+            var response = await _httpClient.CustomGet<IEnumerable<ProjectTaskDTO>>(_customAuthenticationStateProvider, "api/projecttask/UserAssignedTaskList");
+
+            return response;
+        }
+
         public async Task<ApiResult> MarkAsDone(int id)
         {
             var idDTO = new IdDTO

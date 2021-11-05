@@ -15,7 +15,9 @@ namespace PMS.BlazorWASMClient.Utility.DTOs
         public DateTime DeadlineDate { get; set; }
         public DateTime? CompleteDate { get; set; }
         public int OwnerId { get; set; }
+        public string OwnerUsername { get; set; }
         public int ProjectId { get; set; }
+        public string ProjectTitle { get; set; }
         public bool Done { get; set; }
 
         public List<UserTaskDTO> UserTasks { get; set; }

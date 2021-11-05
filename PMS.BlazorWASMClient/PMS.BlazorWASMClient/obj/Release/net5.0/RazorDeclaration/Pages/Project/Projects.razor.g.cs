@@ -149,8 +149,8 @@ using Blazored.Typeahead;
 #nullable restore
 #line 117 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
       
-    [CascadingParameter]
-    Task<AuthenticationState> AuthenticationState { get; set; }
+        [CascadingParameter]
+        Task<AuthenticationState> AuthenticationState { get; set; }
 
     private ConfirmAlert ConfirmAlert;
     private Pagination Pagination;
@@ -202,7 +202,6 @@ using Blazored.Typeahead;
 
     protected override async Task OnInitializedAsync()
     {
-        var g = ProjectTableGroups;
         var authState = await AuthenticationState;
         if (authState.User.Identity.IsAuthenticated)
         {
@@ -215,15 +214,25 @@ using Blazored.Typeahead;
     private async Task GetProjectList()
     {
 
-        var list = await projectService.GetAll();
+        var response = await projectService.GetAll();
 
-        if (list is not null && list.Data.Count() > 0)
+        if (response.IsSuccess)
         {
-            PureProjectList = list.Data.ToList();
+            if (response.Data is not null && response.Data.Count() > 0)
+            {
+                PureProjectList = response.Data.ToList();
+            }
         }
         else
         {
-            await jsRuntime.ShowToastr("error", "An error occured while getting projects from server.");
+            if (response.HttpStatusCodeNumber == 404)
+            {
+                await jsRuntime.ShowToastr("warning", response.Message);
+            }
+            else
+            {
+                await jsRuntime.ShowToastr("error", "An error occured while getting projects from server.");
+            }
         }
     }
 

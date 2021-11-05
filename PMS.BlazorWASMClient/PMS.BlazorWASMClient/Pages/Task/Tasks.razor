@@ -1,33 +1,240 @@
 ﻿@page "/tasks"
 
+@inject IProjectTaskService projectTaskService
+@inject IJSRuntime jsRuntime
+
 @attribute [Authorize]
 
-<h1>Tasks</h1>
+<div class="row mb-2">
+    <h3>Tasks assigned to @Username</h3>
+</div>
 
-<nav>
-    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <button class="nav-link active" id="nav-my-tasks" data-bs-toggle="tab" data-bs-target="#tab-my-tasks" type="button" role="tab"
-                aria-controls="tab-my-taskse" aria-selected="true">
-            Tasks Assigned to me
-        </button>
-        <button class="nav-link" id="nav-my-created-tasks" data-bs-toggle="tab" data-bs-target="#tab-my-created-tasks" type="button" role="tab"
-                aria-controls="nav-home" aria-selected="true">
-            Tasks I Created
-        </button>
-        <button class="nav-link" id="nav-my-assigned-tasks" data-bs-toggle="tab" data-bs-target="#tab-my-assigned-tasks" type="button" role="tab"
-                aria-controls="nav-profile" aria-selected="false">
-            Tasks I Assigned
-        </button>
-    </div>
-</nav>
-<div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade show active" id="tab-my-tasks" role="tabpanel" aria-labelledby="tab-my-tasks">
-        <UserAssignedTasks></UserAssignedTasks>
-    </div>
-    <div class="tab-pane fade" id="tab-my-created-tasks" role="tabpanel" aria-labelledby="tab-my-created-tasks">
-        <UserCreatedTasks></UserCreatedTasks>
-    </div>
-    <div class="tab-pane fade" id="tab-my-assigned-tasks" role="tabpanel" aria-labelledby="tab-my-assigned-tasks">
-        <UserCreatedTasks></UserCreatedTasks>
+<div class="row mb-2">
+    <div class="col">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Status</th>
+                    <th>Title</th>
+                    <th>Project Name</th>
+                    <th>Created By</th>
+                    <th>Created Date</th>
+                    <th>Deadline Date</th>
+                    <th>Complete Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int index = 0; index < TaskList.Count(); index++)
+                {
+                    int itemIndex = index;
+                    int taskId = TaskList[itemIndex].Id;
+                    string statusText = string.Empty;
+                    string statusClass = string.Empty;
+                    bool isDone = TaskList[itemIndex].Done;
+
+                    @if (isDone)
+                    {
+                        statusText = "Finished";
+                        statusClass = "badge bg-success";
+
+                        if (TaskList[itemIndex].CompleteDate.HasValue && TaskList[itemIndex].CompleteDate.Value.Date >= TaskList[itemIndex].DeadlineDate.Date)
+                        {
+                            statusText = "Finished After Deadline";
+                            statusClass = "badge bg-danger";
+                        }
+                    }
+                    else
+                    {
+                        statusText = "In Progress";
+                        statusClass = "badge bg-warning text-dark";
+
+                        if (DateTime.Now.Date >= TaskList[itemIndex].DeadlineDate.Date)
+                        {
+                            statusText = "Deadline Reached";
+                            statusClass = "badge bg-danger";
+                        }
+                    }
+
+                    <tr>
+                        <td>@(((CurrentPage - 1) * PageSize) + itemIndex + 1)</td>
+                        <td><span class="@(statusClass)">@statusText</span></td>
+                        <td><a style="text-decoration:none;" href="#"> @TaskList[itemIndex].Title</a></td>
+                        <td>@TaskList[itemIndex].ProjectTitle</td>
+                        <td>@TaskList[itemIndex].OwnerUsername</td>
+                        <td data-toggle="tooltip" data-placement="top" title="@(TaskList[itemIndex].CreatedDate)">@TaskList[itemIndex].CreatedDate.ToShortDateString()</td>
+                        <td>@TaskList[itemIndex].DeadlineDate.ToShortDateString()</td>
+                        <td data-toggle="tooltip" data-placement="top" title="@(TaskList[itemIndex].CompleteDate)">@TaskList[itemIndex].CompleteDate?.ToShortDateString()</td>
+                        <td>
+                            <button class="btn btn-sm btn-secondary" @onclick="()=>ShowAssignedUsersModal(true,taskId)">Assigned Users</button>
+                            <button class="btn btn-sm btn-success" disabled="@(isDone)" @onclick="()=>MarkAsDone(TaskList[itemIndex])">Done</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <Pagination @ref="Pagination" ItemCount="ItemCount" PageSize="PageSize" CurrentPage="CurrentPage" OnPageChanged="OnPageChanged"></Pagination>
     </div>
 </div>
+
+@if (AssignedUsersModalVisible)
+{
+    <!-- Modal -->
+    <div class="modal fade show" id="add-member-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="add-member-modal-label"
+         aria-modal="true" role="dialog" style="display:block;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="create-task-modal-header-label">Assign Task To User</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @onclick="()=>ShowAssignedUsersModal(false)"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mt-2">
+                        <div class="col">
+                            @for (int index = 0; index < AssignedUsers.Count; index++)
+                            {
+                                int itemIndex = index;
+
+                                <div class="mt-1">
+                                    <label>
+                                        <strong>@AssignedUsers[itemIndex]</strong>
+                                    </label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @onclick="()=>ShowAssignedUsersModal(false)">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code{
+    [CascadingParameter]
+    Task<AuthenticationState> AuthenticationState { get; set; }
+    string Username { get; set; }
+    int UserId { get; set; }
+
+    Pagination Pagination;
+    int ItemCount { get; set; }
+    int PageSize { get; set; } = 15;
+    int CurrentPage { get; set; }
+
+    List<ProjectTaskDTO> PureTaskList = new List<ProjectTaskDTO>();
+    List<ProjectTaskDTO> TaskList
+    {
+        get
+        {
+            return FilteredTable()
+                .OrderByDescending(t => t.CreatedDate)
+                .ToList();
+        }
+    }
+
+    bool AssignedUsersModalVisible = false;
+    int SelectedTaskId { get; set; }
+    List<string> AssignedUsers = new List<string>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationState;
+        if (authState.User.Identity.IsAuthenticated)
+        {
+            Username = authState.User.Identity.GetUsername();
+            UserId = authState.User.Identity.GetUserId();
+
+            await GetTasks();
+        }
+    }
+
+    private async Task GetTasks()
+    {
+        var tasks = await projectTaskService.GetUserTasks();
+
+        if (tasks.IsSuccess)
+        {
+            PureTaskList = tasks.Data.ToList();
+            ItemCount = PureTaskList.Count;
+            CurrentPage = 1;
+        }
+    }
+
+    private List<ProjectTaskDTO> FilteredTable()
+    {
+        List<ProjectTaskDTO> list = new List<ProjectTaskDTO>();
+
+        list = PaginateTable(GroupedTable(PureTaskList));
+
+        return list;
+    }
+
+    private List<ProjectTaskDTO> GroupedTable(List<ProjectTaskDTO> pureList)
+    {
+        List<ProjectTaskDTO> list = new List<ProjectTaskDTO>();
+
+        list = pureList;
+
+        ItemCount = list.Count;
+
+        return list;
+    }
+
+    private List<ProjectTaskDTO> PaginateTable(List<ProjectTaskDTO> pureList)
+    {
+        List<ProjectTaskDTO> list = new List<ProjectTaskDTO>();
+
+        list = pureList.Skip(PageSize * (CurrentPage - 1)).Take(PageSize).ToList();
+
+        return list;
+    }
+
+    private void OnPageChanged(int page)
+    {
+        CurrentPage = page;
+    }
+
+    private async Task MarkAsDone(ProjectTaskDTO projectTaskDTO)
+    {
+        var result = await projectTaskService.MarkAsDone(projectTaskDTO.Id);
+
+        string messageType = result.IsSuccess ? "success" : "error";
+
+        await jsRuntime.ShowToastr(messageType, result.Message);
+
+        if (result.IsSuccess)
+        {
+            var item = PureTaskList.Where(t => t.Id == projectTaskDTO.Id).Single();
+
+            item.Done = true;
+            item.CompleteDate = DateTime.Now;
+        }
+    }
+
+    private async Task ShowAssignedUsersModal(bool show, int? taskId = null)
+    {
+        if (show)
+        {
+            if (taskId is not null)
+            {
+                SelectedTaskId = taskId.Value;
+
+                var response = await projectTaskService.GetTaskAssignedUsers(SelectedTaskId);
+
+                if (response.IsSuccess)
+                {
+                    AssignedUsers = response.Data.ToList();
+                }
+            }
+        }
+        else
+        {
+            SelectedTaskId = 0;
+        }
+
+        AssignedUsersModalVisible = show;
+    }
+}
