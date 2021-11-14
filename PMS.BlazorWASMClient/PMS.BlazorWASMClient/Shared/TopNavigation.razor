@@ -1,0 +1,25 @@
+﻿@inject INotificationService notificationService
+
+<PushNotification></PushNotification>
+&nbsp;
+<span>Hello, @Username</span> &nbsp; &nbsp;<a href="/account/logout" class="btn btn-secondary">Log Out</a>
+
+
+@code {
+    [CascadingParameter]
+    Task<AuthenticationState> AuthenticationState { get; set; }
+
+    public string Username { get; set; }
+    List<ClientNotification> Notifications { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        var authState = await AuthenticationState;
+        Username = authState.User.Identity.GetUsername();
+    }
+
+    //protected override async Task OnInitializedAsync()
+    //{
+
+    //}
+}

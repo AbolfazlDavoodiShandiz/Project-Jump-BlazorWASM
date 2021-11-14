@@ -126,6 +126,13 @@ using PMS.BlazorWASMClient.Utility.Enums;
 #nullable disable
 #nullable restore
 #line 17 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
+using PMS.BlazorWASMClient.Utility.Notifications;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 18 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
 using Blazored.Typeahead;
 
 #line default

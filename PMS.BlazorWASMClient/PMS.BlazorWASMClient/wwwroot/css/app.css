@@ -50,3 +50,7 @@ a, .btn-link {
 .card-bg {
     background-color: #f7f7f7;
 }
+
+.clickable {
+    cursor: pointer;
+}

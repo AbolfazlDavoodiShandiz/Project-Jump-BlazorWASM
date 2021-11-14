@@ -27,5 +27,10 @@ namespace PMS.BlazorWASMClient.Utility.Extensions
                 return jSRuntime.InvokeVoidAsync("ShowToastr", "warning", message);
             }
         }
+
+        public static ValueTask ShowPopover(this IJSRuntime jSRuntime)
+        {
+            return jSRuntime.InvokeVoidAsync("ShowPopover");
+        }
     }
 }

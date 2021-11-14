@@ -1,0 +1,33 @@
+﻿@inject INotificationService notificationService
+@inject IJSRuntime jsRuntime
+
+
+<div class="notifications">
+    <i class="fa fa-bell fa-2x clickable"></i>
+</div>
+
+@code {
+
+    public List<ClientNotification> Notifications { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await GetNotifications();
+        }
+    }
+
+    private async Task GetNotifications()
+    {
+        var notificationResponse = await notificationService.GetAll();
+
+        //await jsRuntime.ShowToastr("info", "Here");
+        await jsRuntime.ShowPopover();
+
+        if (notificationResponse.Count() > 0)
+        {
+            Notifications = notificationResponse.ToList();
+        }
+    }
+}

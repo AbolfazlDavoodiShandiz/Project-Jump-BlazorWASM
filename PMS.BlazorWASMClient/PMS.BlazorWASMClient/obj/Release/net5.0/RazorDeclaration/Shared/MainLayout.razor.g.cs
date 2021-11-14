@@ -126,6 +126,13 @@ using PMS.BlazorWASMClient.Utility.Enums;
 #nullable disable
 #nullable restore
 #line 17 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
+using PMS.BlazorWASMClient.Utility.Notifications;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 18 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\_Imports.razor"
 using Blazored.Typeahead;
 
 #line default
@@ -138,23 +145,6 @@ using Blazored.Typeahead;
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 24 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\MainLayout.razor"
-      
-    [CascadingParameter]
-    Task<AuthenticationState> AuthenticationState { get; set; }
-
-    public string Username { get; set; }
-
-    protected override async Task OnParametersSetAsync()
-    {
-        var authState = await AuthenticationState;
-        Username = authState.User.Identity.GetUsername();
-    }
-
-#line default
-#line hidden
-#nullable disable
     }
 }
 #pragma warning restore 1591

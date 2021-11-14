@@ -31,3 +31,18 @@ window.CloseModal = (modalId) => {
 
     $(".modal-backdrop").remove();
 }
+
+window.ShowPopover = () => {
+    console.log("Here");
+    $(".notifications").popover({
+        html: true,
+        title: "Notifications",
+        content: function () {
+            return '<p>Hello</p>'
+        },
+        placement: "bottom",
+        template: '<div class="popover popover-notifications" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+    });
+
+    $(".notifications").popover('show');
+}
