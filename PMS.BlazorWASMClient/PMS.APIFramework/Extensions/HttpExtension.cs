@@ -18,6 +18,9 @@ namespace PMS.BlazorWASMClient.Utility.Extensions
         public static async Task<ApiResult> CustomPost(this HttpClient httpClient, CustomAuthenticationStateProvider customAuthenticationStateProvider, string apiAdress,
             object data)
         {
+            // check the token validation
+            var authState = await customAuthenticationStateProvider.GetAuthenticationStateAsync();
+
             var response = await httpClient.PostAsJsonAsync(apiAdress, data);
             var responseContent = await response.Content.ReadAsStringAsync();
             var apiResponseContent = JsonConvert.DeserializeObject<ApiResult>(responseContent);
@@ -33,6 +36,9 @@ namespace PMS.BlazorWASMClient.Utility.Extensions
         public static async Task<ApiResult<TData>> CustomPost<TData>(this HttpClient httpClient, CustomAuthenticationStateProvider customAuthenticationStateProvider,
             string apiAdress, object data)
         {
+            // check the token validation
+            var authState = await customAuthenticationStateProvider.GetAuthenticationStateAsync();
+
             try
             {
                 var response = await httpClient.PostAsJsonAsync(apiAdress, data);
@@ -55,6 +61,9 @@ namespace PMS.BlazorWASMClient.Utility.Extensions
         public static async Task<ApiResult<TData>> CustomGet<TData>(this HttpClient httpClient, CustomAuthenticationStateProvider customAuthenticationStateProvider,
             string apiAddress, string requestParameter = null)
         {
+            // check the token validation
+            var authState = await customAuthenticationStateProvider.GetAuthenticationStateAsync();
+
             try
             {
                 string path = string.IsNullOrWhiteSpace(requestParameter) ? apiAddress : $"{apiAddress}/{requestParameter}";

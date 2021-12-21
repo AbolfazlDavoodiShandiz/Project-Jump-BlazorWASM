@@ -139,7 +139,7 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
+#line 7 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
            [Authorize]
 
 #line default
@@ -154,10 +154,10 @@ using Blazored.Typeahead;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 117 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
+#line 118 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
       
-        [CascadingParameter]
-        Task<AuthenticationState> AuthenticationState { get; set; }
+    [CascadingParameter]
+    Task<AuthenticationState> AuthenticationState { get; set; }
 
     private ConfirmAlert ConfirmAlert;
     private Pagination Pagination;
@@ -388,6 +388,7 @@ using Blazored.Typeahead;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager navigationManager { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime jsRuntime { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IProjectService projectService { get; set; }
     }

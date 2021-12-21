@@ -32,21 +32,26 @@ namespace PMS.BlazorWASMClient.Utility.StateProvider
             {
                 var accountData = JsonConvert.DeserializeObject<LoginResponseDTO>(storageAccountData);
 
-                if (accountData.UserClaims is not null)
+                if (accountData.TokenExpirationDate>DateTime.Now)
                 {
-                    var userClaims = new List<Claim>();
-                    //convert claim dictionary to list
-                    userClaims = accountData.UserClaims.Select(x => new Claim(x.Key, x.Value.ToString())).ToList();
+                    if (accountData.UserClaims is not null)
+                    {
+                        var userClaims = new List<Claim>();
+                        //convert claim dictionary to list
+                        userClaims = accountData.UserClaims.Select(x => new Claim(x.Key, x.Value.ToString())).ToList();
 
-                    var claimsIdentity = new ClaimsIdentity(userClaims, "JWT");
-                    var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-                    var authenticationState = new AuthenticationState(claimsPrincipal);
+                        var claimsIdentity = new ClaimsIdentity(userClaims, "JWT");
+                        var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+                        var authenticationState = new AuthenticationState(claimsPrincipal);
 
-                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", accountData.Token);
+                        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", accountData.Token);
 
-                    return authenticationState;
+                        return authenticationState;
+                    }
                 }
             }
+
+            _httpClient.DefaultRequestHeaders.Authorization = null;
 
             return new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
         }

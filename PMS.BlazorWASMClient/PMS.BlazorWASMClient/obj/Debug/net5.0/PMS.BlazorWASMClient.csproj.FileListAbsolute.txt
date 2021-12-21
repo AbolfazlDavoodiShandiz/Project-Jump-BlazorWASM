@@ -670,3 +670,4 @@ D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWAS
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\Shared\TopNavigation.razor.g.cs
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\RazorDeclaration\Shared\PushNotification.razor.g.cs
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\Shared\PushNotification.razor.g.cs
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\PMS.BlazorWASMClient.csproj.CopyComplete
