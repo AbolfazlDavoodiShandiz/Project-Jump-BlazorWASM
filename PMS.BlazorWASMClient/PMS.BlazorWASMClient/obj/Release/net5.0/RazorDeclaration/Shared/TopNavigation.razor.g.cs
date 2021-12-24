@@ -146,42 +146,49 @@ using Blazored.Typeahead;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 7 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\TopNavigation.razor"
+#line 39 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\TopNavigation.razor"
        
     [CascadingParameter]
     Task<AuthenticationState> AuthenticationState { get; set; }
 
     public string Username { get; set; }
-    List<ClientNotification> Notifications { get; set; }
+    List<ClientNotification> Notifications = new List<ClientNotification>();
 
     protected override async Task OnParametersSetAsync()
     {
         var authState = await AuthenticationState;
         Username = authState.User.Identity.GetUsername();
-    }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await GetNotifications();
-        }
+        await GetNotifications();
     }
 
     private async Task GetNotifications()
     {
-        var notificationResponse = await notificationService.GetAll();
+        var notifications = await notificationService.GetAll();
 
-        if (notificationResponse.Count() > 0)
+        if (notifications is not null && notifications.Count()>0)
         {
-            Notifications = notificationResponse.ToList();
+            Notifications=notifications.ToList();
         }
     }
 
-    //protected override async Task OnInitializedAsync()
-    //{
+    private async Task MarkAllAsDone()
+    {
+        List<int> ids = new List<int>();
 
-    //}
+        foreach (var item in Notifications)
+        {
+            ids.Add(item.NotificationId);
+        }
+
+        var response = await notificationService.MarkAsRead(ids.ToArray());
+
+        if (response.IsSuccess)
+        {
+            Notifications.Clear();
+            await GetNotifications();
+        }
+    }
 
 #line default
 #line hidden

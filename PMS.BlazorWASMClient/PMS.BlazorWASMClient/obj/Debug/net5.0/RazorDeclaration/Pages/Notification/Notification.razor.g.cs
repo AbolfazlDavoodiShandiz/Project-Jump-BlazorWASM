@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace PMS.BlazorWASMClient.Shared
+namespace PMS.BlazorWASMClient.Pages.Notification
 {
     #line hidden
     using System;
@@ -138,7 +138,15 @@ using Blazored.Typeahead;
 #line default
 #line hidden
 #nullable disable
-    public partial class PushNotification : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 4 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Notification\Notification.razor"
+           [Authorize]
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/notifications")]
+    public partial class Notification : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -146,36 +154,19 @@ using Blazored.Typeahead;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 9 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\PushNotification.razor"
-       
+#line 8 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Notification\Notification.razor"
+      
 
-    public List<ClientNotification> Notifications { get; set; }
+    List<ClientNotification> Notifications { get; set; }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override async Task OnInitializedAsync()
     {
-        if (firstRender)
-        {
-            await GetNotifications();
-        }
-    }
-
-    private async Task GetNotifications()
-    {
-        var notificationResponse = await notificationService.GetAll();
-
-        //await jsRuntime.ShowToastr("info", "Here");
-        await jsRuntime.ShowPopover();
-
-        if (notificationResponse.Count() > 0)
-        {
-            Notifications = notificationResponse.ToList();
-        }
+        var n = await notificationService.GetAll(false);
     }
 
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime jsRuntime { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private INotificationService notificationService { get; set; }
     }
 }

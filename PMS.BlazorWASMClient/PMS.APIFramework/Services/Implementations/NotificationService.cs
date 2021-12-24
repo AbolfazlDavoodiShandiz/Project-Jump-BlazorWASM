@@ -37,7 +37,16 @@ namespace PMS.BlazorWASMClient.Utility.Services.Implementations
             return notifications;
         }
 
-        public async Task<ApiResult<IEnumerable<NotificationDTO>>> GetAllFromServer(bool justUnread = true)
+        public async Task<ApiResult> MarkAsRead(params int[] notificationIds)
+        {
+            var idList = new IdsDTO { IdList=notificationIds.ToList() };
+
+            var response = await _httpClient.CustomPost(_authenticationStateProvider, "api/notification/MarkAsRead", idList);
+
+            return response;
+        }
+
+        private async Task<ApiResult<IEnumerable<NotificationDTO>>> GetAllFromServer(bool justUnread = true)
         {
             var response = await _httpClient.CustomGet<IEnumerable<NotificationDTO>>(_authenticationStateProvider, "api/notification/GetUnreadNotifications");
 

@@ -1,0 +1,23 @@
+
+.top-row .dropdown-menu .dropdown-item[b-fxkarjv7vw] {
+    margin: 0 !important;
+}
+
+.nav-link[b-fxkarjv7vw] {
+    color: #FFF !important;
+}
+
+.new-notification-item[b-fxkarjv7vw] {
+    margin-bottom:5px !important;
+}
+
+.new-notification-item:nth-child(odd)[b-fxkarjv7vw] {
+}
+
+.new-notification-item:nth-child(even)[b-fxkarjv7vw] {
+    background-color: #eef3f8 !important;
+}
+
+.new-notification-menu[b-fxkarjv7vw] {
+    padding: 5px !important;
+}

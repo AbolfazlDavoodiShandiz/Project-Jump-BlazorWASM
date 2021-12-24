@@ -12,5 +12,6 @@ namespace PMS.BlazorWASMClient.Utility.Notifications
         public string FromUsername { get; set; }
         public DateTime CreateDate { get; set; }
         public string NotificationText { get; set; }
+        public bool IsRead { get; set; }
     }
 }

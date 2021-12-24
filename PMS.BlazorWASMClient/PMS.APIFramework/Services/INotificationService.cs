@@ -12,5 +12,6 @@ namespace PMS.BlazorWASMClient.Utility.Services
     public interface INotificationService
     {
         Task<IEnumerable<ClientNotification>> GetAll(bool justUnread = true);
+        Task<ApiResult> MarkAsRead(params int[] notificationIds);
     }
 }

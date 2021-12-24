@@ -21,6 +21,7 @@ namespace PMS.BlazorWASMClient.Utility.Notifications
                 clientNotification.NotificationId = serverNotification.Id;
                 clientNotification.FromUsername = serverNotification.CreatedUsername;
                 clientNotification.CreateDate = serverNotification.CreateDate;
+                clientNotification.IsRead=serverNotification.IsRead;
 
                 string text = $"{serverNotification.RelatedObjectTitle}";
 

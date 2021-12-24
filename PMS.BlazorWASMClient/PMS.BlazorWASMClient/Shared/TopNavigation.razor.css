@@ -1,0 +1,23 @@
+﻿
+.top-row .dropdown-menu .dropdown-item {
+    margin: 0 !important;
+}
+
+.nav-link {
+    color: #FFF !important;
+}
+
+.new-notification-item {
+    margin-bottom:5px !important;
+}
+
+.new-notification-item:nth-child(odd) {
+}
+
+.new-notification-item:nth-child(even) {
+    background-color: #eef3f8 !important;
+}
+
+.new-notification-menu {
+    padding: 5px !important;
+}

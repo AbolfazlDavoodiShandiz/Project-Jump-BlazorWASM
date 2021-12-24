@@ -405,7 +405,6 @@ D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWAS
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\RazorDeclaration\Pages\Index.razor.g.cs
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\RazorDeclaration\_Imports.razor.g.cs
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\RazorDeclaration\Shared\MainLayout.razor.g.cs
-D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\RazorDeclaration\Shared\NavMenu.razor.g.cs
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\PMS.BlazorWASMClient.RazorComponent.output.cache
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\RazorDeclaration\PMS.BlazorWASMClient.dll
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\PMS.BlazorWASMClient.TagHelpers.input.cache
@@ -415,11 +414,9 @@ D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWAS
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\Pages\Index.razor.g.cs
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\_Imports.razor.g.cs
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\Shared\MainLayout.razor.g.cs
-D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\Shared\NavMenu.razor.g.cs
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\staticwebassets\PMS.BlazorWASMClient.StaticWebAssets.Manifest.cache
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\staticwebassets\PMS.BlazorWASMClient.StaticWebAssets.xml
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\scopedcss\Shared\MainLayout.razor.rz.scp.css
-D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\scopedcss\Shared\NavMenu.razor.rz.scp.css
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\scopedcss\bundle\PMS.BlazorWASMClient.styles.css
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\scopedcss\projectbundle\PMS.BlazorWASMClient.bundle.scp.css
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\PMS.BlazorWASMClient.RazorTargetAssemblyInfo.cache
@@ -668,6 +665,9 @@ D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWAS
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\build-gz\WvSBGG4M.gz
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\RazorDeclaration\Shared\TopNavigation.razor.g.cs
 D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\Shared\TopNavigation.razor.g.cs
-D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\RazorDeclaration\Shared\PushNotification.razor.g.cs
-D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\Shared\PushNotification.razor.g.cs
-D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\PMS.BlazorWASMClient.csproj.CopyComplete
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\RazorDeclaration\Shared\SideNavigation.razor.g.cs
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\Shared\SideNavigation.razor.g.cs
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\scopedcss\Shared\SideNavigation.razor.rz.scp.css
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\scopedcss\Shared\TopNavigation.razor.rz.scp.css
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\RazorDeclaration\Pages\Notification\Notification.razor.g.cs
+D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\obj\Debug\net5.0\Razor\Pages\Notification\Notification.razor.g.cs

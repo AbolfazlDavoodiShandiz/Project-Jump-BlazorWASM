@@ -1,0 +1,16 @@
+﻿@page "/notifications"
+
+@inject INotificationService notificationService
+@attribute [Authorize]
+
+
+
+@code{
+
+    List<ClientNotification> Notifications { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var n = await notificationService.GetAll(false);
+    }
+}

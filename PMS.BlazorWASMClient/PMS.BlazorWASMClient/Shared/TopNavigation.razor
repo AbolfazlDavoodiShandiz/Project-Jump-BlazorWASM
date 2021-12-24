@@ -1,8 +1,39 @@
 ﻿@inject INotificationService notificationService
 
-<PushNotification></PushNotification>
-&nbsp;
-<span>Hello, @Username</span> &nbsp; &nbsp;<a href="/account/logout" class="btn btn-secondary">Log Out</a>
+
+<ul class="nav justify-content-end">
+    @if (Notifications.Count>0)
+    {
+        <li class="nav-item dropdown" @onclick="()=>MarkAllAsDone()">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Notifications <span class="badge bg-danger">@Notifications.Count</span></a>
+            <ul class="dropdown-menu new-notification-menu">
+                @foreach (var notification in Notifications)
+                {
+                    <li class="new-notification-item"><span>@((MarkupString)notification.NotificationText)</span></li>
+                }
+            </ul>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link clickable" href="/notifications">
+                Notifications
+            </a>
+        </li>
+    }
+    <li class="nav-item">
+        <a class="nav-link" href="#">Mssages</a>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">@Username</a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Account</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/account/logout">Logout</a></li>
+        </ul>
+    </li>
+</ul>
 
 
 @code {
@@ -10,16 +41,41 @@
     Task<AuthenticationState> AuthenticationState { get; set; }
 
     public string Username { get; set; }
-    List<ClientNotification> Notifications { get; set; }
+    List<ClientNotification> Notifications = new List<ClientNotification>();
 
     protected override async Task OnParametersSetAsync()
     {
         var authState = await AuthenticationState;
         Username = authState.User.Identity.GetUsername();
+
+        await GetNotifications();
     }
 
-    //protected override async Task OnInitializedAsync()
-    //{
+    private async Task GetNotifications()
+    {
+        var notifications = await notificationService.GetAll();
 
-    //}
+        if (notifications is not null && notifications.Count()>0)
+        {
+            Notifications=notifications.ToList();
+        }
+    }
+
+    private async Task MarkAllAsDone()
+    {
+        List<int> ids = new List<int>();
+
+        foreach (var item in Notifications)
+        {
+            ids.Add(item.NotificationId);
+        }
+
+        var response = await notificationService.MarkAsRead(ids.ToArray());
+
+        if (response.IsSuccess)
+        {
+            Notifications.Clear();
+            await GetNotifications();
+        }
+    }
 }

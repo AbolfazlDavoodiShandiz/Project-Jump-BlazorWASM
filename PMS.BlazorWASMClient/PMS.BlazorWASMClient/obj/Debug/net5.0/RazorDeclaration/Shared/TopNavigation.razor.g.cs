@@ -146,24 +146,49 @@ using Blazored.Typeahead;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 8 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\TopNavigation.razor"
+#line 39 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\TopNavigation.razor"
        
     [CascadingParameter]
     Task<AuthenticationState> AuthenticationState { get; set; }
 
     public string Username { get; set; }
-    List<ClientNotification> Notifications { get; set; }
+    List<ClientNotification> Notifications = new List<ClientNotification>();
 
     protected override async Task OnParametersSetAsync()
     {
         var authState = await AuthenticationState;
         Username = authState.User.Identity.GetUsername();
+
+        await GetNotifications();
     }
 
-    //protected override async Task OnInitializedAsync()
-    //{
+    private async Task GetNotifications()
+    {
+        var notifications = await notificationService.GetAll();
 
-    //}
+        if (notifications is not null && notifications.Count()>0)
+        {
+            Notifications=notifications.ToList();
+        }
+    }
+
+    private async Task MarkAllAsDone()
+    {
+        List<int> ids = new List<int>();
+
+        foreach (var item in Notifications)
+        {
+            ids.Add(item.NotificationId);
+        }
+
+        var response = await notificationService.MarkAsRead(ids.ToArray());
+
+        if (response.IsSuccess)
+        {
+            Notifications.Clear();
+            await GetNotifications();
+        }
+    }
 
 #line default
 #line hidden
