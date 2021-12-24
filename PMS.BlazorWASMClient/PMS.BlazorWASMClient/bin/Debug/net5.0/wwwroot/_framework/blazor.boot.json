@@ -201,12 +201,12 @@
       "mscorlib.dll": "sha256-heWnofXFSc\/TfAxrWpjQxeuS+nlIOs9YycfI2QGXGM8=",
       "netstandard.dll": "sha256-mbIVAluJ7cAx0vUQshB\/c1zEIK5JcYwIYxo\/BQ\/meRU=",
       "System.Private.CoreLib.dll": "sha256-FrZbEyy47f3RDuj77R5oHUGxSGEDgRRxykTjImrLqfM=",
-      "PMS.BlazorWASMClient.Utility.dll": "sha256-UbFWfhUN0O0gJfSEO8EKWoBXimM3nrLlmCQpg0Nhuyk=",
+      "PMS.BlazorWASMClient.Utility.dll": "sha256-fwoZRySJ5PRauG1KzRVowdAfkX\/UoP8kMrlo8FXADEg=",
       "PMS.BlazorWASMClient.dll": "sha256-RcQ5lHaIuKDmtOFmGY3yKSGno3mtCXjEelmUM61F0gE="
     },
     "lazyAssembly": null,
     "pdb": {
-      "PMS.BlazorWASMClient.Utility.pdb": "sha256-ofIq9fZmp1ugogXrt6Tgj5zybnMd\/DZiiZW7szFAIMc=",
+      "PMS.BlazorWASMClient.Utility.pdb": "sha256-TMLX7JFfSO+qiaThkcMmBHmTqoUtiGCTJVt0jyHpMm0=",
       "PMS.BlazorWASMClient.pdb": "sha256-4uxsBJIt1\/d1izBB7INhz\/0iXmnjlDXwmF6VQpUr70s="
     },
     "runtime": {

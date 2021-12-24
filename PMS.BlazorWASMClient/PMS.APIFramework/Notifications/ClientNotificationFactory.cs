@@ -38,6 +38,7 @@ namespace PMS.BlazorWASMClient.Utility.Notifications
                 }
 
                 clientNotification.NotificationText = text;
+                clientNotifications.Add(clientNotification);
             }
 
             return clientNotifications;
