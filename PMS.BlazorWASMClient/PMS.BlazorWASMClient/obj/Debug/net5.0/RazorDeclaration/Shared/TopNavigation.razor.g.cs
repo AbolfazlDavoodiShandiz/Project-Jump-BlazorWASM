@@ -146,13 +146,14 @@ using Blazored.Typeahead;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 39 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\TopNavigation.razor"
+#line 43 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\TopNavigation.razor"
        
     [CascadingParameter]
     Task<AuthenticationState> AuthenticationState { get; set; }
 
     public string Username { get; set; }
     List<ClientNotification> Notifications = new List<ClientNotification>();
+    public int NewNotificationsCount { get; set; }
 
     protected override async Task OnParametersSetAsync()
     {
@@ -169,6 +170,7 @@ using Blazored.Typeahead;
         if (notifications is not null && notifications.Count()>0)
         {
             Notifications=notifications.ToList();
+            NewNotificationsCount=Notifications.Count;
         }
     }
 
@@ -185,7 +187,9 @@ using Blazored.Typeahead;
 
         if (response.IsSuccess)
         {
+            NewNotificationsCount=0;
             Notifications.Clear();
+
             await GetNotifications();
         }
     }

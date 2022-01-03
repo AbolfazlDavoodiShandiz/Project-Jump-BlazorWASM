@@ -3,9 +3,13 @@
     "",
     "\\PMS.BlazorWASMClient",
     "\\PMS.BlazorWASMClient\\PMS.APIFramework",
+    "\\PMS.BlazorWASMClient\\PMS.APIFramework\\Services",
+    "\\PMS.BlazorWASMClient\\PMS.APIFramework\\Services\\Implementations",
     "\\PMS.BlazorWASMClient\\PMS.BlazorWASMClient",
     "\\PMS.BlazorWASMClient\\PMS.BlazorWASMClient\\Pages",
+    "\\PMS.BlazorWASMClient\\PMS.BlazorWASMClient\\Pages\\Dashboard",
     "\\PMS.BlazorWASMClient\\PMS.BlazorWASMClient\\Shared"
   ],
+  "SelectedNode": "\\PMS.BlazorWASMClient\\PMS.BlazorWASMClient\\Pages\\Dashboard\\Dashboard.razor",
   "PreviewInSolutionExplorer": false
 }

@@ -4,13 +4,17 @@
 <ul class="nav justify-content-end">
     @if (Notifications.Count>0)
     {
-        <li class="nav-item dropdown" @onclick="()=>MarkAllAsDone()">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Notifications <span class="badge bg-danger">@Notifications.Count</span></a>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                Notifications @if (NewNotificationsCount>0)
+                {<span class="badge bg-danger">@NewNotificationsCount</span>}
+            </a>
             <ul class="dropdown-menu new-notification-menu">
                 @foreach (var notification in Notifications)
                 {
                     <li class="new-notification-item"><span>@((MarkupString)notification.NotificationText)</span></li>
                 }
+                <li><button class="btn btn-primary" style="width:100%;" @onclick="()=>MarkAllAsDone()">Mark As Read</button></li>
             </ul>
         </li>
     }
@@ -42,6 +46,7 @@
 
     public string Username { get; set; }
     List<ClientNotification> Notifications = new List<ClientNotification>();
+    public int NewNotificationsCount { get; set; }
 
     protected override async Task OnParametersSetAsync()
     {
@@ -58,6 +63,7 @@
         if (notifications is not null && notifications.Count()>0)
         {
             Notifications=notifications.ToList();
+            NewNotificationsCount=Notifications.Count;
         }
     }
 
@@ -74,7 +80,9 @@
 
         if (response.IsSuccess)
         {
+            NewNotificationsCount=0;
             Notifications.Clear();
+
             await GetNotifications();
         }
     }

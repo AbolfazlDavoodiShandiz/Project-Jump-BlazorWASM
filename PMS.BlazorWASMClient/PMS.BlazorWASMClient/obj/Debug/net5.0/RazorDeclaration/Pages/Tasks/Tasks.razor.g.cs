@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace PMS.BlazorWASMClient.Pages.Task
+namespace PMS.BlazorWASMClient.Pages.Tasks
 {
     #line hidden
     using System;
@@ -139,7 +139,7 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Task\Tasks.razor"
+#line 6 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Tasks\Tasks.razor"
            [Authorize]
 
 #line default
@@ -154,7 +154,7 @@ using Blazored.Typeahead;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 116 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Task\Tasks.razor"
+#line 116 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Tasks\Tasks.razor"
       
     [CascadingParameter]
     Task<AuthenticationState> AuthenticationState { get; set; }

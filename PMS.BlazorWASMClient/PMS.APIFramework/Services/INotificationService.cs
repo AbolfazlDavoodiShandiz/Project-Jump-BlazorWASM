@@ -13,5 +13,9 @@ namespace PMS.BlazorWASMClient.Utility.Services
     {
         Task<IEnumerable<ClientNotification>> GetAll(bool justUnread = true);
         Task<ApiResult> MarkAsRead(params int[] notificationIds);
+        Task<bool> ConnectToNotificationHub();
+
+        IEnumerable<string> ServerNotifications { get; }
+        event EventHandler OnNotificationRecieved;
     }
 }
