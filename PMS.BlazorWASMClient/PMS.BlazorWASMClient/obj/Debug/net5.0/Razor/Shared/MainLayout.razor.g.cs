@@ -168,15 +168,13 @@ using Blazored.Typeahead;
             __builder.OpenElement(18, "div");
             __builder.AddAttribute(19, "class", "container-fluid content px-4");
             __builder.AddAttribute(20, "b-y20gv7gu0x");
-            __builder.AddContent(21, 
 #nullable restore
 #line 17 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\MainLayout.razor"
-             Body
+__builder.AddContent(21, Body);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.CloseElement();
             __builder.CloseElement();

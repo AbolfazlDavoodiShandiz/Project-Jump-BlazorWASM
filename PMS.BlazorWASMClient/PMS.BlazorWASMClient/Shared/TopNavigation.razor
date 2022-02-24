@@ -1,13 +1,15 @@
 ﻿@inject INotificationService notificationService
-
+@inject IJSRuntime jsRuntime
 
 <ul class="nav justify-content-end">
-    @if (Notifications.Count>0)
+    @if (Notifications.Count > 0)
     {
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
-                Notifications @if (NewNotificationsCount>0)
-                {<span class="badge bg-danger">@NewNotificationsCount</span>}
+                Notifications @if (NewNotificationsCount > 0)
+                {
+                    <span class="badge bg-danger">@NewNotificationsCount</span>
+                }
             </a>
             <ul class="dropdown-menu new-notification-menu">
                 @foreach (var notification in Notifications)
@@ -48,22 +50,51 @@
     List<ClientNotification> Notifications = new List<ClientNotification>();
     public int NewNotificationsCount { get; set; }
 
-    protected override async Task OnParametersSetAsync()
+    //protected override async Task OnParametersSetAsync()
+    //{
+    //    var authState = await AuthenticationState;
+
+    //    if (authState.User.Identity.IsAuthenticated)
+    //    {
+    //        Username = authState.User.Identity.GetUsername();
+
+    //        await GetNotifications();
+    //    }
+    //}
+
+    protected override async Task OnInitializedAsync()
     {
         var authState = await AuthenticationState;
-        Username = authState.User.Identity.GetUsername();
 
-        await GetNotifications();
+        if (authState.User.Identity.IsAuthenticated)
+        {
+            await GetNotifications();
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var authState = await AuthenticationState;
+
+            if (authState.User.Identity.IsAuthenticated)
+            {
+                await notificationService.ConnectToNotificationHub();
+
+                notificationService.OnNotificationRecieved += ShowNewNotification;
+            }
+        }
     }
 
     private async Task GetNotifications()
     {
         var notifications = await notificationService.GetAll();
 
-        if (notifications is not null && notifications.Count()>0)
+        if (notifications is not null && notifications.Count() > 0)
         {
-            Notifications=notifications.ToList();
-            NewNotificationsCount=Notifications.Count;
+            Notifications = notifications.ToList();
+            NewNotificationsCount = Notifications.Count;
         }
     }
 
@@ -80,10 +111,17 @@
 
         if (response.IsSuccess)
         {
-            NewNotificationsCount=0;
+            NewNotificationsCount = 0;
             Notifications.Clear();
 
             await GetNotifications();
         }
+    }
+
+    private async Task ShowNewNotification(string message)
+    {
+        await jsRuntime.ShowToastr("info", message);
+
+        await GetNotifications();
     }
 }

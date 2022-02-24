@@ -16,6 +16,7 @@ namespace PMS.BlazorWASMClient.Utility.Services
         Task<bool> ConnectToNotificationHub();
 
         IEnumerable<string> ServerNotifications { get; }
-        event EventHandler OnNotificationRecieved;
+
+        event Func<string,Task> OnNotificationRecieved;
     }
 }

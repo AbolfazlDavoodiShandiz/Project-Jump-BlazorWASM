@@ -189,7 +189,7 @@ using Blazored.Typeahead;
             __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(20);
             __builder.AddAttribute(21, "class", "nav-link");
             __builder.AddAttribute(22, "href", "");
-            __builder.AddAttribute(23, "Match", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.Routing.NavLinkMatch>(
+            __builder.AddAttribute(23, "Match", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.Routing.NavLinkMatch>(
 #nullable restore
 #line 11 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\SideNavigation.razor"
                                                      NavLinkMatch.All
@@ -213,7 +213,7 @@ using Blazored.Typeahead;
                 __builder2.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(32);
                 __builder2.AddAttribute(33, "class", "nav-link");
                 __builder2.AddAttribute(34, "href", "/dashboard");
-                __builder2.AddAttribute(35, "Match", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.Routing.NavLinkMatch>(
+                __builder2.AddAttribute(35, "Match", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.Routing.NavLinkMatch>(
 #nullable restore
 #line 18 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\SideNavigation.razor"
                                                                        NavLinkMatch.All
@@ -235,7 +235,7 @@ using Blazored.Typeahead;
                 __builder2.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(42);
                 __builder2.AddAttribute(43, "class", "nav-link");
                 __builder2.AddAttribute(44, "href", "/projects");
-                __builder2.AddAttribute(45, "Match", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.Routing.NavLinkMatch>(
+                __builder2.AddAttribute(45, "Match", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.Routing.NavLinkMatch>(
 #nullable restore
 #line 23 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\SideNavigation.razor"
                                                                       NavLinkMatch.All
@@ -257,7 +257,7 @@ using Blazored.Typeahead;
                 __builder2.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(52);
                 __builder2.AddAttribute(53, "class", "nav-link");
                 __builder2.AddAttribute(54, "href", "/tasks");
-                __builder2.AddAttribute(55, "Match", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.Routing.NavLinkMatch>(
+                __builder2.AddAttribute(55, "Match", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.Routing.NavLinkMatch>(
 #nullable restore
 #line 28 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\SideNavigation.razor"
                                                                    NavLinkMatch.All

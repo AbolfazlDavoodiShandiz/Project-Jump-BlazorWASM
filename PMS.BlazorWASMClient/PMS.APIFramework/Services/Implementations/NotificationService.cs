@@ -20,13 +20,31 @@ namespace PMS.BlazorWASMClient.Utility.Services.Implementations
     public class NotificationService : INotificationService
     {
         private readonly HttpClient _httpClient;
+        private HubConnection _hubConnection;
         private readonly AuthenticationStateProvider authenticationStateProvider;
         private readonly IConfiguration _configuration;
         private readonly ILocalStorageService _localStorageService;
         private readonly CustomAuthenticationStateProvider _authenticationStateProvider;
         private List<string> _notifications;
 
-        public event EventHandler OnNotificationRecieved;
+        private event Func<string, Task> _OnNotificationRecieved;
+        public event Func<string, Task> OnNotificationRecieved
+        {
+            add
+            {
+                if (_OnNotificationRecieved == null)
+                {
+                    _OnNotificationRecieved += value;
+                }
+            }
+            remove
+            {
+                if (_OnNotificationRecieved != null)
+                {
+                    _OnNotificationRecieved -= value;
+                }
+            }
+        }
 
         public IEnumerable<string> ServerNotifications
         {
@@ -39,12 +57,12 @@ namespace PMS.BlazorWASMClient.Utility.Services.Implementations
         public NotificationService(HttpClient httpClient, AuthenticationStateProvider authenticationStateProvider, IConfiguration configuration, ILocalStorageService localStorageService)
         {
             _httpClient = httpClient;
-            this.authenticationStateProvider=authenticationStateProvider;
-            _configuration=configuration;
-            _localStorageService=localStorageService;
+            this.authenticationStateProvider = authenticationStateProvider;
+            _configuration = configuration;
+            _localStorageService = localStorageService;
             _authenticationStateProvider = (CustomAuthenticationStateProvider)authenticationStateProvider;
 
-            _notifications=new List<string>();
+            _notifications = new List<string>();
         }
 
         public async Task<bool> ConnectToNotificationHub()
@@ -56,27 +74,27 @@ namespace PMS.BlazorWASMClient.Utility.Services.Implementations
 
             if (!string.IsNullOrEmpty(userData.Token))
             {
-                HubConnection hubConnection = new HubConnectionBuilder()
+                _hubConnection = new HubConnectionBuilder()
                     .WithUrl(url, options =>
                     {
-                        options.AccessTokenProvider=() => Task.FromResult(userData.Token);
+                        options.AccessTokenProvider = () => Task.FromResult(userData.Token);
                     })
                     .Build();
 
-                await hubConnection.StartAsync();
-                isConnected=true;
+                await _hubConnection.StartAsync();
+                isConnected = true;
 
-                hubConnection.Closed+=async (s) =>
-                {
-                    isConnected=false;
-                    await hubConnection.StartAsync();
-                    isConnected=true;
-                };
+                _hubConnection.Closed += async (s) =>
+                  {
+                      isConnected = false;
+                      await _hubConnection.StartAsync();
+                      isConnected = true;
+                  };
 
-                hubConnection.On<string>("notification", m =>
+                _hubConnection.On<string>("notification", m =>
                 {
                     _notifications.Add(m);
-                    OnNotificationRecieved(null, null);
+                    _OnNotificationRecieved(m);
                 });
             }
 
@@ -98,7 +116,7 @@ namespace PMS.BlazorWASMClient.Utility.Services.Implementations
 
         public async Task<ApiResult> MarkAsRead(params int[] notificationIds)
         {
-            var idList = new IdsDTO { IdList=notificationIds.ToList() };
+            var idList = new IdsDTO { IdList = notificationIds.ToList() };
 
             var response = await _httpClient.CustomPost(_authenticationStateProvider, "api/notification/MarkAsRead", idList);
 

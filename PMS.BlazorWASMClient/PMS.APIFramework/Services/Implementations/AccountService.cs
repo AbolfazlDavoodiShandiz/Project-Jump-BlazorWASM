@@ -21,12 +21,15 @@ namespace PMS.BlazorWASMClient.Utility.Services.Implementations
     {
         private readonly HttpClient _httpClient;
         private readonly ILocalStorageService _localStorageService;
+        private readonly INotificationService _notificationService;
         private readonly CustomAuthenticationStateProvider _authenticationStateProvider;
 
-        public AccountService(HttpClient httpClient, ILocalStorageService localStorageService, AuthenticationStateProvider authenticationStateProvider)
+        public AccountService(HttpClient httpClient, ILocalStorageService localStorageService, 
+            AuthenticationStateProvider authenticationStateProvider,INotificationService notificationService)
         {
             _httpClient = httpClient;
             _localStorageService = localStorageService;
+            _notificationService = notificationService;
             _authenticationStateProvider = (CustomAuthenticationStateProvider)authenticationStateProvider;
         }
 

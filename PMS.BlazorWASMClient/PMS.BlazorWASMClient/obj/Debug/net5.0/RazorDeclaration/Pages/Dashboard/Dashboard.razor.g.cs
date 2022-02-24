@@ -153,51 +153,7 @@ using Blazored.Typeahead;
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 21 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Dashboard\Dashboard.razor"
-      
-    [CascadingParameter]
-    Task<AuthenticationState> AuthenticationState { get; set; }
-
-    public string ConnectionStatus
-    {
-        get
-        {
-            if (IsConnected)
-            {
-                return "Connected";
-            }
-            else
-            {
-                return "Closed";
-            }
-        }
-    }
-
-    public bool IsConnected { get; set; } = false;
-    IEnumerable<string> Notifications = new List<string>();
-
-    protected override async Task OnInitializedAsync()
-    {
-        var authState = await AuthenticationState;
-        if (authState.User.Identity.IsAuthenticated)
-        {
-            IsConnected=await notificationService.ConnectToNotificationHub();
-
-            notificationService.OnNotificationRecieved+=AddNewNotifications;
-        }
-    }
-
-    private void AddNewNotifications(object sender, EventArgs e)
-    {
-        Notifications=notificationService.ServerNotifications;
-        StateHasChanged();
-    }
-
-#line default
-#line hidden
-#nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private INotificationService notificationService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime jsRuntime { get; set; }
     }
 }
 #pragma warning restore 1591

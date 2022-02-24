@@ -148,7 +148,7 @@ using Blazored.Typeahead;
             __builder.OpenElement(4, "div");
             __builder.AddAttribute(5, "class", "text-center");
             __builder.OpenComponent<Microsoft.AspNetCore.Components.Forms.EditForm>(6);
-            __builder.AddAttribute(7, "Model", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Object>(
+            __builder.AddAttribute(7, "Model", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Object>(
 #nullable restore
 #line 10 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Account\Register.razor"
                              UserRegistrationDTO
@@ -157,7 +157,7 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(8, "OnValidSubmit", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Forms.EditContext>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
+            __builder.AddAttribute(8, "OnValidSubmit", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Forms.EditContext>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
 #nullable restore
 #line 10 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Account\Register.razor"
                                                                  UserRegister
@@ -166,7 +166,7 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
             )));
-            __builder.AddAttribute(9, "OnInvalidSubmit", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Forms.EditContext>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
+            __builder.AddAttribute(9, "OnInvalidSubmit", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Forms.EditContext>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
 #nullable restore
 #line 10 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Account\Register.razor"
                                                                                                 InvalidSubmit
@@ -186,7 +186,7 @@ using Blazored.Typeahead;
                 __builder2.AddAttribute(17, "type", "email");
                 __builder2.AddAttribute(18, "class", "form-control");
                 __builder2.AddAttribute(19, "id", "floatingEmail");
-                __builder2.AddAttribute(20, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddAttribute(20, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 16 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Account\Register.razor"
                                             UserRegistrationDTO.Email
@@ -195,8 +195,8 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(21, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => UserRegistrationDTO.Email = __value, UserRegistrationDTO.Email))));
-                __builder2.AddAttribute(22, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => UserRegistrationDTO.Email));
+                __builder2.AddAttribute(21, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => UserRegistrationDTO.Email = __value, UserRegistrationDTO.Email))));
+                __builder2.AddAttribute(22, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => UserRegistrationDTO.Email));
                 __builder2.CloseComponent();
                 __builder2.AddMarkupContent(23, "\r\n                    ");
                 __builder2.AddMarkupContent(24, "<label for=\"floatingEmail\">Email</label>\r\n                    ");
@@ -217,7 +217,7 @@ using Blazored.Typeahead;
                 __builder2.AddAttribute(31, "type", "text");
                 __builder2.AddAttribute(32, "class", "form-control");
                 __builder2.AddAttribute(33, "id", "floatingUsername");
-                __builder2.AddAttribute(34, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddAttribute(34, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 21 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Account\Register.razor"
                                             UserRegistrationDTO.Username
@@ -226,8 +226,8 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(35, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => UserRegistrationDTO.Username = __value, UserRegistrationDTO.Username))));
-                __builder2.AddAttribute(36, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => UserRegistrationDTO.Username));
+                __builder2.AddAttribute(35, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => UserRegistrationDTO.Username = __value, UserRegistrationDTO.Username))));
+                __builder2.AddAttribute(36, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => UserRegistrationDTO.Username));
                 __builder2.CloseComponent();
                 __builder2.AddMarkupContent(37, "\r\n                    ");
                 __builder2.AddMarkupContent(38, "<label for=\"floatingUsername\">Username</label>\r\n                    ");
@@ -248,7 +248,7 @@ using Blazored.Typeahead;
                 __builder2.AddAttribute(45, "type", "text");
                 __builder2.AddAttribute(46, "class", "form-control");
                 __builder2.AddAttribute(47, "id", "floatingMobile");
-                __builder2.AddAttribute(48, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddAttribute(48, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 26 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Account\Register.razor"
                                             UserRegistrationDTO.Mobile
@@ -257,8 +257,8 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(49, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => UserRegistrationDTO.Mobile = __value, UserRegistrationDTO.Mobile))));
-                __builder2.AddAttribute(50, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => UserRegistrationDTO.Mobile));
+                __builder2.AddAttribute(49, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => UserRegistrationDTO.Mobile = __value, UserRegistrationDTO.Mobile))));
+                __builder2.AddAttribute(50, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => UserRegistrationDTO.Mobile));
                 __builder2.CloseComponent();
                 __builder2.AddMarkupContent(51, "\r\n                    ");
                 __builder2.AddMarkupContent(52, "<label for=\"floatingMobile\">Mobile</label>\r\n                    ");
@@ -279,7 +279,7 @@ using Blazored.Typeahead;
                 __builder2.AddAttribute(59, "type", "password");
                 __builder2.AddAttribute(60, "class", "form-control");
                 __builder2.AddAttribute(61, "id", "floatingPassword");
-                __builder2.AddAttribute(62, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddAttribute(62, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 31 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Account\Register.razor"
                                             UserRegistrationDTO.Password
@@ -288,8 +288,8 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(63, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => UserRegistrationDTO.Password = __value, UserRegistrationDTO.Password))));
-                __builder2.AddAttribute(64, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => UserRegistrationDTO.Password));
+                __builder2.AddAttribute(63, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => UserRegistrationDTO.Password = __value, UserRegistrationDTO.Password))));
+                __builder2.AddAttribute(64, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => UserRegistrationDTO.Password));
                 __builder2.CloseComponent();
                 __builder2.AddMarkupContent(65, "\r\n                    ");
                 __builder2.AddMarkupContent(66, "<label for=\"floatingPassword\">Password</label>\r\n                    ");
@@ -310,7 +310,7 @@ using Blazored.Typeahead;
                 __builder2.AddAttribute(73, "type", "password");
                 __builder2.AddAttribute(74, "class", "form-control");
                 __builder2.AddAttribute(75, "id", "floatingConfirmPassword");
-                __builder2.AddAttribute(76, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddAttribute(76, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 36 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Account\Register.razor"
                                             UserRegistrationDTO.PasswordConfirm
@@ -319,8 +319,8 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(77, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => UserRegistrationDTO.PasswordConfirm = __value, UserRegistrationDTO.PasswordConfirm))));
-                __builder2.AddAttribute(78, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => UserRegistrationDTO.PasswordConfirm));
+                __builder2.AddAttribute(77, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => UserRegistrationDTO.PasswordConfirm = __value, UserRegistrationDTO.PasswordConfirm))));
+                __builder2.AddAttribute(78, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => UserRegistrationDTO.PasswordConfirm));
                 __builder2.CloseComponent();
                 __builder2.AddMarkupContent(79, "\r\n                    ");
                 __builder2.AddMarkupContent(80, "<label for=\"floatingConfirmPassword\">Password Confirm</label>\r\n                    ");

@@ -139,7 +139,7 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Dashboard\Dashboard.razor"
+#line 4 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Dashboard\Dashboard.razor"
            [Authorize]
 
 #line default
@@ -153,26 +153,7 @@ using Blazored.Typeahead;
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 20 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Dashboard\Dashboard.razor"
-      
-    HubConnection hubConnection = null;
-    public string ConnectionStatus { get; set; } = "Closed";
-    public bool IsConnected { get; set; } = false;
-    public string URL
-    {
-        get
-        {
-            return $"{config["APIBaseURL"]}/notificationhub";
-        }
-    }
-
-    List<string> Notifications = new List<string>();
-
-
-#line default
-#line hidden
-#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime jsRuntime { get; set; }
     }
 }
 #pragma warning restore 1591

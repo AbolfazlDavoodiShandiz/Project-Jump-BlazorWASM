@@ -152,15 +152,13 @@ using Blazored.Typeahead;
             __builder.AddAttribute(1, "class", "row mb-2");
             __builder.OpenElement(2, "h3");
             __builder.AddContent(3, "Projects created by ");
-            __builder.AddContent(4, 
 #nullable restore
 #line 10 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
-                             Username
+__builder.AddContent(4, Username);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.CloseElement();
             __builder.AddMarkupContent(5, "\r\n");
@@ -191,7 +189,7 @@ using Blazored.Typeahead;
             __builder.OpenElement(19, "div");
             __builder.AddAttribute(20, "class", "col-2");
             __builder.OpenComponent<PMS.BlazorWASMClient.Shared.ListGroup>(21);
-            __builder.AddAttribute(22, "Groups", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Collections.Generic.Dictionary<System.String, System.String>>(
+            __builder.AddAttribute(22, "Groups", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Collections.Generic.Dictionary<System.String, System.String>>(
 #nullable restore
 #line 19 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
                            ProjectTableGroups
@@ -200,7 +198,7 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(23, "SelectedItem", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+            __builder.AddAttribute(23, "SelectedItem", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 19 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
                                                               CurrentProjectTableGroup
@@ -209,7 +207,7 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(24, "OnListItemClicked", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, 
+            __builder.AddAttribute(24, "OnListItemClicked", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, 
 #nullable restore
 #line 19 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
                                                                                                            OnProjectTableGroupChanged
@@ -272,15 +270,13 @@ using Blazored.Typeahead;
 #nullable disable
             );
             __builder.OpenElement(34, "td");
-            __builder.AddContent(35, 
 #nullable restore
 #line 57 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
-                              ((CurrentPage-1)*PageSize)+ itemIndex + 1
+__builder.AddContent(35, ((CurrentPage-1)*PageSize)+ itemIndex + 1);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.AddMarkupContent(36, "\r\n                        ");
             __builder.OpenElement(37, "td");
@@ -295,29 +291,25 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
             ));
-            __builder.AddContent(41, 
 #nullable restore
 #line 58 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
-                                                                                                              ProjectList[itemIndex].Title
+__builder.AddContent(41, ProjectList[itemIndex].Title);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.CloseElement();
             __builder.AddMarkupContent(42, "\r\n                        ");
             __builder.OpenElement(43, "td");
             __builder.AddAttribute(44, "class", "text-wrap");
-            __builder.AddContent(45, 
 #nullable restore
 #line 59 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
-                                               ProjectList[itemIndex].Description
+__builder.AddContent(45, ProjectList[itemIndex].Description);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.AddMarkupContent(46, "\r\n                        ");
             __builder.OpenElement(47, "td");
@@ -332,27 +324,23 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
             );
-            __builder.AddContent(51, 
 #nullable restore
 #line 60 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
-                                                                                                                       ProjectList[itemIndex].CreatedDate.ToShortDateString()
+__builder.AddContent(51, ProjectList[itemIndex].CreatedDate.ToShortDateString());
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.AddMarkupContent(52, "\r\n                        ");
             __builder.OpenElement(53, "td");
-            __builder.AddContent(54, 
 #nullable restore
 #line 61 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
-                             ProjectList[itemIndex].DeadlineDate.ToShortDateString()
+__builder.AddContent(54, ProjectList[itemIndex].DeadlineDate.ToShortDateString());
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.AddMarkupContent(55, "\r\n                        ");
             __builder.OpenElement(56, "td");
@@ -396,7 +384,7 @@ using Blazored.Typeahead;
             __builder.CloseElement();
             __builder.AddMarkupContent(66, "\r\n        ");
             __builder.OpenComponent<PMS.BlazorWASMClient.Shared.Pagination>(67);
-            __builder.AddAttribute(68, "ItemCount", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+            __builder.AddAttribute(68, "ItemCount", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 70 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
                                                  ItemCount
@@ -405,7 +393,7 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(69, "PageSize", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+            __builder.AddAttribute(69, "PageSize", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 70 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
                                                                       PageSize
@@ -414,7 +402,7 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(70, "CurrentPage", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+            __builder.AddAttribute(70, "CurrentPage", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 70 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
                                                                                              CurrentPage
@@ -423,7 +411,7 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(71, "OnPageChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.Int32>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.Int32>(this, 
+            __builder.AddAttribute(71, "OnPageChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.Int32>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.Int32>(this, 
 #nullable restore
 #line 70 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
                                                                                                                          OnPageChanged
@@ -468,7 +456,7 @@ using Blazored.Typeahead;
             __builder.OpenElement(85, "div");
             __builder.AddAttribute(86, "class", "modal-content");
             __builder.OpenComponent<Microsoft.AspNetCore.Components.Forms.EditForm>(87);
-            __builder.AddAttribute(88, "Model", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Object>(
+            __builder.AddAttribute(88, "Model", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Object>(
 #nullable restore
 #line 81 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
                                  NewProject
@@ -477,7 +465,7 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(89, "OnValidSubmit", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Forms.EditContext>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
+            __builder.AddAttribute(89, "OnValidSubmit", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Forms.EditContext>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
 #nullable restore
 #line 81 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
                                                             CreateNewProject
@@ -492,15 +480,13 @@ using Blazored.Typeahead;
                 __builder2.OpenElement(93, "h5");
                 __builder2.AddAttribute(94, "class", "modal-title");
                 __builder2.AddAttribute(95, "id", "create-project-modal-header-label");
-                __builder2.AddContent(96, 
 #nullable restore
 #line 83 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
-                                                                                         IsCreateProjectMode?"New Project":"Update Project"
+__builder2.AddContent(96, IsCreateProjectMode?"New Project":"Update Project");
 
 #line default
 #line hidden
 #nullable disable
-                );
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(97, "\r\n                        ");
                 __builder2.OpenElement(98, "button");
@@ -535,7 +521,7 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
                 );
-                __builder2.AddAttribute(112, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddAttribute(112, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 88 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
                                                            NewProject.Title
@@ -544,8 +530,8 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(113, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => NewProject.Title = __value, NewProject.Title))));
-                __builder2.AddAttribute(114, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => NewProject.Title));
+                __builder2.AddAttribute(113, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => NewProject.Title = __value, NewProject.Title))));
+                __builder2.AddAttribute(114, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => NewProject.Title));
                 __builder2.CloseComponent();
                 __builder2.AddMarkupContent(115, "\r\n                        ");
                 __builder2.OpenElement(116, "div");
@@ -554,7 +540,7 @@ using Blazored.Typeahead;
                 __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputTextArea>(119);
                 __builder2.AddAttribute(120, "id", "description");
                 __builder2.AddAttribute(121, "class", "form-control");
-                __builder2.AddAttribute(122, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddAttribute(122, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 91 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
                                                                          NewProject.Description
@@ -563,8 +549,8 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(123, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => NewProject.Description = __value, NewProject.Description))));
-                __builder2.AddAttribute(124, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => NewProject.Description));
+                __builder2.AddAttribute(123, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => NewProject.Description = __value, NewProject.Description))));
+                __builder2.AddAttribute(124, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => NewProject.Description));
                 __builder2.CloseComponent();
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(125, "\r\n                        ");
@@ -579,7 +565,7 @@ using Blazored.Typeahead;
 #line default
 #line hidden
 #nullable disable
-                , 133, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => NewProject.DeadlineDate = __value, NewProject.DeadlineDate)), 134, () => NewProject.DeadlineDate);
+                , 133, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => NewProject.DeadlineDate = __value, NewProject.DeadlineDate)), 134, () => NewProject.DeadlineDate);
                 __builder2.CloseElement();
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(135, "\r\n                    ");
@@ -618,7 +604,7 @@ using Blazored.Typeahead;
 #nullable disable
             __builder.OpenComponent<PMS.BlazorWASMClient.Shared.ConfirmAlert>(146);
             __builder.AddAttribute(147, "Title", "Detele Project");
-            __builder.AddAttribute(148, "OnConfirm", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, 
+            __builder.AddAttribute(148, "OnConfirm", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, 
 #nullable restore
 #line 108 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
                                                                     DeleteProject
@@ -631,15 +617,13 @@ using Blazored.Typeahead;
                 __builder2.OpenElement(150, "div");
                 __builder2.AddMarkupContent(151, "<p>Are you sure you want to delete this project?</p>\r\n        Project Title: ");
                 __builder2.OpenElement(152, "strong");
-                __builder2.AddContent(153, 
 #nullable restore
 #line 111 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\Projects.razor"
-                                SelectedProject.Title
+__builder2.AddContent(153, SelectedProject.Title);
 
 #line default
 #line hidden
 #nullable disable
-                );
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(154, "\r\n        ");
                 __builder2.AddMarkupContent(155, "<div><p class=\"text-danger\">Delete a project will remove all stuff related to project including tasks, teams, files and etc.</p></div>");

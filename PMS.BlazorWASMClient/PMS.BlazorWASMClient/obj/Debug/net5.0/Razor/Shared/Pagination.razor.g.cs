@@ -177,15 +177,13 @@ using Blazored.Typeahead;
 #nullable disable
             ));
             __builder.AddAttribute(8, "class", "page-link");
-            __builder.AddContent(9, 
 #nullable restore
 #line 13 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\Pagination.razor"
-                                                                                                                       page
+__builder.AddContent(9, page);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.CloseElement();
 #nullable restore
@@ -210,15 +208,13 @@ using Blazored.Typeahead;
 #nullable disable
             ));
             __builder.AddAttribute(14, "class", "page-link");
-            __builder.AddContent(15, 
 #nullable restore
 #line 17 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\Pagination.razor"
-                                                                                                                page
+__builder.AddContent(15, page);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.CloseElement();
 #nullable restore

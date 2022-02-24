@@ -146,7 +146,7 @@ using Blazored.Typeahead;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 43 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\TopNavigation.razor"
+#line 45 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\TopNavigation.razor"
        
     [CascadingParameter]
     Task<AuthenticationState> AuthenticationState { get; set; }
@@ -155,22 +155,50 @@ using Blazored.Typeahead;
     List<ClientNotification> Notifications = new List<ClientNotification>();
     public int NewNotificationsCount { get; set; }
 
-    protected override async Task OnParametersSetAsync()
+    //protected override async Task OnParametersSetAsync()
+    //{
+    //    var authState = await AuthenticationState;
+
+    //    if (authState.User.Identity.IsAuthenticated)
+    //    {
+    //        Username = authState.User.Identity.GetUsername();
+
+    //        await GetNotifications();
+    //    }
+    //}
+
+    protected override async Task OnInitializedAsync()
     {
         var authState = await AuthenticationState;
-        Username = authState.User.Identity.GetUsername();
 
-        await GetNotifications();
+        if (authState.User.Identity.IsAuthenticated)
+        {
+            await GetNotifications();
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var authState = await AuthenticationState;
+
+            if (authState.User.Identity.IsAuthenticated)
+            {
+                await notificationService.ConnectToNotificationHub();
+                notificationService.OnNotificationRecieved += ShowNewNotification;
+            }
+        }
     }
 
     private async Task GetNotifications()
     {
         var notifications = await notificationService.GetAll();
 
-        if (notifications is not null && notifications.Count()>0)
+        if (notifications is not null && notifications.Count() > 0)
         {
-            Notifications=notifications.ToList();
-            NewNotificationsCount=Notifications.Count;
+            Notifications = notifications.ToList();
+            NewNotificationsCount = Notifications.Count;
         }
     }
 
@@ -187,16 +215,24 @@ using Blazored.Typeahead;
 
         if (response.IsSuccess)
         {
-            NewNotificationsCount=0;
+            NewNotificationsCount = 0;
             Notifications.Clear();
 
             await GetNotifications();
         }
     }
 
+    private async Task ShowNewNotification(string message)
+    {
+        await jsRuntime.ShowToastr("info", message);
+
+        await GetNotifications();
+    }
+
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime jsRuntime { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private INotificationService notificationService { get; set; }
     }
 }

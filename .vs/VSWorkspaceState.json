@@ -10,6 +10,6 @@
     "\\PMS.BlazorWASMClient\\PMS.BlazorWASMClient\\Pages\\Dashboard",
     "\\PMS.BlazorWASMClient\\PMS.BlazorWASMClient\\Shared"
   ],
-  "SelectedNode": "\\PMS.BlazorWASMClient\\PMS.BlazorWASMClient\\Pages\\Dashboard\\Dashboard.razor",
+  "SelectedNode": "\\PMS.BlazorWASMClient\\PMS.APIFramework\\Services\\Implementations\\NotificationService.cs",
   "PreviewInSolutionExplorer": false
 }

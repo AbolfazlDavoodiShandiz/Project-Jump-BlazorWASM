@@ -175,15 +175,13 @@ using Blazored.Typeahead;
 #nullable disable
             ));
             __builder.AddAttribute(5, "class", "list-group-item active");
-            __builder.AddContent(6, 
 #nullable restore
 #line 12 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\ListGroup.razor"
-                                                                                                               text
+__builder.AddContent(6, text);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
 #nullable restore
 #line 13 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\ListGroup.razor"
@@ -206,15 +204,13 @@ using Blazored.Typeahead;
 #nullable disable
             ));
             __builder.AddAttribute(10, "class", "list-group-item");
-            __builder.AddContent(11, 
 #nullable restore
 #line 16 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\ListGroup.razor"
-                                                                                                        text
+__builder.AddContent(11, text);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
 #nullable restore
 #line 17 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\ListGroup.razor"

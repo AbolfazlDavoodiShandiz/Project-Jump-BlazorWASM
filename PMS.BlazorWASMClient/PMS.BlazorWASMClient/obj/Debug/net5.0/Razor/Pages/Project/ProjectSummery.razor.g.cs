@@ -151,15 +151,13 @@ using Blazored.Typeahead;
             __builder.OpenElement(0, "div");
             __builder.AddAttribute(1, "class", "row mb-2");
             __builder.OpenElement(2, "h3");
-            __builder.AddContent(3, 
 #nullable restore
 #line 11 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
-         ProjectName
+__builder.AddContent(3, ProjectName);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.AddContent(4, " Summary");
             __builder.CloseElement();
             __builder.CloseElement();
@@ -180,15 +178,13 @@ using Blazored.Typeahead;
             __builder.AddAttribute(19, "class", "col-2");
             __builder.OpenElement(20, "strong");
             __builder.AddAttribute(21, "class", "text-info");
-            __builder.AddContent(22, 
 #nullable restore
 #line 23 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
-                                                   TotalCount
+__builder.AddContent(22, TotalCount);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.CloseElement();
             __builder.CloseElement();
@@ -200,15 +196,13 @@ using Blazored.Typeahead;
             __builder.AddAttribute(28, "class", "col-2");
             __builder.OpenElement(29, "strong");
             __builder.AddAttribute(30, "class", "text-success");
-            __builder.AddContent(31, 
 #nullable restore
 #line 31 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
-                                                      CompleteCount
+__builder.AddContent(31, CompleteCount);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.CloseElement();
             __builder.CloseElement();
@@ -220,15 +214,13 @@ using Blazored.Typeahead;
             __builder.AddAttribute(37, "class", "col-2");
             __builder.OpenElement(38, "strong");
             __builder.AddAttribute(39, "class", "text-warning");
-            __builder.AddContent(40, 
 #nullable restore
 #line 39 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
-                                                      RemainedCount
+__builder.AddContent(40, RemainedCount);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.CloseElement();
             __builder.CloseElement();
@@ -239,15 +231,13 @@ using Blazored.Typeahead;
             __builder.OpenElement(45, "div");
             __builder.AddAttribute(46, "class", "col-4");
             __builder.OpenElement(47, "strong");
-            __builder.AddContent(48, 
 #nullable restore
 #line 47 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
-                                 DeadlineDate.ToShortDateString()
+__builder.AddContent(48, DeadlineDate.ToShortDateString());
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.CloseElement();
             __builder.CloseElement();
@@ -265,15 +255,13 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
             __builder.OpenElement(54, "strong");
-            __builder.AddContent(55, 
 #nullable restore
 #line 54 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
-                                     DaysToDeadline
+__builder.AddContent(55, DaysToDeadline);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.AddContent(56, " Day(s) to deadline.");
             __builder.CloseElement();
 #nullable restore
@@ -298,15 +286,13 @@ using Blazored.Typeahead;
             __builder.OpenElement(58, "strong");
             __builder.AddAttribute(59, "class", "text-danger");
             __builder.AddContent(60, "Project deadline was ");
-            __builder.AddContent(61, 
 #nullable restore
 #line 62 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
-                                                                              Math.Abs(DaysToDeadline)
+__builder.AddContent(61, Math.Abs(DaysToDeadline));
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.AddContent(62, " day(s) ago.");
             __builder.CloseElement();
 #nullable restore
@@ -402,39 +388,33 @@ using Blazored.Typeahead;
             __builder.OpenElement(92, "div");
             __builder.AddAttribute(93, "class", "col-10");
             __builder.OpenElement(94, "strong");
-            __builder.AddContent(95, 
 #nullable restore
 #line 87 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
-                                                 MemberList[itemIndex].Username
+__builder.AddContent(95, MemberList[itemIndex].Username);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.AddMarkupContent(96, "\r\n                                        ");
             __builder.OpenElement(97, "span");
-            __builder.AddContent(98, 
 #nullable restore
 #line 88 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
-                                               MemberList[itemIndex].Email
+__builder.AddContent(98, MemberList[itemIndex].Email);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.AddMarkupContent(99, "\r\n                                        ");
             __builder.OpenElement(100, "span");
-            __builder.AddContent(101, 
 #nullable restore
 #line 89 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
-                                               MemberList[itemIndex].Mobile
+__builder.AddContent(101, MemberList[itemIndex].Mobile);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.CloseElement();
             __builder.CloseElement();
@@ -532,15 +512,13 @@ using Blazored.Typeahead;
 #nullable disable
             __builder.OpenElement(121, "tr");
             __builder.OpenElement(122, "td");
-            __builder.AddContent(123, 
 #nullable restore
 #line 150 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
-                                      ((CurrentPage - 1) * PageSize) + itemIndex + 1
+__builder.AddContent(123, ((CurrentPage - 1) * PageSize) + itemIndex + 1);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.AddMarkupContent(124, "\r\n                                ");
             __builder.OpenElement(125, "td");
@@ -554,15 +532,13 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
             );
-            __builder.AddContent(128, 
 #nullable restore
 #line 151 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
-                                                                  statusText
+__builder.AddContent(128, statusText);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.CloseElement();
             __builder.AddMarkupContent(129, "\r\n                                ");
@@ -570,15 +546,13 @@ using Blazored.Typeahead;
             __builder.OpenElement(131, "a");
             __builder.AddAttribute(132, "style", "text-decoration:none;");
             __builder.AddAttribute(133, "href", "#");
-            __builder.AddContent(134, 
 #nullable restore
 #line 152 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
-                                                                                TaskList[itemIndex].Title
+__builder.AddContent(134, TaskList[itemIndex].Title);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.CloseElement();
             __builder.AddMarkupContent(135, "\r\n                                ");
@@ -594,27 +568,23 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
             );
-            __builder.AddContent(140, 
 #nullable restore
 #line 153 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
-                                                                                                                           TaskList[itemIndex].CreatedDate.ToShortDateString()
+__builder.AddContent(140, TaskList[itemIndex].CreatedDate.ToShortDateString());
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.AddMarkupContent(141, "\r\n                                ");
             __builder.OpenElement(142, "td");
-            __builder.AddContent(143, 
 #nullable restore
 #line 154 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
-                                     TaskList[itemIndex].DeadlineDate.ToShortDateString()
+__builder.AddContent(143, TaskList[itemIndex].DeadlineDate.ToShortDateString());
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.AddMarkupContent(144, "\r\n                                ");
             __builder.OpenElement(145, "td");
@@ -629,15 +599,13 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
             );
-            __builder.AddContent(149, 
 #nullable restore
 #line 155 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
-                                                                                                                            TaskList[itemIndex].CompleteDate?.ToShortDateString()
+__builder.AddContent(149, TaskList[itemIndex].CompleteDate?.ToShortDateString());
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.AddMarkupContent(150, "\r\n                                ");
             __builder.OpenElement(151, "td");
@@ -736,7 +704,7 @@ using Blazored.Typeahead;
             __builder.CloseElement();
             __builder.AddMarkupContent(174, "\r\n                ");
             __builder.OpenComponent<PMS.BlazorWASMClient.Shared.Pagination>(175);
-            __builder.AddAttribute(176, "ItemCount", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+            __builder.AddAttribute(176, "ItemCount", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 166 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
                                                          ItemCount
@@ -745,7 +713,7 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(177, "PageSize", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+            __builder.AddAttribute(177, "PageSize", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 166 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
                                                                               PageSize
@@ -754,7 +722,7 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(178, "CurrentPage", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+            __builder.AddAttribute(178, "CurrentPage", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 166 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
                                                                                                      CurrentPage
@@ -763,7 +731,7 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(179, "OnPageChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.Int32>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.Int32>(this, 
+            __builder.AddAttribute(179, "OnPageChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.Int32>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.Int32>(this, 
 #nullable restore
 #line 166 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
                                                                                                                                  OnPageChanged
@@ -810,7 +778,7 @@ using Blazored.Typeahead;
             __builder.OpenElement(193, "div");
             __builder.AddAttribute(194, "class", "modal-content");
             __builder.OpenComponent<Microsoft.AspNetCore.Components.Forms.EditForm>(195);
-            __builder.AddAttribute(196, "Model", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Object>(
+            __builder.AddAttribute(196, "Model", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Object>(
 #nullable restore
 #line 179 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
                                  NewProjectTask
@@ -819,7 +787,7 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(197, "OnValidSubmit", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Forms.EditContext>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
+            __builder.AddAttribute(197, "OnValidSubmit", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Forms.EditContext>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
 #nullable restore
 #line 179 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
                                                                 CreateNewProjectTask
@@ -834,15 +802,13 @@ using Blazored.Typeahead;
                 __builder2.OpenElement(201, "h5");
                 __builder2.AddAttribute(202, "class", "modal-title");
                 __builder2.AddAttribute(203, "id", "create-task-modal-header-label");
-                __builder2.AddContent(204, 
 #nullable restore
 #line 181 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
-                                                                                      IsCreateProjectTaskMode?"New Task":"Update Task"
+__builder2.AddContent(204, IsCreateProjectTaskMode?"New Task":"Update Task");
 
 #line default
 #line hidden
 #nullable disable
-                );
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(205, "\r\n                        ");
                 __builder2.OpenElement(206, "button");
@@ -877,7 +843,7 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
                 );
-                __builder2.AddAttribute(220, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddAttribute(220, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 186 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
                                                            NewProjectTask.Title
@@ -886,8 +852,8 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(221, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => NewProjectTask.Title = __value, NewProjectTask.Title))));
-                __builder2.AddAttribute(222, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => NewProjectTask.Title));
+                __builder2.AddAttribute(221, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => NewProjectTask.Title = __value, NewProjectTask.Title))));
+                __builder2.AddAttribute(222, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => NewProjectTask.Title));
                 __builder2.CloseComponent();
                 __builder2.AddMarkupContent(223, "\r\n                        ");
                 __builder2.OpenElement(224, "div");
@@ -896,7 +862,7 @@ using Blazored.Typeahead;
                 __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputTextArea>(227);
                 __builder2.AddAttribute(228, "id", "description");
                 __builder2.AddAttribute(229, "class", "form-control");
-                __builder2.AddAttribute(230, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddAttribute(230, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 189 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
                                                                          NewProjectTask.Description
@@ -905,8 +871,8 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(231, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => NewProjectTask.Description = __value, NewProjectTask.Description))));
-                __builder2.AddAttribute(232, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => NewProjectTask.Description));
+                __builder2.AddAttribute(231, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => NewProjectTask.Description = __value, NewProjectTask.Description))));
+                __builder2.AddAttribute(232, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => NewProjectTask.Description));
                 __builder2.CloseComponent();
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(233, "\r\n                        ");
@@ -921,7 +887,7 @@ using Blazored.Typeahead;
 #line default
 #line hidden
 #nullable disable
-                , 241, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => NewProjectTask.DeadlineDate = __value, NewProjectTask.DeadlineDate)), 242, () => NewProjectTask.DeadlineDate);
+                , 241, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => NewProjectTask.DeadlineDate = __value, NewProjectTask.DeadlineDate)), 242, () => NewProjectTask.DeadlineDate);
                 __builder2.CloseElement();
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(243, "\r\n                    ");
@@ -960,7 +926,7 @@ using Blazored.Typeahead;
 #nullable disable
             __builder.OpenComponent<PMS.BlazorWASMClient.Shared.ConfirmAlert>(254);
             __builder.AddAttribute(255, "Title", "Detele Task");
-            __builder.AddAttribute(256, "OnConfirm", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, 
+            __builder.AddAttribute(256, "OnConfirm", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, 
 #nullable restore
 #line 206 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
                                                                  DeleteTask
@@ -973,15 +939,13 @@ using Blazored.Typeahead;
                 __builder2.OpenElement(258, "div");
                 __builder2.AddMarkupContent(259, "<p>Are you sure you want to delete this task?</p>\r\n        Task Title: ");
                 __builder2.OpenElement(260, "strong");
-                __builder2.AddContent(261, 
 #nullable restore
 #line 209 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
-                             SelectedProjectTask.Title
+__builder2.AddContent(261, SelectedProjectTask.Title);
 
 #line default
 #line hidden
 #nullable disable
-                );
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(262, "\r\n        ");
                 __builder2.AddMarkupContent(263, "<div><p class=\"text-danger\">Delete a task will remove all stuff related to task including files and all task histories.</p></div>");
@@ -1022,7 +986,7 @@ using Blazored.Typeahead;
             __builder.OpenElement(277, "div");
             __builder.AddAttribute(278, "class", "modal-content");
             __builder.OpenComponent<Microsoft.AspNetCore.Components.Forms.EditForm>(279);
-            __builder.AddAttribute(280, "Model", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Object>(
+            __builder.AddAttribute(280, "Model", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Object>(
 #nullable restore
 #line 223 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
                                  SelectedUser
@@ -1031,7 +995,7 @@ using Blazored.Typeahead;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(281, "OnValidSubmit", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Forms.EditContext>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
+            __builder.AddAttribute(281, "OnValidSubmit", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Forms.EditContext>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
 #nullable restore
 #line 223 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
                                                               SaveProjectMemberList
@@ -1090,27 +1054,23 @@ using Blazored.Typeahead;
 #line default
 #line hidden
 #nullable disable
-                , 302, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => SelectedUser = __value, SelectedUser)), 303, () => SelectedUser, 304, (SearchResponse) => (__builder3) => {
-                    __builder3.AddContent(305, 
+                , 302, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => SelectedUser = __value, SelectedUser)), 303, () => SelectedUser, 304, (SearchResponse) => (__builder3) => {
 #nullable restore
 #line 233 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
-                                     SearchResponse.UserEmail
+__builder3.AddContent(305, SearchResponse.UserEmail);
 
 #line default
 #line hidden
 #nullable disable
-                    );
                 }
                 , 306, (SearchResponse) => (__builder3) => {
-                    __builder3.AddContent(307, 
 #nullable restore
 #line 236 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
-                                     SearchResponse.UserEmail
+__builder3.AddContent(307, SearchResponse.UserEmail);
 
 #line default
 #line hidden
 #nullable disable
-                    );
                 }
                 , 308, (SearchResponse) => (__builder3) => {
                     __builder3.AddMarkupContent(309, "\r\n                                    Sorry, there weren\'t any search results.\r\n                                ");
@@ -1155,15 +1115,13 @@ using Blazored.Typeahead;
                 __builder2.AddAttribute(326, "class", "row mt-2");
                 __builder2.OpenElement(327, "span");
                 __builder2.OpenElement(328, "strong");
-                __builder2.AddContent(329, 
 #nullable restore
 #line 253 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
-                                                       item.UserEmail
+__builder2.AddContent(329, item.UserEmail);
 
 #line default
 #line hidden
 #nullable disable
-                );
                 __builder2.CloseElement();
                 __builder2.AddContent(330, " ");
                 __builder2.OpenElement(331, "i");
@@ -1335,26 +1293,22 @@ using Blazored.Typeahead;
 #nullable disable
             ));
             __builder.OpenElement(389, "strong");
-            __builder.AddContent(390, 
 #nullable restore
 #line 296 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
-                                                 username
+__builder.AddContent(390, username);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.AddContent(391, " (");
-            __builder.AddContent(392, 
 #nullable restore
 #line 296 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
-                                                                          email
+__builder.AddContent(392, email);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.AddMarkupContent(393, ")\r\n                                    ");
             __builder.CloseElement();
             __builder.CloseElement();
@@ -1384,15 +1338,13 @@ using Blazored.Typeahead;
             __builder.AddAttribute(400, "class", "row mt-2");
             __builder.OpenElement(401, "span");
             __builder.OpenElement(402, "strong");
-            __builder.AddContent(403, 
 #nullable restore
 #line 307 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Pages\Project\ProjectSummery.razor"
-                                                   item.UserEmail
+__builder.AddContent(403, item.UserEmail);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.AddContent(404, " ");
             __builder.OpenElement(405, "i");

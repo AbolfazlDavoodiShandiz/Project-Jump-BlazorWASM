@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "8f70186a-8d99-41ed-9b84-ed167cbe8330": {
+      "ProjectGuid": "8f70186a-8d99-41ed-9b84-ed167cbe8330",
+      "DisplayName": "PMS.BlazorWASMClient.Utility",
+      "ColorIndex": 0
+    },
+    "9d37409f-88ca-4139-9266-15814d0cdf91": {
+      "ProjectGuid": "9d37409f-88ca-4139-9266-15814d0cdf91",
+      "DisplayName": "PMS.BlazorWASMClient",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

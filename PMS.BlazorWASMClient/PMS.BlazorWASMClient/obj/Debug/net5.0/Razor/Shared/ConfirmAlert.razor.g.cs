@@ -167,15 +167,13 @@ using Blazored.Typeahead;
             __builder.OpenElement(16, "h5");
             __builder.AddAttribute(17, "class", "modal-title");
             __builder.AddAttribute(18, "id", "staticBackdropLabel");
-            __builder.AddContent(19, 
 #nullable restore
 #line 10 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\ConfirmAlert.razor"
-                                                                      Title
+__builder.AddContent(19, Title);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.AddMarkupContent(20, "\r\n                    ");
             __builder.OpenElement(21, "button");
@@ -197,15 +195,13 @@ using Blazored.Typeahead;
             __builder.AddMarkupContent(27, "\r\n                ");
             __builder.OpenElement(28, "div");
             __builder.AddAttribute(29, "class", "modal-body");
-            __builder.AddContent(30, 
 #nullable restore
 #line 14 "D:\Programming\Projects\GitHubRepositories\Project-Jump-BlazorWASM\PMS.BlazorWASMClient\PMS.BlazorWASMClient\Shared\ConfirmAlert.razor"
-                     ChildContent
+__builder.AddContent(30, ChildContent);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.AddMarkupContent(31, "\r\n                ");
             __builder.OpenElement(32, "div");

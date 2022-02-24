@@ -1,59 +1,12 @@
 ﻿@page "/dashboard"
-@inject INotificationService notificationService
+@inject IJSRuntime jsRuntime
 
 @attribute [Authorize]
 
 <h1>Dashboard</h1>
 
-<div class="row">
-    <div class="col-8">
-        @*<button class="btn btn-success" @onclick="async ()=> await ConnectToServer()" disabled="@(IsConnected)">Connect</button>*@
-        <h3>Connection Status: @ConnectionStatus</h3>
-        <h3>Notifications from server:</h3>
-        @foreach (string item in Notifications)
-        {
-            <p>@item</p>
-            <br />
-        }
-    </div>
-</div>
+
 
 @code{
-    [CascadingParameter]
-    Task<AuthenticationState> AuthenticationState { get; set; }
 
-    public string ConnectionStatus
-    {
-        get
-        {
-            if (IsConnected)
-            {
-                return "Connected";
-            }
-            else
-            {
-                return "Closed";
-            }
-        }
-    }
-
-    public bool IsConnected { get; set; } = false;
-    IEnumerable<string> Notifications = new List<string>();
-
-    protected override async Task OnInitializedAsync()
-    {
-        var authState = await AuthenticationState;
-        if (authState.User.Identity.IsAuthenticated)
-        {
-            IsConnected=await notificationService.ConnectToNotificationHub();
-
-            notificationService.OnNotificationRecieved+=AddNewNotifications;
-        }
-    }
-
-    private void AddNewNotifications(object sender, EventArgs e)
-    {
-        Notifications=notificationService.ServerNotifications;
-        StateHasChanged();
-    }
 }
