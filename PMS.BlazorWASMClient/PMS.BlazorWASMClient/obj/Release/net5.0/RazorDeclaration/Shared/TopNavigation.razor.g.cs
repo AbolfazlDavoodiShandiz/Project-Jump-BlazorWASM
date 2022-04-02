@@ -186,6 +186,7 @@ using Blazored.Typeahead;
             if (authState.User.Identity.IsAuthenticated)
             {
                 await notificationService.ConnectToNotificationHub();
+
                 notificationService.OnNotificationRecieved += ShowNewNotification;
             }
         }
